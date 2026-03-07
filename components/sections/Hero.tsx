@@ -73,7 +73,7 @@ export const Hero = () => {
                     transition={{ 
                       duration: 0.8, 
                       repeat: Infinity, 
-                      ease: "steps(2)", 
+                      ease: "easeInOut", 
                     }}
                     className="inline-block w-[3px] h-[0.8em] bg-primary ml-2"
                   />
