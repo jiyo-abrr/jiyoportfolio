@@ -18,7 +18,12 @@ export const Projects = () => (
             description: "Advanced NLP-driven profanity detection for Filipino languages. Built with Python and Flask, achieving 85.5% accuracy across three dialects using custom part-of-speech tagging and N-gram analysis.",
             tags: ["Python", "Flask", "React", "NLP", "Machine Learning"],
             github: "#",
-            demo: "#"
+            demo: "#",
+            metrics: [
+              { label: "Accuracy", value: "85.5%" },
+              { label: "Latencies", value: "<150ms" }
+            ],
+            architecture: "Flask API + NLTK + Scikit-learn"
           },
           {
             title: "W.AIS",
@@ -26,7 +31,12 @@ export const Projects = () => (
             description: "A comprehensive finance-focused AI ecosystem utilizing the Gemini API. Features predictive budget planning, transaction management, and automated financial insights built on a high-performance Next.js foundation.",
             tags: ["Next.js", "Gemini API", "Supabase", "Prisma", "Clerk"],
             github: "#",
-            demo: "#"
+            demo: "#",
+            metrics: [
+              { label: "Response", value: "AI-driven" },
+              { label: "Uptime", value: "99.9%" }
+            ],
+            architecture: "Next.js 14 + Edge Functions + Supabase"
           }
         ].map((project, idx) => (
           <div key={idx} className="group relative glass rounded-[2.5rem] overflow-hidden transition-all duration-500 hover:border-primary/30">
@@ -34,9 +44,14 @@ export const Projects = () => (
               
               <div className="lg:col-span-8 space-y-8">
                 <div className="space-y-4">
-                  <span className="px-3 py-1 rounded-full border border-primary/20 bg-primary/10 text-primary text-[10px] uppercase tracking-widest font-semibold inline-block">
-                    {project.type}
-                  </span>
+                  <div className="flex items-center gap-3">
+                    <span className="px-3 py-1 rounded-full border border-primary/20 bg-primary/10 text-primary text-[10px] uppercase tracking-widest font-semibold inline-block">
+                      {project.type}
+                    </span>
+                    <span className="text-[10px] font-mono text-muted-foreground/60 uppercase tracking-tighter">
+                      {project.architecture}
+                    </span>
+                  </div>
                   <h3 className="text-3xl md:text-4xl font-medium tracking-tight text-foreground group-hover:text-primary transition-colors">
                     {project.title}
                   </h3>
@@ -45,6 +60,15 @@ export const Projects = () => (
                 <p className="text-muted-foreground font-light text-lg leading-relaxed max-w-2xl">
                   {project.description}
                 </p>
+
+                <div className="flex flex-wrap items-center gap-8">
+                  {project.metrics?.map((m, i) => (
+                    <div key={i} className="flex flex-col gap-1">
+                      <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-muted-foreground/50">{m.label}</span>
+                      <span className="text-xl font-medium text-primary">{m.value}</span>
+                    </div>
+                  ))}
+                </div>
 
                 <div className="flex flex-wrap gap-2 pt-2">
                   {project.tags.map(tag => (

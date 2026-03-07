@@ -16,13 +16,15 @@ const experiences = [
       {
         role: "Junior Software Developer",
         period: "Dec 2025 – Present",
-        type: "Current",
+        type: "Full-time",
         description: [
-          "Optimized enterprise Next.js/Laravel architecture in Docker environments.",
-          "Redesigned inventory systems, achieving 80% manual effort reduction.",
-          "Engineered RabbitMQ producer–consumer systems for ID processing.",
-          "Integrated hardware SDKs (Face/MRZ/NFC) for identity verification.",
-          "Led intern teams through rigorous code reviews and mentorship."
+          "Maintained and enhanced an enterprise web application (Next.js, Laravel) in a Dockerized environment, improving system stability and feature scalability.",
+          "Designed and developed the company’s inventory management system, reducing manual inventory tagging efforts by 80% through automation and system integration.",
+          "Designed and implemented a RabbitMQ-based producer–consumer architecture for ID processing workflows, enabling asynchronous task execution, workload distribution, and improved system reliability under high concurrency.",
+          "Collaborated in Agile development workflows by implementing assigned user feedback, fixing bugs, and incorporating review from senior developers.",
+          "Automated Procure-to-Pay (P2P), Order-to-Cash (O2C), Accounting, and Inventory workflows using ERPNext, significantly reducing manual reconciliation and process turnaround time.",
+          "Integrated and configured hardware SDKs (Face Detection, MRZ, NFC) for identity verification workflows, ensuring reliable device-to-application communication.",
+          "Led Software Developer Interns by providing code reviews, technical guidance, and project-level support."
         ]
       },
       {
@@ -30,9 +32,10 @@ const experiences = [
         period: "Aug 2025 – Nov 2025",
         type: "Internship",
         description: [
-          "Engineered scalable frontend components with Next.js and Material UI.",
-          "Developed secure RESTful API architectures using Laravel.",
-          "Maintained source control integrity using Bitbucket and Fork."
+          "Built scalable frontend components using Next.js and the Material UI.",
+          "Developed and maintained backend services and RESTful APIs using Laravel.",
+          "Tested and validated API endpoints using Postman to ensure proper functionality.",
+          "Applied Git-based version control practices using Bitbucket and Fork."
         ]
       }
     ]
@@ -48,9 +51,9 @@ const experiences = [
         period: "Aug 2024 – Sep 2024",
         type: "Remote",
         description: [
-          "Contributed to enterprise-scale applications following MVC architecture.",
-          "Built high-performance UI components with Vue.js and Tailwind.",
-          "Integrated PostgreSQL backend services for scalable features."
+          "Contributed to a full-stack web application following MVC architecture.",
+          "Built responsive frontend components using Vue.js and Tailwind CSS.",
+          "Developed backend services with Laravel and PostgreSQL to support scalable features."
         ]
       }
     ]
@@ -69,12 +72,9 @@ export const Experience = () => {
         </div>
         
         <div className="relative">
-          {/* Central Vertical Line - Thicker structural line */}
+          {/* Central Vertical Line */}
           <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-[4px] bg-primary/10 md:-translate-x-1/2 rounded-full" />
           
-          {/* Accent Glow Line */}
-          <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-[2px] bg-gradient-to-b from-primary/5 via-primary/40 to-primary/5 md:-translate-x-1/2 shadow-[0_0_15px_rgba(59,130,246,0.1)]" />
-
           <div className="space-y-32">
             {experiences.map((company, companyIdx) => {
               const isEven = companyIdx % 2 === 0;
@@ -82,27 +82,21 @@ export const Experience = () => {
               
               return (
                 <div key={companyIdx} className="relative">
-                  {/* Centered Node Dot - Thickens on hover */}
+                  {/* Centered Node Dot */}
                   <motion.div 
-                    animate={{ 
-                      scale: isHovered ? 1.8 : 1,
-                      borderWidth: isHovered ? "6px" : "4px"
-                    }}
-                    transition={{ duration: 0.3, ease: "easeOut" }}
+                    animate={{ scale: isHovered ? 1.8 : 1 }}
                     className="absolute left-[30px] md:left-1/2 top-8 z-30 h-3 w-3 rounded-full bg-primary md:-translate-x-1/2 border-background outline outline-1 outline-primary/20" 
                   />
 
-                  {/* Company Header Hub */}
+                  {/* Company Header */}
                   <div className={`flex flex-col ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'} items-center gap-8 md:gap-12 relative z-20`}>
-                    
-                    {/* Logo + Company Info Unit */}
                     <motion.div 
                       initial={{ opacity: 0, x: isEven ? -20 : 20 }}
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true }}
                       onMouseEnter={() => setHoveredCompany(company.id)}
                       onMouseLeave={() => setHoveredCompany(null)}
-                      className={`flex items-center gap-6 w-full md:w-1/2 ${isEven ? 'md:justify-end' : 'md:justify-start'} pl-20 md:pl-0 cursor-default`}
+                      className={`flex items-center gap-6 w-full md:w-1/2 ${isEven ? 'md:justify-end' : 'md:justify-start'} pl-20 md:pl-0`}
                     >
                       <div className={`flex items-center gap-6 ${!isEven ? 'flex-row-reverse' : ''}`}>
                         <div className={isEven ? 'text-right' : 'text-left'}>
@@ -112,23 +106,15 @@ export const Experience = () => {
                             {company.location}
                           </div>
                         </div>
-                        <div className={`h-16 w-16 rounded-2xl bg-secondary/50 border border-border flex items-center justify-center p-3 overflow-hidden shadow-sm transition-all duration-300 ${isHovered ? 'border-primary/50 scale-110 shadow-lg' : ''}`}>
-                          <Image 
-                            src={company.logo} 
-                            alt={company.company} 
-                            width={40} 
-                            height={40} 
-                            className="object-contain drop-shadow-[0_0_5px_rgba(59,130,246,0.3)] dark:drop-shadow-[0_0_8px_rgba(255,255,255,0.1)]" 
-                          />
+                        <div className={`h-16 w-16 rounded-2xl bg-secondary/50 border border-border flex items-center justify-center p-3 transition-all duration-300 ${isHovered ? 'border-primary/50 scale-110 shadow-lg' : ''}`}>
+                          <Image src={company.logo} alt={company.company} width={40} height={40} className="object-contain" />
                         </div>
                       </div>
                     </motion.div>
-
-                    {/* Empty spacer */}
                     <div className="hidden md:block w-1/2" />
                   </div>
 
-                  {/* Roles Container */}
+                  {/* Roles */}
                   <div className="mt-12 space-y-12">
                     {company.roles.map((role, roleIdx) => (
                       <motion.div 
@@ -153,7 +139,6 @@ export const Experience = () => {
                                 {role.type}
                               </span>
                             </div>
-                            
                             <ul className="space-y-3">
                               {role.description.map((item, i) => (
                                 <li key={i} className="text-muted-foreground text-sm font-light leading-relaxed flex items-start gap-3">

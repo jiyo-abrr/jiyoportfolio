@@ -6,6 +6,8 @@ import { About } from "@/components/sections/About";
 import { Experience } from "@/components/sections/Experience";
 import { TechStacks, Education } from "@/components/sections/SkillsAndEducation";
 import { Projects } from "@/components/sections/Projects";
+import { Contact } from "@/components/sections/Contact";
+import { Footer } from "@/components/Footer";
 import { LogoMarquee } from "@/components/sections/LogoMarquee";
 import { LoadingScreen } from "@/components/LoadingScreen";
 
@@ -46,43 +48,10 @@ export default function Portfolio() {
             <Projects />
             <TechStacks />
             <Education />
+            <Contact />
           </div>
 
-          {/* Footer Section */}
-          <footer className="mt-20 border-t border-border/50 py-16 bg-secondary/10">
-             <div className="container mx-auto px-6 max-w-5xl">
-               <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-12">
-                  <div className="space-y-4">
-                    <p className="text-2xl font-medium tracking-tight text-foreground">
-                      Jeo Abarre<span className="text-primary">.</span>
-                    </p>
-                    <p className="text-sm text-muted-foreground font-light max-w-sm leading-relaxed">
-                      Building the architecture of tomorrow. Focused on resilience, performance, and clean design.
-                    </p>
-                  </div>
-
-                  <div className="flex gap-10">
-                    <div className="space-y-4">
-                      <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-muted-foreground">Connect</p>
-                      <ul className="space-y-2">
-                         <li><a href="https://github.com/jiyo-abrr" target="_blank" rel="noopener noreferrer" className="text-sm font-medium text-foreground hover:text-primary transition-colors">GitHub</a></li>
-                         <li><a href="https://www.linkedin.com/in/jeo-abarre" target="_blank" rel="noopener noreferrer" className="text-sm font-medium text-foreground hover:text-primary transition-colors">LinkedIn</a></li>
-                         <li><a href="mailto:jeoabarre.dev@gmail.com" className="text-sm font-medium text-foreground hover:text-primary transition-colors">Email</a></li>
-                      </ul>
-                    </div>
-                  </div>
-               </div>
-               
-               <div className="mt-16 pt-8 border-t border-border/50 flex flex-col md:flex-row justify-between items-center gap-4">
-                  <p className="text-xs text-muted-foreground font-light">
-                    &copy; {new Date().getFullYear()} Jeo C. Abarre.
-                  </p>
-                  <p className="text-xs text-muted-foreground font-light">
-                    Manila, Philippines
-                  </p>
-               </div>
-             </div>
-          </footer>
+          <Footer />
         </div>
       </ScrollArea>
     </main>

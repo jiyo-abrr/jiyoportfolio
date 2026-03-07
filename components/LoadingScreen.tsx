@@ -53,7 +53,7 @@ export const LoadingScreen = () => {
               className="text-5xl md:text-6xl font-bold tracking-tighter text-foreground flex items-center"
             >
               <span className="text-primary mr-1">{"<"}</span>
-              J.A
+              jiyo.dev
               <span className="text-primary ml-1">{"/>"}</span>
             </motion.div>
 

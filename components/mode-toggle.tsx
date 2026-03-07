@@ -6,18 +6,20 @@ import { useTheme } from "next-themes"
 import { motion } from "framer-motion"
 
 export function ModeToggle() {
-  const { theme, setTheme } = useTheme()
+  const { resolvedTheme, setTheme } = useTheme()
   const [mounted, setMounted] = React.useState(false)
 
   React.useEffect(() => setMounted(true), [])
 
-  if (!mounted) return null
+  if (!mounted) return null;
 
-  const isDark = theme === "dark"
+  // Use resolvedTheme which handles 'system' correctly
+  const isDark = resolvedTheme === "dark"
 
   return (
     <button
       onClick={() => setTheme(isDark ? "light" : "dark")}
+      suppressHydrationWarning
       className="relative w-16 h-8 rounded-full bg-secondary/50 border border-border/50 p-1 flex items-center transition-colors hover:border-primary/30"
       aria-label="Toggle Theme"
     >

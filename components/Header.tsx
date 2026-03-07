@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
 
-const navItems = ["About", "Experience", "Projects", "Skills", "Education"];
+const navItems = ["About", "Experience", "Projects", "Skills", "Education", "Contact"];
 
 export const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
