@@ -42,7 +42,7 @@ export default function Portfolio() {
 
           <LogoMarquee />
 
-          <div className="container mx-auto px-6 py-32 max-w-5xl space-y-32 md:space-y-48">
+          <div className="container mx-auto px-6 py-20 md:py-32 max-w-5xl space-y-24 md:space-y-48">
             <About />
             <Experience />
             <Projects />

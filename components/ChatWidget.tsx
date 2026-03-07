@@ -51,25 +51,25 @@ export const ChatWidget = () => {
   const mailtoLink = `mailto:jeoabarre.dev@gmail.com?subject=Project Inquiry - [Your Name]&body=Hi Jeo,%0D%0A%0D%0AI'm reaching out regarding...`;
 
   return (
-    <div className="fixed bottom-6 right-6 z-[100]">
+    <div className="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-[100]">
       <AnimatePresence>
         {isOpen && (
           <motion.div
             initial={{ opacity: 0, y: 20, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
-            className="mb-4 w-[350px] sm:w-[400px] h-[550px] glass rounded-[2rem] overflow-hidden flex flex-col shadow-2xl border-primary/20"
+            className="mb-4 w-[calc(100vw-2rem)] sm:w-[400px] h-[500px] md:h-[550px] glass rounded-[1.5rem] md:rounded-[2rem] overflow-hidden flex flex-col shadow-2xl border-primary/20"
           >
-            <div className="p-6 border-b border-border/50 flex items-center justify-between bg-primary/5">
+            <div className="p-4 md:p-6 border-b border-border/50 flex items-center justify-between bg-primary/5">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
-                  <Bot className="w-5 h-5 text-primary" />
+                <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-primary/10 flex items-center justify-center">
+                  <Bot className="w-4 h-4 md:w-5 md:h-5 text-primary" />
                 </div>
                 <div>
-                  <h3 className="text-sm font-semibold tracking-tight text-foreground">System Assistant</h3>
+                  <h3 className="text-xs font-semibold tracking-tight text-foreground">System Assistant</h3>
                   <div className="flex items-center gap-1.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                    <span className="text-[10px] text-muted-foreground uppercase tracking-widest font-medium">Online</span>
+                    <span className="w-1 h-1 md:w-1.5 md:h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                    <span className="text-[8px] md:text-[10px] text-muted-foreground uppercase tracking-widest font-medium">Online</span>
                   </div>
                 </div>
               </div>
@@ -83,7 +83,7 @@ export const ChatWidget = () => {
 
             <div 
               ref={scrollRef}
-              className="flex-1 overflow-y-auto p-6 space-y-6 scrollbar-hide bg-background/50"
+              className="flex-1 overflow-y-auto p-4 md:p-6 space-y-4 md:space-y-6 scrollbar-hide bg-background/50"
             >
               {messages.map((msg, i) => (
                 <motion.div
@@ -92,13 +92,13 @@ export const ChatWidget = () => {
                   key={i}
                   className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}
                 >
-                  <div className={`flex gap-3 max-w-[85%] ${msg.role === "user" ? "flex-row-reverse" : ""}`}>
-                    <div className={`w-8 h-8 rounded-full shrink-0 flex items-center justify-center ${
+                  <div className={`flex gap-2 md:gap-3 max-w-[90%] md:max-w-[85%] ${msg.role === "user" ? "flex-row-reverse" : ""}`}>
+                    <div className={`w-7 h-7 md:w-8 md:h-8 rounded-full shrink-0 flex items-center justify-center ${
                       msg.role === "user" ? "bg-primary text-primary-foreground" : "bg-secondary text-muted-foreground border border-border/50"
                     }`}>
-                      {msg.role === "user" ? <User className="w-4 h-4" /> : <Bot className="w-4 h-4" />}
+                      {msg.role === "user" ? <User className="w-3.5 h-3.5" /> : <Bot className="w-3.5 h-3.5" />}
                     </div>
-                    <div className={`p-4 rounded-[1.5rem] text-sm leading-relaxed ${
+                    <div className={`p-3 md:p-4 rounded-[1.25rem] md:rounded-[1.5rem] text-xs md:text-sm leading-relaxed ${
                       msg.role === "user" 
                         ? "bg-primary text-primary-foreground rounded-tr-none shadow-lg shadow-primary/10" 
                         : "bg-background/80 text-foreground rounded-tl-none border border-border/50 shadow-sm"

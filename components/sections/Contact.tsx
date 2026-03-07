@@ -50,28 +50,28 @@ export const Contact = () => {
           <div className="space-y-12">
             <div className="space-y-6">
               <span className="section-title">06. Contact</span>
-              <h2 className="text-5xl md:text-7xl font-medium tracking-tight text-foreground leading-[0.9]">
+              <h2 className="text-4xl md:text-7xl font-medium tracking-tight text-foreground leading-[0.9]">
                 Let's start a <br />
                 <span className="text-primary italic">conversation.</span>
               </h2>
-              <p className="text-muted-foreground text-lg font-light leading-relaxed max-w-md pt-4">
+              <p className="text-muted-foreground text-base md:text-lg font-light leading-relaxed max-w-md pt-4">
                 Have a project in mind or just want to say hi? Fill out the form or reach out directly via email.
               </p>
             </div>
 
-            <div className="space-y-8 pt-8">
-              <div className="flex items-center gap-6 group">
-                <div className="w-14 h-14 rounded-2xl bg-secondary border border-border/50 flex items-center justify-center text-muted-foreground group-hover:text-primary group-hover:border-primary/30 transition-all duration-500 shadow-sm">
-                  <Mail className="w-6 h-6" />
+            <div className="space-y-6 md:space-y-8 pt-4 md:pt-8">
+              <div className="flex items-center gap-4 md:gap-6 group">
+                <div className="w-12 h-12 md:w-14 md:h-14 rounded-xl md:rounded-2xl bg-secondary border border-border/50 flex items-center justify-center text-muted-foreground group-hover:text-primary group-hover:border-primary/30 transition-all duration-500 shadow-sm">
+                  <Mail className="w-5 h-5 md:w-6 md:h-6" />
                 </div>
                 <div className="space-y-1">
-                  <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground/60">Email me directly</p>
+                  <p className="text-[9px] md:text-[10px] font-bold uppercase tracking-widest text-muted-foreground/60">Email me directly</p>
                   <button 
                     onClick={copyToClipboard}
                     suppressHydrationWarning
-                    className="text-lg font-medium hover:text-primary transition-colors flex items-center gap-2"
+                    className="text-base md:text-lg font-medium hover:text-primary transition-colors flex items-center gap-2"
                   >
-                    {email}
+                    <span className="truncate max-w-[200px] md:max-w-none">{email}</span>
                     {copied ? <Check className="w-4 h-4 text-emerald-500" /> : <Copy className="w-4 h-4 opacity-30" />}
                   </button>
                 </div>
@@ -79,11 +79,11 @@ export const Contact = () => {
 
               <div className="grid grid-cols-2 gap-8 pt-8 border-t border-border/50 max-w-sm">
                 <div className="space-y-2">
-                  <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground/60">Location</p>
+                  <p className="text-[9px] md:text-[10px] font-bold uppercase tracking-widest text-muted-foreground/60">Location</p>
                   <p className="text-sm font-medium">Manila, PH</p>
                 </div>
                 <div className="space-y-2">
-                  <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground/60">Socials</p>
+                  <p className="text-[9px] md:text-[10px] font-bold uppercase tracking-widest text-muted-foreground/60">Socials</p>
                   <div className="flex items-center gap-4">
                      <a href="https://github.com/jiyo-abrr" target="_blank" className="text-xs font-bold uppercase tracking-widest text-muted-foreground hover:text-primary transition-colors">GH</a>
                      <a href="https://www.linkedin.com/in/jeo-abarre" target="_blank" className="text-xs font-bold uppercase tracking-widest text-muted-foreground hover:text-primary transition-colors">LI</a>
@@ -94,11 +94,11 @@ export const Contact = () => {
           </div>
 
           {/* Right Side: Form */}
-          <div className="glass rounded-[2.5rem] p-8 md:p-12 shadow-2xl shadow-primary/5 border-primary/10">
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="glass rounded-[2rem] md:rounded-[2.5rem] p-6 md:p-12 shadow-2xl shadow-primary/5 border-primary/10">
+            <form onSubmit={handleSubmit} className="space-y-5 md:space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
                 <div className="space-y-2">
-                  <label className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground ml-4 flex items-center gap-2">
+                  <label className="text-[9px] md:text-[10px] font-bold uppercase tracking-widest text-muted-foreground ml-4 flex items-center gap-2">
                     <User className="w-3 h-3" /> Your Name
                   </label>
                   <input 
@@ -108,11 +108,11 @@ export const Contact = () => {
                     value={formState.name}
                     onChange={(e) => setFormState({...formState, name: e.target.value})}
                     suppressHydrationWarning
-                    className="w-full h-14 bg-background border border-border/50 rounded-2xl px-6 text-sm focus:outline-none focus:border-primary/50 transition-all placeholder:text-muted-foreground/30 shadow-inner"
+                    className="w-full h-12 md:h-14 bg-background border border-border/50 rounded-xl md:rounded-2xl px-6 text-sm focus:outline-none focus:border-primary/50 transition-all placeholder:text-muted-foreground/30 shadow-inner"
                   />
                 </div>
                 <div className="space-y-2">
-                  <label className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground ml-4 flex items-center gap-2">
+                  <label className="text-[9px] md:text-[10px] font-bold uppercase tracking-widest text-muted-foreground ml-4 flex items-center gap-2">
                     <AtSign className="w-3 h-3" /> Email Address
                   </label>
                   <input 
@@ -122,13 +122,13 @@ export const Contact = () => {
                     value={formState.email}
                     onChange={(e) => setFormState({...formState, email: e.target.value})}
                     suppressHydrationWarning
-                    className="w-full h-14 bg-background border border-border/50 rounded-2xl px-6 text-sm focus:outline-none focus:border-primary/50 transition-all placeholder:text-muted-foreground/30 shadow-inner"
+                    className="w-full h-12 md:h-14 bg-background border border-border/50 rounded-xl md:rounded-2xl px-6 text-sm focus:outline-none focus:border-primary/50 transition-all placeholder:text-muted-foreground/30 shadow-inner"
                   />
                 </div>
               </div>
 
               <div className="space-y-2">
-                <label className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground ml-4 flex items-center gap-2">
+                <label className="text-[9px] md:text-[10px] font-bold uppercase tracking-widest text-muted-foreground ml-4 flex items-center gap-2">
                   <Type className="w-3 h-3" /> Subject
                 </label>
                 <input 
@@ -138,22 +138,22 @@ export const Contact = () => {
                   value={formState.subject}
                   onChange={(e) => setFormState({...formState, subject: e.target.value})}
                   suppressHydrationWarning
-                  className="w-full h-14 bg-background border border-border/50 rounded-2xl px-6 text-sm focus:outline-none focus:border-primary/50 transition-all placeholder:text-muted-foreground/30 shadow-inner"
+                  className="w-full h-12 md:h-14 bg-background border border-border/50 rounded-xl md:rounded-2xl px-6 text-sm focus:outline-none focus:border-primary/50 transition-all placeholder:text-muted-foreground/30 shadow-inner"
                 />
               </div>
 
               <div className="space-y-2">
-                <label className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground ml-4 flex items-center gap-2">
+                <label className="text-[9px] md:text-[10px] font-bold uppercase tracking-widest text-muted-foreground ml-4 flex items-center gap-2">
                   <MessageSquare className="w-3 h-3" /> Message
                 </label>
                 <textarea 
                   required
-                  rows={5}
+                  rows={4}
                   placeholder="Tell me about your project..."
                   value={formState.message}
                   onChange={(e) => setFormState({...formState, message: e.target.value})}
                   suppressHydrationWarning
-                  className="w-full bg-background border border-border/50 rounded-2xl p-6 text-sm focus:outline-none focus:border-primary/50 transition-all placeholder:text-muted-foreground/30 shadow-inner resize-none"
+                  className="w-full bg-background border border-border/50 rounded-xl md:rounded-2xl p-6 text-sm focus:outline-none focus:border-primary/50 transition-all placeholder:text-muted-foreground/30 shadow-inner resize-none"
                 />
               </div>
 
@@ -163,7 +163,7 @@ export const Contact = () => {
                 disabled={isSending}
                 type="submit"
                 suppressHydrationWarning
-                className="w-full h-16 bg-foreground text-background rounded-2xl font-semibold flex items-center justify-center gap-3 hover:bg-primary transition-all duration-500 disabled:opacity-50 shadow-xl shadow-primary/10"
+                className="w-full h-14 md:h-16 bg-foreground text-background rounded-xl md:rounded-2xl font-semibold flex items-center justify-center gap-3 hover:bg-primary transition-all duration-500 disabled:opacity-50 shadow-xl shadow-primary/10"
               >
                 {isSending ? (
                   <>
@@ -172,12 +172,12 @@ export const Contact = () => {
                       transition={{ repeat: Infinity, duration: 1, ease: "linear" }}
                       className="w-5 h-5 border-2 border-background/30 border-t-background rounded-full"
                     />
-                    <span className="text-[10px] uppercase tracking-[0.3em] font-bold">Constructing...</span>
+                    <span className="text-[9px] md:text-[10px] uppercase tracking-[0.3em] font-bold">Constructing...</span>
                   </>
                 ) : (
                   <>
                     <Send className="w-5 h-5" />
-                    <span className="text-[10px] uppercase tracking-[0.3em] font-bold">Send Message</span>
+                    <span className="text-[9px] md:text-[10px] uppercase tracking-[0.3em] font-bold">Send Message</span>
                   </>
                 )}
               </motion.button>

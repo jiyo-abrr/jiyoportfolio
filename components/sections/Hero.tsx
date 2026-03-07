@@ -61,12 +61,12 @@ export const Hero = () => {
             </div>
 
             <div className="space-y-4">
-              <h1 className="text-5xl sm:text-7xl md:text-9xl lg:text-[10rem] font-medium tracking-tight text-foreground leading-[0.85]">
+              <h1 className="text-4xl sm:text-7xl md:text-9xl lg:text-[10rem] font-medium tracking-tight text-foreground leading-[0.85]">
                 Jeo Abarre<span className="text-primary">.</span>
               </h1>
 
-              <div className="h-[50px] md:h-[70px] flex items-center">
-                <p className="text-3xl md:text-5xl lg:text-6xl text-muted-foreground font-light tracking-tight flex items-center">
+              <div className="h-[40px] md:h-[70px] flex items-center">
+                <p className="text-2xl md:text-5xl lg:text-6xl text-muted-foreground font-light tracking-tight flex items-center">
                   {displayText}
                   <motion.span
                     animate={{ opacity: [1, 0] }}
@@ -75,36 +75,36 @@ export const Hero = () => {
                       repeat: Infinity,
                       ease: "easeInOut",
                     }}
-                    className="inline-block w-[3px] h-[0.8em] bg-primary ml-2"
+                    className="inline-block w-[2px] md:w-[3px] h-[0.8em] bg-primary ml-2"
                   />
                 </p>
               </div>
             </div>
 
-            <p className="text-lg md:text-xl text-muted-foreground font-light max-w-2xl leading-relaxed pt-4">
+            <p className="text-base md:text-xl text-muted-foreground font-light max-w-2xl leading-relaxed pt-2 md:pt-4">
               Software Developer building scalable web systems, automation
               tools, and intelligent applications.
             </p>
           </div>
 
-          <div className="flex flex-wrap items-center gap-6 pt-6">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 pt-6">
             <motion.a
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               href="mailto:jeoabarre.dev@gmail.com"
-              className="h-14 px-12 flex items-center justify-center gap-3 rounded-full bg-foreground text-background font-semibold hover:bg-primary transition-colors shadow-2xl shadow-primary/10"
+              className="w-full sm:w-auto h-14 px-8 md:px-12 flex items-center justify-center gap-3 rounded-full bg-foreground text-background font-semibold hover:bg-primary transition-colors shadow-2xl shadow-primary/10"
             >
               Get in touch <ArrowRight className="h-5 w-5" />
             </motion.a>
 
-            <div className="flex items-center gap-8 pl-6 border-l border-border/50">
+            <div className="flex items-center gap-6 md:gap-8 sm:pl-6 sm:border-l border-border/50">
               <a
                 href="https://github.com/jiyo-abrr"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-foreground transition-all transform hover:-translate-y-1"
               >
-                <Github className="h-6 w-6" />
+                <Github className="h-5 w-5 md:h-6 md:w-6" />
               </a>
               <a
                 href="https://www.linkedin.com/in/jeo-abarre"
@@ -112,7 +112,7 @@ export const Hero = () => {
                 rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-foreground transition-all transform hover:-translate-y-1"
               >
-                <Linkedin className="h-6 w-6" />
+                <Linkedin className="h-5 w-5 md:h-6 md:w-6" />
               </a>
               <a
                 href="/portfolio/Abarre - Resume.pdf"
