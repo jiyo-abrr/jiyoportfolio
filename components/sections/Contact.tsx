@@ -68,6 +68,7 @@ export const Contact = () => {
                   <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground/60">Email me directly</p>
                   <button 
                     onClick={copyToClipboard}
+                    suppressHydrationWarning
                     className="text-lg font-medium hover:text-primary transition-colors flex items-center gap-2"
                   >
                     {email}

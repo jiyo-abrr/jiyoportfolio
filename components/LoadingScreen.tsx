@@ -34,10 +34,12 @@ export const LoadingScreen = () => {
     <AnimatePresence>
       {loading && (
         <motion.div
-          initial={{ y: 0 }}
+          initial={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
           exit={{ 
-            y: "-100%",
-            transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] }
+            opacity: 0,
+            scale: 1.5,
+            filter: "blur(20px)",
+            transition: { duration: 1, ease: [0.7, 0, 0.3, 1] }
           }}
           className="fixed inset-0 z-[1000] flex items-center justify-center bg-background border-b border-primary/10 overflow-hidden"
         >
