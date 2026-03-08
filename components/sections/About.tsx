@@ -1,5 +1,6 @@
 import { SectionWrapper } from "@/components/SectionWrapper";
 import { Zap, Shield, Code, Server } from "lucide-react";
+import { Terminal } from "@/components/Terminal";
 
 export const About = () => (
   <SectionWrapper>
@@ -14,10 +15,10 @@ export const About = () => (
         {/* Large Text Block */}
         <div className="md:col-span-2 p-6 md:p-12 rounded-[2rem] md:rounded-[2.5rem] glass flex flex-col justify-center gap-6 hover:border-primary/30 transition-all duration-500">
           <h3 className="text-xl md:text-3xl font-medium leading-relaxed tracking-tight">
-            I build <span className="text-primary italic">scalable</span> solutions with a focus on <span className="text-primary font-medium">performance</span> and <span className="text-primary font-medium">stability</span>.
+            Passionate about <span className="text-primary italic">high-concurrency systems</span> and <span className="text-primary font-medium">asynchronous architectures</span>.
           </h3>
           <p className="text-muted-foreground leading-relaxed font-light text-base md:text-lg">
-            As a developer passionate about high-concurrency systems and asynchronous architecture, I focus on bridging the gap between complex requirements and efficient software. I am dedicated to writing clean, reliable code and continuously optimizing workflows to ensure long-term system scalability.
+            I turn complex requirements into efficient solutions while writing clean, maintainable code and continuously optimizing workflows for long-term scalability.
           </p>
         </div>
 
@@ -45,25 +46,9 @@ export const About = () => (
           </div>
         </div>
 
-        {/* Stat 3 */}
-        <div className="md:col-span-2 p-6 md:p-12 rounded-[2rem] md:rounded-[2.5rem] glass flex flex-col sm:flex-row items-start sm:items-center justify-between gap-8 md:gap-12 hover:border-primary/30 transition-all duration-500">
-           <div className="space-y-3 flex-1">
-             <div className="flex items-center gap-3 text-primary mb-2 md:mb-4">
-               <Shield className="h-4 w-4 md:h-5 md:w-5" />
-               <span className="text-[9px] md:text-xs font-semibold uppercase tracking-widest">Reliability</span>
-             </div>
-             <p className="font-medium text-lg md:text-xl tracking-tight">Scalable Design</p>
-             <p className="text-sm md:text-base text-muted-foreground font-light leading-relaxed">Developing robust message-broker architectures and containerized services.</p>
-           </div>
-           <div className="w-px h-24 bg-border/50 hidden sm:block" />
-           <div className="space-y-3 flex-1">
-             <div className="flex items-center gap-3 text-primary mb-2 md:mb-4">
-               <Zap className="h-4 w-4 md:h-5 md:w-5" />
-               <span className="text-[9px] md:text-xs font-semibold uppercase tracking-widest">Focus</span>
-             </div>
-             <p className="font-medium text-lg md:text-xl tracking-tight">Clean Execution</p>
-             <p className="text-sm md:text-base text-muted-foreground font-light leading-relaxed">Optimizing database queries and backend logic for high-throughput environments.</p>
-           </div>
+        {/* Terminal Component (Replacing Stat 3) */}
+        <div className="md:col-span-2 rounded-[2rem] md:rounded-[2.5rem] overflow-hidden">
+          <Terminal />
         </div>
 
       </div>

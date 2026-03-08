@@ -181,12 +181,17 @@ export const Contact = () => {
                 </label>
                 <textarea 
                   required
-                  rows={3}
+                  rows={6}
                   placeholder="Tell me about your project..."
                   value={formState.message}
-                  onChange={(e) => setFormState({...formState, message: e.target.value})}
+                  onChange={(e) => {
+                    setFormState({...formState, message: e.target.value});
+                    // Auto-expand height
+                    e.target.style.height = 'auto';
+                    e.target.style.height = e.target.scrollHeight + 'px';
+                  }}
                   suppressHydrationWarning
-                  className="w-full bg-background border border-border/50 rounded-xl p-5 text-sm focus:outline-none focus:border-primary/50 transition-all placeholder:text-muted-foreground/30 shadow-inner resize-none"
+                  className="w-full bg-background border border-border/50 rounded-xl p-5 text-sm focus:outline-none focus:border-primary/50 transition-all placeholder:text-muted-foreground/30 shadow-inner resize-none min-h-[120px] max-h-[400px]"
                 />
               </div>
 

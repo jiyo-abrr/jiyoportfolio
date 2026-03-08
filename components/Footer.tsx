@@ -78,7 +78,8 @@ export const Footer = () => {
 
             <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-muted-foreground/40 text-center sm:text-right leading-loose">
               &copy; {new Date().getFullYear()} Jeo C. Abarre <br />
-              All rights reserved
+              All rights reserved <br />
+              <span className="opacity-50">v1.2.0 • Last updated: March 2026</span>
             </p>
           </div>
         </div>

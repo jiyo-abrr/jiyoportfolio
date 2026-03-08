@@ -18,13 +18,13 @@ const experiences = [
         period: "Dec 2025 – Present",
         type: "Full-time",
         description: [
-          "Maintained and enhanced an enterprise web application (Next.js, Laravel) in a Dockerized environment, improving system stability and feature scalability.",
-          "Designed and developed the company’s inventory management system, reducing manual inventory tagging efforts by 80% through automation and system integration.",
-          "Designed and implemented a RabbitMQ-based producer–consumer architecture for ID processing workflows, enabling asynchronous task execution, workload distribution, and improved system reliability under high concurrency.",
-          "Collaborated in Agile development workflows by implementing assigned user feedback, fixing bugs, and incorporating review from senior developers.",
-          "Automated Procure-to-Pay (P2P), Order-to-Cash (O2C), Accounting, and Inventory workflows using ERPNext, significantly reducing manual reconciliation and process turnaround time.",
-          "Integrated and configured hardware SDKs (Face Detection, MRZ, NFC) for identity verification workflows, ensuring reliable device-to-application communication.",
-          "Led Software Developer Interns by providing code reviews, technical guidance, and project-level support."
+          "<strong>Engineered</strong> and enhanced enterprise web applications using <strong>Next.js and Laravel</strong> in <strong>Dockerized</strong> environments, improving system stability.",
+          "<strong>Architected</strong> the company’s inventory management system, <strong>reducing manual efforts by 80%</strong> through automated system integration.",
+          "<strong>Implemented</strong> a <strong>RabbitMQ</strong> producer–consumer architecture for ID processing, enabling <strong>asynchronous task execution</strong> and high concurrency.",
+          "<strong>Collaborated</strong> in <strong>Agile</strong> workflows, resolving complex bugs and incorporating feedback from senior developers.",
+          "<strong>Automated</strong> complex accounting and inventory workflows using <strong>ERPNext</strong>, significantly reducing reconciliation time.",
+          "<strong>Integrated</strong> hardware SDKs (<strong>Face Detection, MRZ, NFC</strong>) for identity verification, ensuring reliable device communication.",
+          "<strong>Mentored</strong> software developer interns, providing code reviews and technical guidance."
         ]
       },
       {
@@ -32,10 +32,10 @@ const experiences = [
         period: "Aug 2025 – Nov 2025",
         type: "Internship",
         description: [
-          "Built scalable frontend components using Next.js and the Material UI.",
-          "Developed and maintained backend services and RESTful APIs using Laravel.",
-          "Tested and validated API endpoints using Postman to ensure proper functionality.",
-          "Applied Git-based version control practices using Bitbucket and Fork."
+          "<strong>Developed</strong> scalable frontend components using <strong>Next.js</strong> and <strong>Material UI</strong>.",
+          "<strong>Maintained</strong> backend services and <strong>RESTful APIs</strong> using <strong>Laravel</strong>.",
+          "<strong>Validated</strong> API endpoints using <strong>Postman</strong> to ensure reliable functionality.",
+          "<strong>Managed</strong> version control and collaborative workflows using <strong>Git and Bitbucket</strong>."
         ]
       }
     ]
@@ -51,9 +51,9 @@ const experiences = [
         period: "Aug 2024 – Sep 2024",
         type: "Remote",
         description: [
-          "Contributed to a full-stack web application following MVC architecture.",
-          "Built responsive frontend components using Vue.js and Tailwind CSS.",
-          "Developed backend services with Laravel and PostgreSQL to support scalable features."
+          "<strong>Contributed</strong> to full-stack applications following <strong>MVC architecture</strong>.",
+          "<strong>Built</strong> responsive frontend components using <strong>Vue.js</strong> and <strong>Tailwind CSS</strong>.",
+          "<strong>Developed</strong> backend services with <strong>Laravel</strong> and <strong>PostgreSQL</strong> to support scalable features."
         ]
       }
     ]
@@ -143,7 +143,10 @@ export const Experience = () => {
                               {role.description.map((item, i) => (
                                 <li key={i} className="text-muted-foreground text-xs md:text-sm font-light leading-relaxed flex items-start gap-2 md:gap-3">
                                   <ArrowRight className="h-3.5 w-3.5 md:h-4 md:w-4 text-primary/30 mt-0.5 shrink-0" />
-                                  <span className="flex-1">{item}</span>
+                                  <span 
+                                    className="flex-1" 
+                                    dangerouslySetInnerHTML={{ __html: item }}
+                                  />
                                 </li>
                               ))}
                             </ul>

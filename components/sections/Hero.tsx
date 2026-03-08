@@ -85,13 +85,23 @@ export const Hero = () => {
               Software Developer building scalable web systems, automation
               tools, and intelligent applications.
             </p>
+
+            <div className="flex flex-wrap gap-3 pt-2">
+              <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-primary/5 border border-primary/10 text-[9px] font-bold uppercase tracking-wider text-muted-foreground/80">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                Current Focus: Distributed Systems & FastAPI
+              </div>
+              <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-secondary/50 border border-border/50 text-[9px] font-bold uppercase tracking-wider text-muted-foreground/60">
+                Learning: LLM Fine-tuning & MLOps
+              </div>
+            </div>
           </div>
 
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 pt-6">
             <motion.a
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              href="mailto:jeoabarre.dev@gmail.com"
+              href="#contact"
               className="w-full sm:w-auto h-14 px-8 md:px-12 flex items-center justify-center gap-3 rounded-full bg-foreground text-background font-semibold hover:bg-primary transition-colors shadow-2xl shadow-primary/10"
             >
               Get in touch <ArrowRight className="h-5 w-5" />
