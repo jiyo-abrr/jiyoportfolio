@@ -29,6 +29,15 @@ export const Contact = () => {
     setIsSending(true);
     setStatus("idle");
 
+    const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY;
+
+    if (!accessKey) {
+      console.error("Web3Forms Access Key is missing! Check your .env.local file or Vercel settings.");
+      setStatus("error");
+      setIsSending(false);
+      return;
+    }
+
     try {
       const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
@@ -37,7 +46,7 @@ export const Contact = () => {
           Accept: "application/json",
         },
         body: JSON.stringify({
-          access_key: process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY,
+          access_key: accessKey,
           name: formState.name,
           email: formState.email,
           subject: formState.subject,
