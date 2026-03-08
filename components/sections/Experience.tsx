@@ -85,7 +85,7 @@ export const Experience = () => {
                   {/* Centered Node Dot */}
                   <motion.div 
                     animate={{ scale: isHovered ? 1.8 : 1 }}
-                    className="absolute left-[11px] md:left-1/2 top-8 z-30 h-2.5 w-2.5 rounded-full bg-primary md:-translate-x-1/2 border-background outline outline-1 outline-primary/20" 
+                    className="absolute left-[11px] md:left-1/2 top-[19px] md:top-8 z-30 h-2.5 w-2.5 rounded-full bg-primary md:-translate-x-1/2 border-background outline outline-1 outline-primary/20" 
                   />
 
                   {/* Company Header */}
