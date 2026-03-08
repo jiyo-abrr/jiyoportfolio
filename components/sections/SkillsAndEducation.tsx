@@ -134,12 +134,12 @@ export const Education = () => (
       <div className="space-y-12">
         <span className="section-title">05. Academic Foundation</span>
 
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
-          <div className="md:col-span-8 space-y-6">
-            <div className="flex flex-col md:flex-row md:items-center gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 items-center">
+          <div className="lg:col-span-8 space-y-8">
+            <div className="flex items-start md:items-center gap-6 md:gap-8">
               <motion.div 
                 whileHover={{ scale: 1.1 }}
-                className="relative h-28 w-28 shrink-0"
+                className="relative h-20 w-20 md:h-28 md:w-28 shrink-0"
               >
                 <Image 
                   src="/pup-logo.png" 
@@ -148,29 +148,29 @@ export const Education = () => (
                   className="object-contain drop-shadow-[0_0_10px_rgba(59,130,246,0.3)] dark:drop-shadow-[0_0_15px_rgba(255,255,255,0.2)]"
                 />
               </motion.div>
-              <div className="space-y-1">
-                <h3 className="text-3xl font-medium tracking-tight text-foreground">Polytechnic University of the Philippines</h3>
-                <p className="text-lg text-muted-foreground font-light italic">Manila, PH</p>
+              <div className="space-y-2">
+                <h3 className="text-xl md:text-3xl font-medium tracking-tight text-foreground leading-tight">Polytechnic University of the Philippines</h3>
+                <p className="text-sm md:text-lg text-muted-foreground font-light italic">Manila, PH</p>
               </div>
             </div>
             
             <div className="space-y-4">
-              <p className="text-xl text-primary font-medium tracking-tight">Bachelor of Science in Computer Science</p>
-              <div className="flex flex-wrap items-center gap-4 pt-2 text-sm font-mono text-muted-foreground">
+              <p className="text-lg md:text-xl text-primary font-medium tracking-tight">Bachelor of Science in Computer Science</p>
+              <div className="flex flex-wrap items-center gap-3 md:gap-4 pt-1 text-[10px] md:text-sm font-mono text-muted-foreground">
                  <span className="px-3 py-1 rounded bg-secondary/50 border border-border shadow-sm">Oct 2021 – Sep 2025</span>
                  <span className="px-3 py-1 rounded bg-secondary/50 border border-border shadow-sm text-foreground">DOST-SEI Undergraduate Scholar</span>
               </div>
             </div>
           </div>
 
-          <div className="md:col-span-4 flex flex-col sm:flex-row md:flex-col gap-4">
-            <div className="glass p-8 rounded-2xl flex-1 flex flex-col justify-center items-center text-center group hover:border-primary/20 transition-all">
-               <p className="text-4xl font-light text-primary group-hover:scale-110 transition-transform">1.29</p>
-               <p className="text-[10px] uppercase tracking-widest font-semibold text-muted-foreground mt-2">Cumulative GWA</p>
+          <div className="lg:col-span-4 grid grid-cols-2 lg:grid-cols-1 gap-4">
+            <div className="glass p-6 md:p-8 rounded-2xl flex flex-col justify-center items-center text-center group hover:border-primary/20 transition-all">
+               <p className="text-3xl md:text-4xl font-light text-primary group-hover:scale-110 transition-transform">1.29</p>
+               <p className="text-[9px] md:text-[10px] uppercase tracking-widest font-semibold text-muted-foreground mt-2">Cumulative GWA</p>
             </div>
-            <div className="glass p-8 rounded-2xl flex-1 flex flex-col justify-center items-center text-center group hover:border-primary/20 transition-all">
-               <p className="text-xl font-medium text-foreground group-hover:text-primary transition-colors">Magna Cum Laude</p>
-               <p className="text-[10px] uppercase tracking-widest font-semibold text-muted-foreground mt-2">Latin Honors</p>
+            <div className="glass p-6 md:p-8 rounded-2xl flex flex-col justify-center items-center text-center group hover:border-primary/20 transition-all">
+               <p className="text-lg md:text-xl font-medium text-foreground group-hover:text-primary transition-colors">Magna Cum Laude</p>
+               <p className="text-[9px] md:text-[10px] uppercase tracking-widest font-semibold text-muted-foreground mt-2">Latin Honors</p>
             </div>
           </div>
         </div>

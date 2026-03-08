@@ -127,11 +127,11 @@ export const Contact = () => {
           </div>
 
           {/* Right Side: Form */}
-          <div className="glass rounded-[2rem] md:rounded-[2.5rem] p-6 md:p-12 shadow-2xl shadow-primary/5 border-primary/10">
-            <form onSubmit={handleSubmit} className="space-y-5 md:space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
-                <div className="space-y-2">
-                  <label className="text-[9px] md:text-[10px] font-bold uppercase tracking-widest text-muted-foreground ml-4 flex items-center gap-2">
+          <div className="glass rounded-[1.5rem] md:rounded-[2rem] p-6 md:p-8 shadow-xl shadow-primary/5 border-primary/10">
+            <form onSubmit={handleSubmit} className="space-y-4 md:space-y-5">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
+                <div className="space-y-1.5">
+                  <label className="text-[9px] font-bold uppercase tracking-widest text-muted-foreground ml-3 flex items-center gap-2">
                     <User className="w-3 h-3" /> Your Name
                   </label>
                   <input 
@@ -141,11 +141,11 @@ export const Contact = () => {
                     value={formState.name}
                     onChange={(e) => setFormState({...formState, name: e.target.value})}
                     suppressHydrationWarning
-                    className="w-full h-12 md:h-14 bg-background border border-border/50 rounded-xl md:rounded-2xl px-6 text-sm focus:outline-none focus:border-primary/50 transition-all placeholder:text-muted-foreground/30 shadow-inner"
+                    className="w-full h-11 md:h-12 bg-background border border-border/50 rounded-xl px-5 text-sm focus:outline-none focus:border-primary/50 transition-all placeholder:text-muted-foreground/30 shadow-inner"
                   />
                 </div>
-                <div className="space-y-2">
-                  <label className="text-[9px] md:text-[10px] font-bold uppercase tracking-widest text-muted-foreground ml-4 flex items-center gap-2">
+                <div className="space-y-1.5">
+                  <label className="text-[9px] font-bold uppercase tracking-widest text-muted-foreground ml-3 flex items-center gap-2">
                     <AtSign className="w-3 h-3" /> Email Address
                   </label>
                   <input 
@@ -155,13 +155,13 @@ export const Contact = () => {
                     value={formState.email}
                     onChange={(e) => setFormState({...formState, email: e.target.value})}
                     suppressHydrationWarning
-                    className="w-full h-12 md:h-14 bg-background border border-border/50 rounded-xl md:rounded-2xl px-6 text-sm focus:outline-none focus:border-primary/50 transition-all placeholder:text-muted-foreground/30 shadow-inner"
+                    className="w-full h-11 md:h-12 bg-background border border-border/50 rounded-xl px-5 text-sm focus:outline-none focus:border-primary/50 transition-all placeholder:text-muted-foreground/30 shadow-inner"
                   />
                 </div>
               </div>
 
-              <div className="space-y-2">
-                <label className="text-[9px] md:text-[10px] font-bold uppercase tracking-widest text-muted-foreground ml-4 flex items-center gap-2">
+              <div className="space-y-1.5">
+                <label className="text-[9px] font-bold uppercase tracking-widest text-muted-foreground ml-3 flex items-center gap-2">
                   <Type className="w-3 h-3" /> Subject
                 </label>
                 <input 
@@ -171,22 +171,22 @@ export const Contact = () => {
                   value={formState.subject}
                   onChange={(e) => setFormState({...formState, subject: e.target.value})}
                   suppressHydrationWarning
-                  className="w-full h-12 md:h-14 bg-background border border-border/50 rounded-xl md:rounded-2xl px-6 text-sm focus:outline-none focus:border-primary/50 transition-all placeholder:text-muted-foreground/30 shadow-inner"
+                  className="w-full h-11 md:h-12 bg-background border border-border/50 rounded-xl px-5 text-sm focus:outline-none focus:border-primary/50 transition-all placeholder:text-muted-foreground/30 shadow-inner"
                 />
               </div>
 
-              <div className="space-y-2">
-                <label className="text-[9px] md:text-[10px] font-bold uppercase tracking-widest text-muted-foreground ml-4 flex items-center gap-2">
+              <div className="space-y-1.5">
+                <label className="text-[9px] font-bold uppercase tracking-widest text-muted-foreground ml-3 flex items-center gap-2">
                   <MessageSquare className="w-3 h-3" /> Message
                 </label>
                 <textarea 
                   required
-                  rows={4}
+                  rows={3}
                   placeholder="Tell me about your project..."
                   value={formState.message}
                   onChange={(e) => setFormState({...formState, message: e.target.value})}
                   suppressHydrationWarning
-                  className="w-full bg-background border border-border/50 rounded-xl md:rounded-2xl p-6 text-sm focus:outline-none focus:border-primary/50 transition-all placeholder:text-muted-foreground/30 shadow-inner resize-none"
+                  className="w-full bg-background border border-border/50 rounded-xl p-5 text-sm focus:outline-none focus:border-primary/50 transition-all placeholder:text-muted-foreground/30 shadow-inner resize-none"
                 />
               </div>
 
@@ -196,7 +196,7 @@ export const Contact = () => {
                 disabled={isSending}
                 type="submit"
                 suppressHydrationWarning
-                className="w-full h-14 md:h-16 bg-foreground text-background rounded-xl md:rounded-2xl font-semibold flex items-center justify-center gap-3 hover:bg-primary transition-all duration-500 disabled:opacity-50 shadow-xl shadow-primary/10"
+                className="w-full h-12 md:h-14 bg-foreground text-background rounded-xl font-semibold flex items-center justify-center gap-3 hover:bg-primary transition-all duration-500 disabled:opacity-50 shadow-lg shadow-primary/10"
               >
                 {isSending ? (
                   <>
