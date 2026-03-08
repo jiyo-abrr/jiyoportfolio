@@ -110,7 +110,7 @@ export const LoadingScreen = () => {
               animate={{ opacity: 0.4 }}
               className="absolute bottom-[-60px] text-[8px] uppercase tracking-[0.5em] font-mono"
             >
-              System Initialization v2.0
+              System Initialization v3.2
             </motion.p>
           </div>
 
