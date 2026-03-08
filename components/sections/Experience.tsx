@@ -5,60 +5,7 @@ import { SectionWrapper } from "@/components/layout/SectionWrapper";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { useState } from "react";
-
-const experiences = [
-  {
-    id: "fmc",
-    company: "FMC Research Solutions Inc.",
-    logo: "/fmc-logo.png",
-    location: "Mandaluyong, PH",
-    roles: [
-      {
-        role: "Junior Software Developer",
-        period: "Dec 2025 – Present",
-        type: "Full-time",
-        description: [
-          "<strong>Engineered</strong> and enhanced enterprise web applications using <strong>Next.js and Laravel</strong> in <strong>Dockerized</strong> environments, improving system stability.",
-          "<strong>Architected</strong> the company’s inventory management system, <strong>reducing manual efforts by 80%</strong> through automated system integration.",
-          "<strong>Implemented</strong> a <strong>RabbitMQ</strong> producer–consumer architecture for ID processing, enabling <strong>asynchronous task execution</strong> and high concurrency.",
-          "<strong>Collaborated</strong> in <strong>Agile</strong> workflows, resolving complex bugs and incorporating feedback from senior developers.",
-          "<strong>Automated</strong> complex accounting and inventory workflows using <strong>ERPNext</strong>, significantly reducing reconciliation time.",
-          "<strong>Integrated</strong> hardware SDKs (<strong>Face Detection, MRZ, NFC</strong>) for identity verification, ensuring reliable device communication.",
-          "<strong>Mentored</strong> software developer interns, providing code reviews and technical guidance."
-        ]
-      },
-      {
-        role: "Software Developer Intern",
-        period: "Aug 2025 – Nov 2025",
-        type: "Internship",
-        description: [
-          "<strong>Developed</strong> scalable frontend components using <strong>Next.js</strong> and <strong>Material UI</strong>.",
-          "<strong>Maintained</strong> backend services and <strong>RESTful APIs</strong> using <strong>Laravel</strong>.",
-          "<strong>Validated</strong> API endpoints using <strong>Postman</strong> to ensure reliable functionality.",
-          "<strong>Managed</strong> version control and collaborative workflows using <strong>Git and Bitbucket</strong>."
-        ]
-      }
-    ]
-  },
-  {
-    id: "lamina",
-    company: "Lamina Studios, LLC",
-    logo: "/lamina-logo.png",
-    location: "Spokane, WA (Remote)",
-    roles: [
-      {
-        role: "Full Stack Web Developer Intern",
-        period: "Aug 2024 – Sep 2024",
-        type: "Remote",
-        description: [
-          "<strong>Contributed</strong> to full-stack applications following <strong>MVC architecture</strong>.",
-          "<strong>Built</strong> responsive frontend components using <strong>Vue.js</strong> and <strong>Tailwind CSS</strong>.",
-          "<strong>Developed</strong> backend services with <strong>Laravel</strong> and <strong>PostgreSQL</strong> to support scalable features."
-        ]
-      }
-    ]
-  }
-];
+import { EXPERIENCES } from "@/lib/data/experience";
 
 export const Experience = () => {
   const [hoveredCompany, setHoveredCompany] = useState<string | null>(null);
@@ -73,10 +20,10 @@ export const Experience = () => {
         
         <div className="relative">
           {/* Central Vertical Line */}
-          <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-[2px] md:w-[4px] bg-primary/10 md:-translate-x-1/2 rounded-full" />
+          <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-[3px] md:w-[5px] bg-primary/40 md:-translate-x-1/2 rounded-full shadow-[0_0_15px_rgba(var(--primary),0.1)]" />
           
           <div className="space-y-24 md:space-y-32">
-            {experiences.map((company, companyIdx) => {
+            {EXPERIENCES.map((company, companyIdx) => {
               const isEven = companyIdx % 2 === 0;
               const isHovered = hoveredCompany === company.id;
               
@@ -107,7 +54,13 @@ export const Experience = () => {
                           </div>
                         </div>
                         <div className={`h-12 w-12 md:h-16 md:w-16 rounded-xl md:rounded-2xl bg-secondary/50 border border-border flex items-center justify-center p-2 md:p-3 transition-all duration-300 ${isHovered ? 'border-primary/50 scale-110 shadow-lg' : ''}`}>
-                          <Image src={company.logo} alt={company.company} width={40} height={40} className="object-contain" />
+                          <Image 
+                            src={company.logo} 
+                            alt={company.company} 
+                            width={40} 
+                            height={40} 
+                            className={`object-contain ${company.invertLogo ? 'dark:invert' : ''}`} 
+                          />
                         </div>
                       </div>
                     </motion.div>

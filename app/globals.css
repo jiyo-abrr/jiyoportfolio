@@ -116,5 +116,5 @@
 }
 .section-title::after {
   content: '';
-  @apply flex-1 h-px bg-gradient-to-r from-primary/10 to-transparent;
+  @apply flex-1 h-[1.5px] bg-gradient-to-r from-primary/60 to-transparent;
 }

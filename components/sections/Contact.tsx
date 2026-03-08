@@ -4,6 +4,7 @@ import { SectionWrapper } from "@/components/layout/SectionWrapper";
 import { Mail, ArrowRight, Copy, Check, Send, User, MessageSquare, AtSign, Type } from "lucide-react";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { CONTACT_CONTENT } from "@/lib/data/contact";
 
 export const Contact = () => {
   const [copied, setCopied] = useState(false);
@@ -16,10 +17,8 @@ export const Contact = () => {
     message: ""
   });
 
-  const email = "jeoabarre.dev@gmail.com";
-
   const copyToClipboard = () => {
-    navigator.clipboard.writeText(email);
+    navigator.clipboard.writeText(CONTACT_CONTENT.email);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
@@ -82,13 +81,13 @@ export const Contact = () => {
           {/* Left Side: Info */}
           <div className="space-y-12">
             <div className="space-y-6">
-              <span className="section-title">06. Contact</span>
+              <span className="section-title">{CONTACT_CONTENT.subtitle}</span>
               <h2 className="text-4xl md:text-7xl font-medium tracking-tight text-foreground leading-[0.9]">
-                Let's start a <br />
-                <span className="text-primary italic">conversation.</span>
+                {CONTACT_CONTENT.title.main} <br />
+                <span className="text-primary italic">{CONTACT_CONTENT.title.highlight}</span>
               </h2>
               <p className="text-muted-foreground text-base md:text-lg font-light leading-relaxed max-w-md pt-4">
-                Have a project in mind or just want to say hi? Fill out the form or reach out directly via email.
+                {CONTACT_CONTENT.description}
               </p>
             </div>
 
@@ -104,7 +103,7 @@ export const Contact = () => {
                     suppressHydrationWarning
                     className="text-base md:text-lg font-medium hover:text-primary transition-colors flex items-center gap-2"
                   >
-                    <span className="truncate max-w-[200px] md:max-w-none">{email}</span>
+                    <span className="truncate max-w-[200px] md:max-w-none">{CONTACT_CONTENT.email}</span>
                     {copied ? <Check className="w-4 h-4 text-emerald-500" /> : <Copy className="w-4 h-4 opacity-30" />}
                   </button>
                 </div>
@@ -113,13 +112,22 @@ export const Contact = () => {
               <div className="grid grid-cols-2 gap-8 pt-8 border-t border-border/50 max-w-sm">
                 <div className="space-y-2">
                   <p className="text-[9px] md:text-[10px] font-bold uppercase tracking-widest text-muted-foreground/60">Location</p>
-                  <p className="text-sm font-medium">Manila, PH</p>
+                  <p className="text-sm font-medium">{CONTACT_CONTENT.location}</p>
                 </div>
                 <div className="space-y-2">
                   <p className="text-[9px] md:text-[10px] font-bold uppercase tracking-widest text-muted-foreground/60">Socials</p>
                   <div className="flex items-center gap-4">
-                     <a href="https://github.com/jiyo-abrr" target="_blank" className="text-xs font-bold uppercase tracking-widest text-muted-foreground hover:text-primary transition-colors">GH</a>
-                     <a href="https://www.linkedin.com/in/jeo-abarre" target="_blank" className="text-xs font-bold uppercase tracking-widest text-muted-foreground hover:text-primary transition-colors">LI</a>
+                     {CONTACT_CONTENT.socials.map((social) => (
+                       <a 
+                         key={social.label}
+                         href={social.link} 
+                         target="_blank" 
+                         rel="noopener noreferrer"
+                         className="text-xs font-bold uppercase tracking-widest text-muted-foreground hover:text-primary transition-colors"
+                       >
+                         {social.label}
+                       </a>
+                     ))}
                   </div>
                 </div>
               </div>
@@ -187,8 +195,9 @@ export const Contact = () => {
                   onChange={(e) => {
                     setFormState({...formState, message: e.target.value});
                     // Auto-expand height
-                    e.target.style.height = 'auto';
-                    e.target.style.height = e.target.scrollHeight + 'px';
+                    const target = e.target as HTMLTextAreaElement;
+                    target.style.height = 'auto';
+                    target.style.height = target.scrollHeight + 'px';
                   }}
                   suppressHydrationWarning
                   className="w-full bg-background border border-border/50 rounded-xl p-5 text-sm focus:outline-none focus:border-primary/50 transition-all placeholder:text-muted-foreground/30 shadow-inner resize-none min-h-[120px] max-h-[400px]"

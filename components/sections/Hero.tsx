@@ -1,16 +1,9 @@
 "use client";
 
 import { Github, Linkedin, Mail, ArrowRight, FileText } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
-
-const roles = [
-  "Software Engineer",
-  "Full Stack Web Developer",
-  "Data Science",
-  "AI / ML",
-  "Computer Science",
-];
+import { HERO_CONTENT } from "@/lib/data/hero";
 
 export const Hero = () => {
   const [displayText, setDisplayText] = useState("");
@@ -20,7 +13,7 @@ export const Hero = () => {
 
   useEffect(() => {
     const handleTyping = () => {
-      const currentRole = roles[roleIndex];
+      const currentRole = HERO_CONTENT.roles[roleIndex];
 
       if (isDeleting) {
         setDisplayText(currentRole.substring(0, displayText.length - 1));
@@ -34,7 +27,7 @@ export const Hero = () => {
         setTimeout(() => setIsDeleting(true), 2000);
       } else if (isDeleting && displayText === "") {
         setIsDeleting(false);
-        setRoleIndex((prev) => (prev + 1) % roles.length);
+        setRoleIndex((prev) => (prev + 1) % HERO_CONTENT.roles.length);
       }
     };
 
@@ -57,12 +50,12 @@ export const Hero = () => {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
               </span>
-              Building Digital Solutions
+              {HERO_CONTENT.greeting}
             </div>
 
             <div className="space-y-4">
               <h1 className="text-4xl sm:text-6xl md:text-8xl font-medium tracking-tight text-foreground leading-[0.85]">
-                Jeo Abarre<span className="text-primary">.</span>
+                {HERO_CONTENT.name}<span className="text-primary">.</span>
               </h1>
 
               <div className="h-[40px] md:h-[70px] flex items-center">
@@ -82,17 +75,16 @@ export const Hero = () => {
             </div>
 
             <p className="text-base md:text-xl text-muted-foreground font-light max-w-2xl leading-relaxed pt-2 md:pt-4">
-              Software Developer building scalable web systems, automation
-              tools, and intelligent applications.
+              {HERO_CONTENT.description}
             </p>
 
             <div className="flex flex-wrap gap-3 pt-2">
               <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-primary/5 border border-primary/10 text-[9px] font-bold uppercase tracking-wider text-muted-foreground/80">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                Current Focus: Distributed Systems & FastAPI
+                {HERO_CONTENT.focus}
               </div>
               <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-secondary/50 border border-border/50 text-[9px] font-bold uppercase tracking-wider text-muted-foreground/60">
-                Learning: LLM Fine-tuning & MLOps
+                {HERO_CONTENT.learning}
               </div>
             </div>
           </div>
@@ -109,7 +101,7 @@ export const Hero = () => {
 
             <div className="flex items-center gap-6 md:gap-8 sm:pl-6 sm:border-l border-border/50">
               <a
-                href="https://github.com/jiyo-abrr"
+                href={HERO_CONTENT.socials.github}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-foreground transition-all transform hover:-translate-y-1"
@@ -117,7 +109,7 @@ export const Hero = () => {
                 <Github className="h-5 w-5 md:h-6 md:w-6" />
               </a>
               <a
-                href="https://www.linkedin.com/in/jeo-abarre"
+                href={HERO_CONTENT.socials.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-foreground transition-all transform hover:-translate-y-1"
@@ -125,7 +117,7 @@ export const Hero = () => {
                 <Linkedin className="h-5 w-5 md:h-6 md:w-6" />
               </a>
               <a
-                href="/portfolio/Abarre - Resume.pdf"
+                href={HERO_CONTENT.cvPath}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-muted-foreground hover:text-primary transition-all transform hover:-translate-y-1"

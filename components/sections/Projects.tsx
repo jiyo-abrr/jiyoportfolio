@@ -1,44 +1,20 @@
+"use client";
+
 import { Github, Globe, ArrowUpRight } from "lucide-react";
 import { SectionWrapper } from "@/components/layout/SectionWrapper";
+import { PROJECTS, PROJECTS_CONTENT } from "@/lib/data/projects";
 
 export const Projects = () => (
   <SectionWrapper>
     <section id="projects" className="py-10 space-y-12">
       <div className="flex flex-col gap-2">
-        <span className="section-title">03. Selected Works</span>
-        <h2 className="text-3xl md:text-5xl font-medium tracking-tight">Selected Works</h2>
-        <p className="text-muted-foreground text-lg">Key projects and architectural implementations.</p>
+        <span className="section-title">{PROJECTS_CONTENT.subtitle}</span>
+        <h2 className="text-3xl md:text-5xl font-medium tracking-tight">{PROJECTS_CONTENT.title}</h2>
+        <p className="text-muted-foreground text-lg">{PROJECTS_CONTENT.description}</p>
       </div>
       
       <div className="grid grid-cols-1 gap-6">
-        {[
-          {
-            title: "TAKLUBAN",
-            type: "Machine Learning / NLP",
-            description: "Advanced NLP-driven profanity detection for Filipino languages. Built with Python and Flask, achieving 85.5% accuracy across three dialects using custom part-of-speech tagging and N-gram analysis.",
-            tags: ["Python", "Flask", "React", "NLP", "Machine Learning"],
-            github: "#",
-            demo: "#",
-            metrics: [
-              { label: "Accuracy", value: "85.5%" },
-              { label: "Latencies", value: "<150ms" }
-            ],
-            architecture: "Flask API + NLTK + Scikit-learn"
-          },
-          {
-            title: "W.AIS",
-            type: "Financial AI",
-            description: "A comprehensive finance-focused AI ecosystem utilizing the Gemini API. Features predictive budget planning, transaction management, and automated financial insights built on a high-performance Next.js foundation.",
-            tags: ["Next.js", "Gemini API", "Supabase", "Prisma", "Clerk"],
-            github: "#",
-            demo: "#",
-            metrics: [
-              { label: "Response", value: "AI-driven" },
-              { label: "Uptime", value: "99.9%" }
-            ],
-            architecture: "Next.js 14 + Edge Functions + Supabase"
-          }
-        ].map((project, idx) => (
+        {PROJECTS.map((project, idx) => (
           <div key={idx} className="group relative glass rounded-[2.5rem] overflow-hidden transition-all duration-500 hover:border-primary/30">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 p-6 md:p-12">
               

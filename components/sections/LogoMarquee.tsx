@@ -1,21 +1,14 @@
 "use client"
 
 import { motion } from "framer-motion"
-import Image from "next/image"
 import { Code, Globe, Database, Cpu, Terminal } from "lucide-react"
-
-const logos = [
-  { src: "/jiyo-logo.png", alt: "Jiyo Logo", invert: false },
-  { src: "/pup-logo.png", alt: "Polytechnic University of the Philippines", invert: false },
-  { src: "/lamina-logo.png", alt: "Lamina Studios", invert: true },
-  { src: "/fmc-logo.png", alt: "FMC Research Solutions", invert: false },
-]
+import { MARQUEE_LOGOS } from "@/lib/data/logo-marquee";
 
 const separatorIcons = [Code, Globe, Database, Cpu, Terminal]
 
 export const LogoMarquee = () => {
   // We'll create a list of items where each item is a logo followed by an icon
-  const items = [...logos, ...logos, ...logos, ...logos];
+  const items = [...MARQUEE_LOGOS, ...MARQUEE_LOGOS, ...MARQUEE_LOGOS, ...MARQUEE_LOGOS];
 
   return (
     <section className="relative py-4 md:py-6 overflow-hidden glass border-x-0 border-y shadow-2xl shadow-primary/5">
@@ -38,7 +31,7 @@ export const LogoMarquee = () => {
             // Single gap value for perfect consistency
             className="flex shrink-0 items-center gap-12 md:gap-20 pr-12 md:pr-20"
           >
-            {items.map((logo: any, idx) => {
+            {items.map((logo, idx) => {
               const Icon = separatorIcons[idx % separatorIcons.length];
               return (
                 <div key={idx} className="flex items-center gap-12 md:gap-20">
