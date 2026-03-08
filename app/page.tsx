@@ -17,17 +17,10 @@ export default function Portfolio() {
       <LoadingScreen />
       {/* Background Layer */}
       <div className="fixed inset-0 z-0 pointer-events-none">
-        {/* Soft Ambient Glow */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.03),transparent_70%)]" />
-        
-        <Squares 
-          direction="diagonal"
-          speed={0.1}
-          squareSize={40}
-          borderColor="var(--square-line)"
-          hoverFillColor="var(--square-hover)"
-          className="opacity-100"
-        />
+        {/* Soft Ambient Glows */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(59,130,246,0.05),transparent_70%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_0%_100%,rgba(59,130,246,0.03),transparent_70%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_100%_100%,rgba(59,130,246,0.03),transparent_70%)]" />
       </div>
 
       <Header />

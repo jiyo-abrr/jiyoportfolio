@@ -57,11 +57,11 @@ export const Hero = () => {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
               </span>
-              Building Stable Futures
+              Building Digital Solutions
             </div>
 
             <div className="space-y-4">
-              <h1 className="text-4xl sm:text-7xl md:text-9xl lg:text-[10rem] font-medium tracking-tight text-foreground leading-[0.85]">
+              <h1 className="text-4xl sm:text-6xl md:text-8xl font-medium tracking-tight text-foreground leading-[0.85]">
                 Jeo Abarre<span className="text-primary">.</span>
               </h1>
 
