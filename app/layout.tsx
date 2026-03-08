@@ -17,6 +17,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Jeo C. Abarre | Software Developer",
   description: "Portfolio of Jeo C. Abarre, a Software Developer specialized in Next.js, Laravel, and Python.",
+  icons: {
+    icon: "/jiyo.svg",
+  },
 };
 
 export default function RootLayout({

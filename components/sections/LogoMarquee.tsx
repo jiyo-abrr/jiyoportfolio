@@ -5,9 +5,10 @@ import Image from "next/image"
 import { Code, Globe, Database, Cpu, Terminal } from "lucide-react"
 
 const logos = [
-  { src: "/pup-logo.png", alt: "Polytechnic University of the Philippines" },
-  { src: "/lamina-logo.png", alt: "Lamina Studios" },
-  { src: "/fmc-logo.png", alt: "FMC Research Solutions" },
+  { src: "/jiyo-logo.png", alt: "Jiyo Logo", width: "w-28 md:w-44" },
+  { src: "/pup-logo.png", alt: "Polytechnic University of the Philippines", width: "w-24 md:w-36" },
+  { src: "/lamina-logo.png", alt: "Lamina Studios", width: "w-40 md:w-60" },
+  { src: "/fmc-logo.png", alt: "FMC Research Solutions", width: "w-24 md:w-36" },
 ]
 
 const separatorIcons = [Code, Globe, Database, Cpu, Terminal]
@@ -43,7 +44,7 @@ export const LogoMarquee = () => {
               const Icon = separatorIcons[idx % separatorIcons.length];
               return (
                 <div key={idx} className="flex items-center gap-12 md:gap-20">
-                  <div className="relative h-5 w-20 md:h-8 md:w-32 opacity-80 md:opacity-40 hover:opacity-100 transition-all duration-500 grayscale-0 md:grayscale md:hover:grayscale-0">
+                  <div className={`relative h-6 md:h-10 ${logo.width} opacity-80 md:opacity-40 hover:opacity-100 transition-all duration-500 grayscale-0 md:grayscale md:hover:grayscale-0`}>
                     <Image 
                       src={logo.src} 
                       alt={logo.alt} 
