@@ -19,7 +19,14 @@ export const Footer = () => {
             </div>
 
             <button
-              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+              onClick={() => {
+                const scrollAreaViewport = document.querySelector('[data-slot="scroll-area-viewport"]');
+                if (scrollAreaViewport) {
+                  scrollAreaViewport.scrollTo({ top: 0, behavior: "smooth" });
+                } else {
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }
+              }}
               suppressHydrationWarning
               className="group flex items-center gap-3 text-[10px] font-bold uppercase tracking-widest text-muted-foreground hover:text-primary transition-all"
             >

@@ -8,6 +8,7 @@ import { motion, AnimatePresence } from "framer-motion";
 export const Contact = () => {
   const [copied, setCopied] = useState(false);
   const [isSending, setIsSending] = useState(false);
+  const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
   const [formState, setFormState] = useState({
     name: "",
     email: "",
@@ -23,20 +24,43 @@ export const Contact = () => {
     setTimeout(() => setCopied(false), 2000);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSending(true);
+    setStatus("idle");
 
-    // Construct the mailto link with all fields
-    const subject = encodeURIComponent(`${formState.subject || 'Project Inquiry'} - from ${formState.name}`);
-    const body = encodeURIComponent(`Name: ${formState.name}\nEmail: ${formState.email}\n\nMessage:\n${formState.message}`);
-    const mailtoLink = `mailto:${email}?subject=${subject}&body=${body}`;
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY,
+          name: formState.name,
+          email: formState.email,
+          subject: formState.subject,
+          message: formState.message,
+          from_name: "Portfolio Contact Form"
+        }),
+      });
 
-    // Small delay for UX feel
-    setTimeout(() => {
-      window.location.href = mailtoLink;
+      const result = await response.json();
+      if (result.success) {
+        setStatus("success");
+        setFormState({ name: "", email: "", subject: "", message: "" });
+      } else {
+        setStatus("error");
+      }
+    } catch (error) {
+      console.error("Form submission error:", error);
+      setStatus("error");
+    } finally {
       setIsSending(false);
-    }, 1000);
+      // Reset status after 5 seconds
+      setTimeout(() => setStatus("idle"), 5000);
+    }
   };
 
   return (
@@ -172,7 +196,7 @@ export const Contact = () => {
                       transition={{ repeat: Infinity, duration: 1, ease: "linear" }}
                       className="w-5 h-5 border-2 border-background/30 border-t-background rounded-full"
                     />
-                    <span className="text-[9px] md:text-[10px] uppercase tracking-[0.3em] font-bold">Constructing...</span>
+                    <span className="text-[9px] md:text-[10px] uppercase tracking-[0.3em] font-bold">Sending...</span>
                   </>
                 ) : (
                   <>
@@ -181,6 +205,21 @@ export const Contact = () => {
                   </>
                 )}
               </motion.button>
+
+              <AnimatePresence>
+                {status !== "idle" && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    className={`p-4 rounded-xl text-center text-xs font-bold uppercase tracking-widest ${
+                      status === "success" ? "bg-emerald-500/10 text-emerald-500 border border-emerald-500/20" : "bg-red-500/10 text-red-500 border border-red-500/20"
+                    }`}
+                  >
+                    {status === "success" ? "Message sent successfully!" : "Something went wrong. Please try again."}
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </form>
           </div>
         </div>

@@ -73,7 +73,7 @@ export const Experience = () => {
         
         <div className="relative">
           {/* Central Vertical Line */}
-          <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-[2px] md:w-[4px] bg-primary/10 md:-translate-x-1/2 rounded-full" />
+          <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-[2px] md:w-[4px] bg-primary/30 md:-translate-x-1/2 rounded-full" />
           
           <div className="space-y-24 md:space-y-32">
             {experiences.map((company, companyIdx) => {
@@ -85,7 +85,7 @@ export const Experience = () => {
                   {/* Centered Node Dot */}
                   <motion.div 
                     animate={{ scale: isHovered ? 1.8 : 1 }}
-                    className="absolute left-[11px] md:left-1/2 top-8 z-30 h-2.5 w-2.5 rounded-full bg-primary md:-translate-x-1/2 border-background outline outline-1 outline-primary/20" 
+                    className="absolute left-[11px] md:left-1/2 top-8 z-30 h-2.5 w-2.5 rounded-full bg-primary md:-translate-x-1/2 border-background outline outline-1 outline-primary/40" 
                   />
 
                   {/* Company Header */}
@@ -96,8 +96,11 @@ export const Experience = () => {
                       viewport={{ once: true }}
                       onMouseEnter={() => setHoveredCompany(company.id)}
                       onMouseLeave={() => setHoveredCompany(null)}
-                      className={`flex items-center gap-6 w-full md:w-1/2 ${isEven ? 'md:justify-end' : 'md:justify-start'} pl-10 md:pl-0`}
+                      className={`flex items-center gap-6 w-full md:w-1/2 ${isEven ? 'md:justify-end' : 'md:justify-start'} pl-10 md:pl-0 relative`}
                     >
+                      {/* Horizontal Connector Line for mobile */}
+                      <div className="absolute left-4 w-6 h-[1px] bg-primary/30 top-[37px] md:hidden" />
+                      
                       <div className={`flex items-center gap-4 md:gap-6 ${!isEven ? 'flex-row-reverse' : ''}`}>
                         <div className={isEven ? 'text-right' : 'text-left'}>
                           <h3 className="text-xl md:text-2xl font-medium tracking-tight text-foreground whitespace-nowrap">{company.company}</h3>
@@ -123,8 +126,11 @@ export const Experience = () => {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: roleIdx * 0.1 }}
-                        className={`flex flex-col ${isEven ? 'md:items-start' : 'md:items-end'} w-full pl-10 md:pl-0`}
+                        className={`flex flex-col ${isEven ? 'md:items-start' : 'md:items-end'} w-full pl-10 md:pl-0 relative`}
                       >
+                        {/* Horizontal Connector Line for mobile roles */}
+                        <div className="absolute left-4 w-6 h-[1px] bg-primary/20 top-8 md:hidden" />
+                        
                         <div className="w-full md:w-[45%]">
                           <div className={`glass p-6 md:p-8 rounded-[1.5rem] md:rounded-[2rem] space-y-4 md:space-y-6 hover:border-primary/30 transition-all duration-500 ${isEven ? 'md:rounded-tl-none' : 'md:rounded-tr-none'}`}>
                             <div className="flex flex-wrap justify-between items-start gap-4">
