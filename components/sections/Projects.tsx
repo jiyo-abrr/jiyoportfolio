@@ -1,5 +1,5 @@
 import { Github, Globe, ArrowUpRight } from "lucide-react";
-import { SectionWrapper } from "@/components/SectionWrapper";
+import { SectionWrapper } from "@/components/layout/SectionWrapper";
 
 export const Projects = () => (
   <SectionWrapper>

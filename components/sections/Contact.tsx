@@ -1,6 +1,6 @@
 "use client"
 
-import { SectionWrapper } from "@/components/SectionWrapper";
+import { SectionWrapper } from "@/components/layout/SectionWrapper";
 import { Mail, ArrowRight, Copy, Check, Send, User, MessageSquare, AtSign, Type } from "lucide-react";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";

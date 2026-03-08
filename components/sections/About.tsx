@@ -1,6 +1,6 @@
-import { SectionWrapper } from "@/components/SectionWrapper";
+import { SectionWrapper } from "@/components/layout/SectionWrapper";
 import { Zap, Shield, Code, Server } from "lucide-react";
-import { Terminal } from "@/components/Terminal";
+import { Terminal } from "@/components/features/Terminal";
 
 export const About = () => (
   <SectionWrapper>

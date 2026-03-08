@@ -1,7 +1,7 @@
 "use client"
 
 import { Calendar, MapPin, ArrowRight } from "lucide-react";
-import { SectionWrapper } from "@/components/SectionWrapper";
+import { SectionWrapper } from "@/components/layout/SectionWrapper";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { useState } from "react";

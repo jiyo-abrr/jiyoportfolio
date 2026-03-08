@@ -7,7 +7,7 @@ import { Code, Globe, Database, Cpu, Terminal } from "lucide-react"
 const logos = [
   { src: "/jiyo-logo.png", alt: "Jiyo Logo", width: "w-28 md:w-44" },
   { src: "/pup-logo.png", alt: "Polytechnic University of the Philippines", width: "w-24 md:w-36" },
-  { src: "/lamina-logo.png", alt: "Lamina Studios", width: "w-40 md:w-60" },
+  { src: "/lamina-logo.png", alt: "Lamina Studios", width: "w-52 md:w-72" },
   { src: "/fmc-logo.png", alt: "FMC Research Solutions", width: "w-24 md:w-36" },
 ]
 

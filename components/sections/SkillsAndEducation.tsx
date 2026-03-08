@@ -1,6 +1,6 @@
 "use client"
 
-import { SectionWrapper } from "@/components/SectionWrapper";
+import { SectionWrapper } from "@/components/layout/SectionWrapper";
 import Image from "next/image";
 import { motion } from "framer-motion";
 
@@ -24,7 +24,7 @@ const techGroups = [
       { name: 'Vue.js', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg' },
       { name: 'Tailwind CSS', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg' },
       { name: 'Material UI', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/materialui/materialui-original.svg' },
-      { name: 'shadcn/ui', logo: '/favicon.ico' },
+      { name: 'shadcn/ui', logo: '/shadcn.svg' },
     ]
   },
   {
@@ -111,7 +111,11 @@ export const TechStacks = () => (
                         src={item.logo}
                         alt={item.name}
                         fill
-                        className="object-contain drop-shadow-sm group-hover/item:drop-shadow-md transition-all"
+                        className={`object-contain drop-shadow-sm group-hover/item:drop-shadow-md transition-all ${
+                          ['Next.js', 'shadcn/ui', 'Flask', 'GitHub', 'Kafka', 'MacOS', 'Vercel'].includes(item.name) 
+                            ? 'dark:invert' 
+                            : ''
+                        }`}
                       />
                     </div>
                     <span className="text-[8px] md:text-[9px] font-medium text-muted-foreground/40 group-hover/item:text-primary uppercase tracking-wider transition-colors duration-300">

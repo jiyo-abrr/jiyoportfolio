@@ -54,7 +54,7 @@ export const Footer = () => {
                     src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg"
                     alt="Next.js"
                     fill
-                    className="object-contain invert dark:invert-0"
+                    className="object-contain dark:invert"
                   />
                 </div>
                 <div className="relative h-4 w-16 grayscale hover:grayscale-0 transition-all">
@@ -65,13 +65,13 @@ export const Footer = () => {
                     className="object-contain"
                   />
                 </div>
-                <div className="flex items-center gap-2 grayscale hover:grayscale-0 transition-all">
-                  <div className="w-4 h-4 bg-foreground rounded-sm flex items-center justify-center">
-                    <div className="w-2 h-2 bg-background rounded-full" />
-                  </div>
-                  <span className="text-[10px] font-bold tracking-tighter">
-                    shadcn/ui
-                  </span>
+                <div className="relative h-4 w-16 grayscale hover:grayscale-0 transition-all">
+                  <Image
+                    src="/shadcn.svg"
+                    alt="shadcn/ui"
+                    fill
+                    className="object-contain dark:invert"
+                  />
                 </div>
               </div>
             </div>
