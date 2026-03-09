@@ -4,7 +4,13 @@ import { motion } from "framer-motion"
 import { Code, Globe, Database, Cpu, Terminal } from "lucide-react"
 import { MARQUEE_LOGOS } from "@/lib/data/logo-marquee";
 
-const separatorIcons = [Code, Globe, Database, Cpu, Terminal]
+const separatorIcons = [
+  { Icon: Code, color: "text-blue-500/40" },
+  { Icon: Globe, color: "text-emerald-500/40" },
+  { Icon: Database, color: "text-amber-500/40" },
+  { Icon: Cpu, color: "text-purple-500/40" },
+  { Icon: Terminal, color: "text-rose-500/40" }
+]
 
 export const LogoMarquee = () => {
   // We'll create a list of items where each item is a logo followed by an icon
@@ -32,7 +38,7 @@ export const LogoMarquee = () => {
             className="flex shrink-0 items-center gap-12 md:gap-20 pr-12 md:pr-20"
           >
             {items.map((logo, idx) => {
-              const Icon = separatorIcons[idx % separatorIcons.length];
+              const { Icon, color } = separatorIcons[idx % separatorIcons.length];
               return (
                 <div key={idx} className="flex items-center gap-12 md:gap-20">
                   <div className="relative h-8 md:h-12 flex items-center shrink-0">
@@ -42,7 +48,7 @@ export const LogoMarquee = () => {
                       className={`h-full w-auto object-contain opacity-80 md:opacity-40 hover:opacity-100 transition-all duration-500 grayscale-0 md:grayscale md:hover:grayscale-0 ${logo.invert ? 'dark:invert' : ''}`}
                     />
                   </div>
-                  <Icon className="w-3.5 h-3.5 md:w-5 md:h-5 text-primary/20 shrink-0" />
+                  <Icon className={`w-3.5 h-3.5 md:w-5 md:h-5 ${color} shrink-0`} />
                 </div>
               );
             })}

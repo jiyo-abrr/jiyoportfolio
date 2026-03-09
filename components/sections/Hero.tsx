@@ -89,14 +89,14 @@ export const Hero = () => {
             </div>
           </div>
 
-          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 pt-6">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 pt-4 md:pt-6">
             <motion.a
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               href="#contact"
-              className="w-full sm:w-auto h-14 px-8 md:px-12 flex items-center justify-center gap-3 rounded-full bg-foreground text-background font-semibold hover:bg-primary transition-colors shadow-2xl shadow-primary/10"
+              className="w-fit sm:w-auto h-11 md:h-14 px-6 md:px-12 flex items-center justify-center gap-2 md:gap-3 rounded-full bg-foreground text-background text-sm md:text-base font-semibold hover:bg-primary transition-colors shadow-2xl shadow-primary/10"
             >
-              Get in touch <ArrowRight className="h-5 w-5" />
+              Get in touch <ArrowRight className="h-4 w-4 md:h-5 w-5" />
             </motion.a>
 
             <div className="flex items-center gap-6 md:gap-8 sm:pl-6 sm:border-l border-border/50">
