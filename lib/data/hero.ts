@@ -8,12 +8,13 @@ export const HERO_CONTENT = {
     "AI / ML",
     "Computer Science",
   ],
-  description: "Software Developer building scalable web systems, automation tools, and intelligent applications.",
+  description:
+    "A Software Developer who builds scalable web systems, automation tools, and intelligent applications.",
   focus: "Current Focus: Distributed Systems & FastAPI",
   learning: "Learning: LLM Fine-tuning & MLOps",
   cvPath: "/portfolio/Abarre - Resume.pdf",
   socials: {
     github: "https://github.com/jiyo-abrr",
     linkedin: "https://www.linkedin.com/in/jeo-abarre",
-  }
+  },
 };
