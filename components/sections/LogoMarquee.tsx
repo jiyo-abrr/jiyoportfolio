@@ -11,7 +11,7 @@ export const LogoMarquee = () => {
   const items = [...MARQUEE_LOGOS, ...MARQUEE_LOGOS, ...MARQUEE_LOGOS, ...MARQUEE_LOGOS];
 
   return (
-    <section className="relative py-4 md:py-6 overflow-hidden glass border-x-0 border-y shadow-2xl shadow-primary/5">
+    <section className="relative py-3 md:py-6 overflow-hidden glass border-x-0 border-y shadow-2xl shadow-primary/5">
       {/* Side Fades for depth */}
       <div className="absolute inset-y-0 left-0 w-16 md:w-32 bg-linear-to-r from-background to-transparent z-10 pointer-events-none" />
       <div className="absolute inset-y-0 right-0 w-16 md:w-32 bg-linear-to-l from-background to-transparent z-10 pointer-events-none" />
@@ -21,8 +21,8 @@ export const LogoMarquee = () => {
         {[1, 2].map((i) => (
           <motion.div
             key={i}
-            initial={{ x: "0%" }}
-            animate={{ x: "-100%" }}
+            initial={{ x: "-100%" }}
+            animate={{ x: "0%" }}
             transition={{ 
               duration: 35, 
               repeat: Infinity, 

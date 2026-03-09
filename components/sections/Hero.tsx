@@ -36,15 +36,15 @@ export const Hero = () => {
   }, [displayText, isDeleting, roleIndex, typingSpeed]);
 
   return (
-    <section className="relative min-h-[90vh] flex flex-col justify-center pt-32 pb-20">
-      <div className="flex flex-col gap-12 max-w-4xl relative z-10">
+    <section className="relative min-h-[82vh] md:min-h-[90vh] flex flex-col justify-center pt-24 md:pt-32 pb-12 md:pb-20">
+      <div className="flex flex-col gap-8 md:gap-12 max-w-4xl relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-          className="space-y-10"
+          className="space-y-8 md:space-y-10"
         >
-          <div className="space-y-6">
+          <div className="space-y-4 md:space-y-6">
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/5 border border-primary/10 text-[10px] font-bold uppercase tracking-[0.3em] text-primary shadow-sm">
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
@@ -53,7 +53,7 @@ export const Hero = () => {
               {HERO_CONTENT.greeting}
             </div>
 
-            <div className="space-y-4">
+            <div className="space-y-3 md:space-y-4">
               <h1 className="text-4xl sm:text-6xl md:text-8xl font-medium tracking-tight text-foreground leading-[0.85]">
                 {HERO_CONTENT.name}<span className="text-primary">.</span>
               </h1>
@@ -74,11 +74,11 @@ export const Hero = () => {
               </div>
             </div>
 
-            <p className="text-base md:text-xl text-muted-foreground font-light max-w-2xl leading-relaxed pt-2 md:pt-4">
+            <p className="text-sm md:text-xl text-muted-foreground font-light max-w-2xl leading-relaxed pt-1 md:pt-4">
               {HERO_CONTENT.description}
             </p>
 
-            <div className="flex flex-wrap gap-3 pt-2">
+            <div className="flex flex-wrap gap-2 md:gap-3 pt-1 md:pt-2">
               <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-primary/5 border border-primary/10 text-[9px] font-bold uppercase tracking-wider text-muted-foreground/80">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
                 {HERO_CONTENT.focus}
