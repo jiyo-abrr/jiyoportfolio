@@ -30,7 +30,7 @@ export const EXPERIENCES: ExperienceItem[] = [
           "<strong>Contributed</strong> to the development of a compliance-driven <strong>SaaS platform</strong> for regulated asset distribution by building <strong>backend services</strong> using <strong>FastAPI</strong> within a <strong>distributed system architecture</strong> following defined system design requirements.",
           "<strong>Implemented backend services</strong> and integrations using <strong>PostgreSQL</strong> and <strong>MongoDB</strong> for data persistence, and integrated <strong>Redis (caching)</strong>, <strong>RabbitMQ (asynchronous processing)</strong>, and <strong>Elasticsearch (search indexing)</strong> to support scalable background processing, low-latency operations, and full-text search functionality.",
           "<strong>Managed Podman-based deployments</strong> and maintained <strong>Ubuntu production servers</strong> via <strong>Webmin</strong> for system administration, supporting application hosting and operational workflows.",
-          "<strong>Coordinated</strong> and provided <strong>technical guidance</strong> to a team of junior developers and interns through code reviews, task decomposition, and hands-on development support within an <strong>Agile environment</strong>."
+          "<strong>Coordinated</strong> and provided <strong>technical guidance</strong> to a team of <strong>dev interns</strong> through code reviews, task decomposition, and hands-on development support within an <strong>Agile environment</strong>."
         ]
       },
       {

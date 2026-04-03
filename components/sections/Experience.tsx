@@ -4,11 +4,24 @@ import { Calendar, MapPin, ArrowRight } from "lucide-react";
 import { SectionWrapper } from "@/components/layout/SectionWrapper";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useRef } from "react";
+import { useScroll, useSpring, useTransform } from "framer-motion";
 import { EXPERIENCES } from "@/lib/data/experience";
 
 export const Experience = () => {
   const [hoveredCompany, setHoveredCompany] = useState<string | null>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start 0.9", "end 0.2"],
+  });
+
+  const pathScaleY = useSpring(scrollYProgress, {
+    stiffness: 400,
+    damping: 30,
+    restDelta: 0.001
+  });
 
   return (
     <SectionWrapper>
@@ -18,9 +31,26 @@ export const Experience = () => {
           <h2 className="text-3xl md:text-5xl font-medium tracking-tight text-foreground">Professional Journey</h2>
         </div>
         
-        <div className="relative">
-          {/* Central Vertical Line */}
-          <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-[3px] md:w-[5px] bg-primary/40 md:-translate-x-1/2 rounded-full shadow-[0_0_15px_rgba(var(--primary),0.1)]" />
+        <div ref={containerRef} className="relative">
+          {/* Central Vertical Line (Static Background) */}
+          <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-[3px] md:w-[5px] bg-primary/20 md:-translate-x-1/2 rounded-full" />
+          
+          {/* Glowing Animated Path (Scroll Progress) */}
+          <motion.div 
+            style={{ scaleY: pathScaleY }}
+            className="absolute left-4 md:left-1/2 top-0 bottom-0 w-[3px] md:w-[5px] bg-gradient-to-b from-primary to-blue-500 md:-translate-x-1/2 rounded-full origin-top z-10"
+          />
+
+          {/* Following Spark (Head) */}
+          <motion.div 
+            style={{ 
+              top: useTransform(pathScaleY, [0, 1], ["0%", "100%"]),
+              opacity: useTransform(pathScaleY, [0, 0.05], [0, 1])
+            }}
+            className="absolute left-[16px] md:left-1/2 w-4 h-4 md:w-6 md:h-6 bg-white rounded-full -translate-x-1/2 z-20 shadow-[0_0_15px_rgba(255,255,255,1)] border-2 border-primary flex items-center justify-center pointer-events-none"
+          >
+            <div className="w-1.5 h-1.5 md:w-2 md:h-2 bg-primary rounded-full animate-pulse" />
+          </motion.div>
           
           <div className="space-y-24 md:space-y-32">
             {EXPERIENCES.map((company, companyIdx) => {
@@ -30,10 +60,32 @@ export const Experience = () => {
               return (
                 <div key={companyIdx} className="relative">
                   {/* Centered Node Dot */}
-                  <motion.div 
-                    animate={{ scale: isHovered ? 1.8 : 1 }}
-                    className="absolute left-[11px] md:left-1/2 top-[19px] md:top-8 z-30 h-2.5 w-2.5 rounded-full bg-primary md:-translate-x-1/2 border-background outline outline-1 outline-primary/20" 
-                  />
+                  <div className="absolute left-[11px] md:left-1/2 top-[19px] md:top-8 z-30 md:-translate-x-1/2">
+                    <motion.div 
+                      initial={{ scale: 0.8, opacity: 0.4 }}
+                      whileInView={{ scale: 1, opacity: 0.8 }}
+                      viewport={{ once: true }}
+                      animate={{ 
+                        scale: isHovered ? 1.5 : 1,
+                        opacity: isHovered ? 1 : 0.8,
+                      }}
+                      className="h-2.5 w-2.5 rounded-full bg-primary border-2 border-background ring-4 ring-primary/10" 
+                    />
+                    
+                    {/* Subtle Pulse Animation */}
+                    <motion.div 
+                      animate={{ 
+                        scale: [1, 1.5, 1],
+                        opacity: [0.2, 0, 0.2]
+                      }}
+                      transition={{ 
+                        duration: 3,
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                      }}
+                      className="absolute inset-0 bg-primary rounded-full -z-10"
+                    />
+                  </div>
 
                   {/* Company Header */}
                   <div className={`flex flex-col ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'} items-center gap-6 md:gap-12 relative z-20`}>
@@ -45,10 +97,10 @@ export const Experience = () => {
                       onMouseLeave={() => setHoveredCompany(null)}
                       className={`flex items-center gap-6 w-full md:w-1/2 ${isEven ? 'md:justify-end' : 'md:justify-start'} pl-10 md:pl-0 relative`}
                     >
-                      <div className={`flex items-center gap-4 md:gap-6 ${!isEven ? 'flex-row-reverse' : ''}`}>
-                        <div className={isEven ? 'text-right' : 'text-left'}>
+                      <div className={`flex items-center gap-4 md:gap-6 flex-row-reverse ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
+                        <div className={`flex flex-col ${isEven ? 'md:text-right' : 'md:text-left'} text-left`}>
                           <h3 className="text-xl md:text-2xl font-medium tracking-tight text-foreground whitespace-nowrap">{company.company}</h3>
-                          <div className={`flex items-center gap-2 text-[10px] md:text-xs font-mono text-muted-foreground uppercase tracking-widest ${!isEven ? 'justify-start' : 'justify-end'}`}>
+                          <div className={`flex items-center gap-2 text-[10px] md:text-xs font-mono text-muted-foreground uppercase tracking-widest justify-start ${isEven ? 'md:justify-end' : 'md:justify-start'}`}>
                             <MapPin className="h-3 w-3 text-primary/60" />
                             {company.location}
                           </div>
