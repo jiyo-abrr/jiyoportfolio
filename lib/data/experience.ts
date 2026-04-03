@@ -24,7 +24,7 @@ export const EXPERIENCES: ExperienceItem[] = [
       {
         role: "Junior Software Developer",
         period: "Dec 2025 – Present",
-        type: "Internship",
+        type: "Full Time",
         description: [
           "<strong>Led development</strong> of internal <strong>HRIS</strong> and <strong>Inventory / Asset Management</strong> systems, implementing features from requirements through deployment and maintenance, <strong>reducing operational effort by ~80%</strong> through workflow automation and system integration.",
           "<strong>Contributed</strong> to the development of a compliance-driven <strong>SaaS platform</strong> for regulated asset distribution by building <strong>backend services</strong> using <strong>FastAPI</strong> within a <strong>distributed system architecture</strong> following defined system design requirements.",
