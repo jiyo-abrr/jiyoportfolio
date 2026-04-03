@@ -4,6 +4,12 @@ import { SectionWrapper } from "@/components/layout/SectionWrapper";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { TECH_GROUPS } from "@/lib/data/tech-stacks";
+import dynamic from "next/dynamic";
+
+const Lanyard = dynamic(() => import("@/components/visuals/Lanyard").then(mod => mod.Lanyard), { 
+  ssr: false,
+  loading: () => <div className="w-full h-full bg-primary/5 rounded-3xl animate-pulse" />
+});
 
 export const TechStacks = () => (
   <SectionWrapper>
@@ -71,18 +77,19 @@ export const Education = () => (
       <div className="space-y-12">
         <span className="section-title">05. Academic Foundation</span>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 items-center">
-          <div className="lg:col-span-8 space-y-8">
-            <div className="flex items-start md:items-center gap-6 md:gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-stretch">
+          {/* Left Column: Education Info */}
+          <div className="flex flex-col gap-8">
+            <div className="flex items-start md:items-center gap-6 md:gap-8 bg-secondary/5 p-6 md:p-8 rounded-[2.5rem] border border-border/50 h-full justify-center">
               <motion.div
                 whileHover={{ scale: 1.1 }}
-                className="relative h-20 w-20 md:h-28 md:w-28 shrink-0"
+                className="relative h-20 w-20 md:h-24 md:w-24 shrink-0"
               >
                 <Image
                   src="/pup-logo.png"
                   alt="PUP Logo"
                   fill
-                  className="object-contain drop-shadow-[0_0_10px_rgba(59,130,246,0.3)] dark:drop-shadow-[0_0_15px_rgba(255,255,255,0.2)]"
+                  className="object-contain drop-shadow-[0_0_10px_rgba(59,130,246,0.3)]"
                 />
               </motion.div>
               <div className="space-y-2">
@@ -95,38 +102,59 @@ export const Education = () => (
               </div>
             </div>
 
-            <div className="space-y-4">
-              <p className="text-lg md:text-xl text-primary font-medium tracking-tight">
-                Bachelor of Science in Computer Science
-              </p>
-              <div className="flex flex-wrap items-center gap-3 md:gap-4 pt-1 text-[10px] md:text-sm font-mono text-muted-foreground">
-                <span className="px-3 py-1 rounded bg-secondary/50 border border-border shadow-sm">
-                  Oct 2021 – Sep 2025
-                </span>
-                <span className="px-3 py-1 rounded bg-secondary/50 border border-border shadow-sm text-foreground">
-                  DOST-SEI Undergraduate Scholar
-                </span>
+            <div className="space-y-8 bg-secondary/5 p-6 md:p-8 rounded-[2.5rem] border border-border/50">
+              <div className="space-y-4">
+                <p className="text-xl md:text-2xl text-primary font-medium tracking-tight">
+                  Bachelor of Science in Computer Science
+                </p>
+                <div className="flex flex-wrap items-center gap-3 font-mono text-[10px] md:text-sm text-muted-foreground">
+                  <span className="px-3 py-1.5 rounded bg-secondary/30 border border-border shadow-sm">
+                    Oct 2021 – Sep 2025
+                  </span>
+                  <span className="px-3 py-1.5 rounded bg-primary/10 border border-primary/20 shadow-sm text-primary font-bold">
+                    DOST-SEI Undergraduate Scholar
+                  </span>
+                </div>
+              </div>
+
+              {/* GWA and Honors Cards */}
+              <div className="grid grid-cols-2 gap-4">
+                <div className="glass p-6 md:p-8 rounded-2xl flex flex-col justify-center items-center text-center group hover:border-primary/20 transition-all">
+                  <p className="text-3xl md:text-4xl font-light text-primary group-hover:scale-110 transition-transform">
+                    1.29
+                  </p>
+                  <p className="text-[9px] md:text-[10px] uppercase tracking-widest font-semibold text-muted-foreground mt-2">
+                    Cumulative GWA
+                  </p>
+                </div>
+                <div className="glass p-6 md:p-8 rounded-2xl flex flex-col justify-center items-center text-center group hover:border-primary/20 transition-all">
+                  <p className="text-lg md:text-xl font-medium text-foreground group-hover:text-primary transition-colors">
+                    Magna Cum Laude
+                  </p>
+                  <p className="text-[9px] md:text-[10px] uppercase tracking-widest font-semibold text-muted-foreground mt-2 text-center">
+                    Latin Honors
+                  </p>
+                </div>
               </div>
             </div>
           </div>
 
-          <div className="lg:col-span-4 grid grid-cols-2 lg:grid-cols-1 gap-4">
-            <div className="glass p-6 md:p-8 rounded-2xl flex flex-col justify-center items-center text-center group hover:border-primary/20 transition-all">
-              <p className="text-3xl md:text-4xl font-light text-primary group-hover:scale-110 transition-transform">
-                1.29
-              </p>
-              <p className="text-[9px] md:text-[10px] uppercase tracking-widest font-semibold text-muted-foreground mt-2">
-                Cumulative GWA
-              </p>
-            </div>
-            <div className="glass p-6 md:p-8 rounded-2xl flex flex-col justify-center items-center text-center group hover:border-primary/20 transition-all">
-              <p className="text-lg md:text-xl font-medium text-foreground group-hover:text-primary transition-colors">
-                Magna Cum Laude
-              </p>
-              <p className="text-[9px] md:text-[10px] uppercase tracking-widest font-semibold text-muted-foreground mt-2">
-                Latin Honors
-              </p>
-            </div>
+          {/* Right Column: Identity Port (Lanyard) */}
+          <div className="h-[500px] lg:h-auto min-h-[500px] w-full relative">
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              className="relative w-full h-full glass rounded-[2.5rem] border border-border/40 shadow-2xl overflow-hidden flex items-center justify-center group hover:border-primary/20 transition-all duration-700"
+            >
+              <Lanyard />
+              <div className="absolute top-8 left-8 w-1.5 h-1.5 rounded-full bg-primary/20" />
+              <div className="absolute top-8 right-8 w-1.5 h-1.5 rounded-full bg-primary/20" />
+              <div className="absolute bottom-6 left-10 text-[10px] font-bold uppercase tracking-[0.4em] text-muted-foreground/30 pointer-events-none">
+                BATCH 2025
+              </div>
+            </motion.div>
+            <div className="absolute inset-x-12 inset-y-12 bg-primary/5 blur-[80px] -z-10 rounded-full" />
           </div>
         </div>
       </div>

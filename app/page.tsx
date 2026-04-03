@@ -16,7 +16,7 @@ import { LoadingScreen } from "@/components/shared/LoadingScreen";
 
 export default function Portfolio() {
   return (
-    <main className="relative min-h-screen w-full overflow-hidden bg-background selection:bg-primary/10">
+    <main className="relative min-h-screen w-full bg-background selection:bg-primary/10">
       <LoadingScreen />
       {/* Background Layer */}
       <div className="fixed inset-0 z-0 pointer-events-none">
@@ -38,7 +38,7 @@ export default function Portfolio() {
       <Header />
 
       {/* Main Content Area */}
-      <ScrollArea className="relative z-10 h-screen w-full">
+      <div className="relative z-10 w-full">
         <div className="flex flex-col">
           <div className="container mx-auto px-6 max-w-5xl">
             <Hero />
@@ -57,7 +57,7 @@ export default function Portfolio() {
 
           <Footer />
         </div>
-      </ScrollArea>
+      </div>
     </main>
   );
 }
