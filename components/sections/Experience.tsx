@@ -1,6 +1,6 @@
 "use client"
 
-import { Calendar, MapPin, ArrowRight } from "lucide-react";
+import { Calendar, MapPin, ArrowRight, Globe } from "lucide-react";
 import { SectionWrapper } from "@/components/layout/SectionWrapper";
 import { motion } from "framer-motion";
 import Image from "next/image";
@@ -92,7 +92,11 @@ export const Experience = () => {
                         <div className={`flex flex-col ${isEven ? 'md:text-right' : 'md:text-left'} text-left`}>
                           <h3 className="text-xl md:text-2xl font-medium tracking-tight text-foreground whitespace-nowrap">{company.company}</h3>
                           <div className={`flex items-center gap-2 text-[10px] md:text-xs font-mono text-muted-foreground uppercase tracking-widest justify-start ${isEven ? 'md:justify-end' : 'md:justify-start'}`}>
-                            <MapPin className="h-3 w-3 text-primary/60" />
+                            {company.location.includes('(Remote)') ? (
+                              <Globe className="h-3 w-3 text-primary/60" />
+                            ) : (
+                              <MapPin className="h-3 w-3 text-primary/60" />
+                            )}
                             {company.location}
                           </div>
                         </div>
