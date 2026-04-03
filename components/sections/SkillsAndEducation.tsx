@@ -28,18 +28,18 @@ export const TechStacks = () => (
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1 }}
-              className="group flex flex-col md:flex-row md:items-center gap-6 md:gap-12 p-6 md:p-8 rounded-[2rem] md:rounded-[2.5rem] glass hover:border-primary/30 transition-all duration-500"
+              className="group flex flex-col md:flex-row md:items-start gap-6 md:gap-12 p-6 md:p-8 rounded-[2rem] md:rounded-[2.5rem] glass hover:border-primary/30 transition-all duration-500"
             >
-              <h3 className="text-xs md:text-sm font-semibold uppercase tracking-widest text-muted-foreground md:w-48 shrink-0">
+              <h3 className="text-xs md:text-sm font-semibold uppercase tracking-widest text-muted-foreground md:w-48 shrink-0 md:pt-4">
                 {group.title}
               </h3>
 
-              <div className="flex flex-wrap gap-5 md:gap-8">
+              <div className="flex flex-wrap gap-x-2 md:gap-x-4 gap-y-8 md:gap-y-10">
                 {group.items.map((item) => (
                   <motion.div
                     key={item.name}
                     whileHover={{ scale: 1.1, y: -5 }}
-                    className="flex flex-col items-center gap-3 group/item"
+                    className="flex flex-col items-center gap-3 group/item w-16 md:w-24 text-center"
                   >
                     <div className="relative w-8 h-8 md:w-10 md:h-10 transition-all duration-300">
                       <Image
@@ -51,7 +51,7 @@ export const TechStacks = () => (
                         }`}
                       />
                     </div>
-                    <span className="text-[8px] md:text-[9px] font-medium text-muted-foreground/40 group-hover/item:text-primary uppercase tracking-wider transition-colors duration-300">
+                    <span className="text-[8px] md:text-[10px] font-medium text-muted-foreground/40 group-hover/item:text-primary uppercase tracking-wider transition-colors duration-300 leading-tight">
                       {item.name}
                     </span>
                   </motion.div>
@@ -90,7 +90,7 @@ export const Education = () => (
                   Polytechnic University of the Philippines
                 </h3>
                 <p className="text-sm md:text-lg text-muted-foreground font-light italic">
-                  Manila, PH
+                  Manila, Philippines
                 </p>
               </div>
             </div>

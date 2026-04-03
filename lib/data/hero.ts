@@ -10,7 +10,7 @@ export const HERO_CONTENT = {
   ],
   description:
     "A Software Developer who builds scalable web systems, automation tools, and intelligent applications.",
-  focus: "Current Focus: Distributed Systems & FastAPI",
+  focus: "Current Focus: Microservices & Distributed Systems",
   learning: "Learning: LLM Fine-tuning & MLOps",
   cvPath: "/portfolio/Abarre - Resume.pdf",
   socials: {

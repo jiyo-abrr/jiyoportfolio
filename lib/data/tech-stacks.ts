@@ -40,16 +40,16 @@ export const TECH_GROUPS: TechGroup[] = [
     ],
   },
   {
-    title: "Frontend Development",
+    title: "Frontend & UI/UX",
     items: [
-      {
-        name: "React.js",
-        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
-      },
       {
         name: "Next.js",
         logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg",
         invertLogo: true,
+      },
+      {
+        name: "React.js",
+        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
       },
       {
         name: "Vue.js",
@@ -64,22 +64,30 @@ export const TECH_GROUPS: TechGroup[] = [
         logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/materialui/materialui-original.svg",
       },
       { name: "shadcn/ui", logo: "/shadcn.svg", invertLogo: true },
+      {
+        name: "Figma",
+        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg",
+      },
     ],
   },
   {
-    title: "Backend & Systems",
+    title: "Backend & Architecture",
     items: [
       {
         name: "FastAPI",
         logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg",
       },
       {
+        name: "Laravel",
+        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-original.svg",
+      },
+      {
         name: "Node.js",
         logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
       },
       {
-        name: "Laravel",
-        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-original.svg",
+        name: "SpringBoot",
+        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg",
       },
       {
         name: "Flask",
@@ -90,10 +98,6 @@ export const TECH_GROUPS: TechGroup[] = [
         name: "Express.js",
         logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg",
         invertLogo: true,
-      },
-      {
-        name: "SpringBoot",
-        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg",
       },
       {
         name: "ASP.NET",
@@ -111,19 +115,27 @@ export const TECH_GROUPS: TechGroup[] = [
     ],
   },
   {
-    title: "Databases & Storage",
+    title: "Data & Storage",
     items: [
+      {
+        name: "MySQL",
+        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg",
+      },
       {
         name: "PostgreSQL",
         logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg",
       },
       {
-        name: "MongoDB",
-        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg",
+        name: "Redis",
+        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg",
       },
       {
-        name: "MySQL",
-        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg",
+        name: "Elasticsearch",
+        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/elasticsearch/elasticsearch-original.svg",
+      },
+      {
+        name: "MongoDB",
+        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg",
       },
       {
         name: "Supabase",
@@ -132,17 +144,30 @@ export const TECH_GROUPS: TechGroup[] = [
     ],
   },
   {
-    title: "DevOps & Cloud",
+    title: "Infrastructure & Automation",
     items: [
       {
         name: "Docker",
         logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg",
       },
       {
+        name: "Podman",
+        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/podman/podman-original.svg",
+      },
+      {
         name: "Vercel",
         logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vercel/vercel-original.svg",
         invertLogo: true,
       },
+      {
+        name: "Webmin",
+        logo: "https://cdn.simpleicons.org/webmin",
+      },
+    ],
+  },
+  {
+    title: "Version Control",
+    items: [
       {
         name: "Git",
         logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg",
@@ -153,8 +178,16 @@ export const TECH_GROUPS: TechGroup[] = [
         invertLogo: true,
       },
       {
+        name: "GitLab",
+        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/gitlab/gitlab-original.svg",
+      },
+      {
         name: "Bitbucket",
         logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bitbucket/bitbucket-original.svg",
+      },
+      {
+        name: "Fork",
+        logo: "https://git-fork.com/favicon.ico",
       },
     ],
   },
@@ -162,34 +195,39 @@ export const TECH_GROUPS: TechGroup[] = [
     title: "Platforms & OS",
     items: [
       {
-        name: "Windows",
-        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/windows8/windows8-original.svg",
+        name: "MacOS",
+        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apple/apple-original.svg",
+        invertLogo: true,
       },
       {
         name: "Ubuntu",
         logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ubuntu/ubuntu-original.svg",
       },
       {
-        name: "MacOS",
-        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apple/apple-original.svg",
-        invertLogo: true,
+        name: "Debian",
+        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/debian/debian-original.svg",
+      },
+      {
+        name: "Windows",
+        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/windows8/windows8-original.svg",
       },
     ],
   },
   {
-    title: "Tools & Productivity",
+    title: "Development Tools",
     items: [
       {
-        name: "Postman",
-        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postman/postman-original.svg",
+        name: "Antigravity",
+        logo: "https://cdn.simpleicons.org/googlegemini",
+        invertLogo: true,
       },
       {
         name: "VSCode",
         logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg",
       },
       {
-        name: "Figma",
-        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg",
+        name: "Postman",
+        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postman/postman-original.svg",
       },
       {
         name: "Anaconda",
