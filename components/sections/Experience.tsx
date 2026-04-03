@@ -33,24 +33,14 @@ export const Experience = () => {
         
         <div ref={containerRef} className="relative">
           {/* Central Vertical Line (Static Background) */}
-          <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-[3px] md:w-[5px] bg-primary/20 md:-translate-x-1/2 rounded-full" />
+          <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-[2px] md:w-[3px] bg-primary/20 -translate-x-1/2 rounded-full" />
           
-          {/* Glowing Animated Path (Scroll Progress) */}
+          {/* Glowing Animated Path (Scroll Progress) - Centered */}
           <motion.div 
             style={{ scaleY: pathScaleY }}
-            className="absolute left-4 md:left-1/2 top-0 bottom-0 w-[3px] md:w-[5px] bg-gradient-to-b from-primary to-blue-500 md:-translate-x-1/2 rounded-full origin-top z-10"
+            className="absolute left-4 md:left-1/2 top-0 bottom-0 w-[2px] md:w-[3px] bg-gradient-to-b from-primary via-blue-400 to-blue-500 -translate-x-1/2 rounded-full origin-top z-10"
           />
 
-          {/* Following Spark (Head) */}
-          <motion.div 
-            style={{ 
-              top: useTransform(pathScaleY, [0, 1], ["0%", "100%"]),
-              opacity: useTransform(pathScaleY, [0, 0.05], [0, 1])
-            }}
-            className="absolute left-[16px] md:left-1/2 w-4 h-4 md:w-6 md:h-6 bg-white rounded-full -translate-x-1/2 z-20 shadow-[0_0_15px_rgba(255,255,255,1)] border-2 border-primary flex items-center justify-center pointer-events-none"
-          >
-            <div className="w-1.5 h-1.5 md:w-2 md:h-2 bg-primary rounded-full animate-pulse" />
-          </motion.div>
           
           <div className="space-y-24 md:space-y-32">
             {EXPERIENCES.map((company, companyIdx) => {
@@ -59,17 +49,17 @@ export const Experience = () => {
               
               return (
                 <div key={companyIdx} className="relative">
-                  {/* Centered Node Dot */}
-                  <div className="absolute left-[11px] md:left-1/2 top-[19px] md:top-8 z-30 md:-translate-x-1/2">
+                  {/* Centered Node Dot - Fixed Alignment */}
+                  <div className="absolute left-4 md:left-1/2 top-[19px] md:top-8 z-30 -translate-x-1/2">
                     <motion.div 
                       initial={{ scale: 0.8, opacity: 0.4 }}
                       whileInView={{ scale: 1, opacity: 0.8 }}
                       viewport={{ once: true }}
                       animate={{ 
-                        scale: isHovered ? 1.5 : 1,
+                        scale: isHovered ? 1.4 : 1,
                         opacity: isHovered ? 1 : 0.8,
                       }}
-                      className="h-2.5 w-2.5 rounded-full bg-primary border-2 border-background ring-4 ring-primary/10" 
+                      className="h-3 w-3 rounded-full bg-primary border-2 border-background ring-4 ring-primary/5 shadow-[0_0_10px_rgba(59,130,246,0.5)]" 
                     />
                     
                     {/* Subtle Pulse Animation */}
