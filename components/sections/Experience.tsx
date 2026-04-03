@@ -18,9 +18,10 @@ export const Experience = () => {
   });
 
   const pathScaleY = useSpring(scrollYProgress, {
-    stiffness: 400,
+    stiffness: 100,
     damping: 30,
-    restDelta: 0.001
+    restDelta: 0.001,
+    mass: 0.1
   });
 
   return (
@@ -37,7 +38,7 @@ export const Experience = () => {
           
           {/* Glowing Animated Path (Scroll Progress) - Centered */}
           <motion.div 
-            style={{ scaleY: pathScaleY }}
+            style={{ scaleY: pathScaleY, willChange: "transform" }}
             className="absolute left-4 md:left-1/2 top-0 bottom-0 w-[2px] md:w-[3px] bg-gradient-to-b from-primary via-blue-400 to-blue-500 -translate-x-1/2 rounded-full origin-top z-10"
           />
 

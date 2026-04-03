@@ -34,17 +34,34 @@ interface LanyardProps {
 }
 
 export const Lanyard = ({ position = [0, 0, 8], gravity = [0, -40, 0] }: LanyardProps) => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
   return (
     <div className="w-full h-full relative pointer-events-auto">
-      <Canvas camera={{ position, fov: 30 }} dpr={[1, 2]}>
+      <Canvas 
+        camera={{ position, fov: 30 }} 
+        dpr={isMobile ? 1 : [1, 2]}
+        performance={{ min: 0.5 }}
+      >
         <Suspense fallback={null}>
-          <Physics interpolate gravity={gravity}>
-            <Scene />
+          <Physics interpolate={!isMobile} gravity={gravity}>
+            <Scene isMobile={isMobile} />
           </Physics>
           <Environment blur={0.75}>
             <Lightformer intensity={3} rotation-x={Math.PI / 2} position={[0, 5, -9]} scale={[10, 10, 1]} />
-            <Lightformer intensity={3} rotation-y={Math.PI / 2} position={[-5, 1, -1]} scale={[10, 2, 1]} />
-            <Lightformer intensity={3} rotation-y={-Math.PI / 2} position={[10, 1, 0]} scale={[20, 2, 1]} />
+            {!isMobile && (
+              <>
+                <Lightformer intensity={3} rotation-y={Math.PI / 2} position={[-5, 1, -1]} scale={[10, 2, 1]} />
+                <Lightformer intensity={3} rotation-y={-Math.PI / 2} position={[10, 1, 0]} scale={[20, 2, 1]} />
+              </>
+            )}
           </Environment>
           <ambientLight intensity={1.0} />
           <pointLight position={[10, 10, 10]} intensity={1.5} />
@@ -54,7 +71,7 @@ export const Lanyard = ({ position = [0, 0, 8], gravity = [0, -40, 0] }: Lanyard
   );
 };
 
-function Scene() {
+function Scene({ isMobile }: { isMobile: boolean }) {
   const band = useRef<any>(null);
   const fixed = useRef<any>(null);
   const j1 = useRef<any>(null);
@@ -76,8 +93,6 @@ function Scene() {
   }, [photoTexture, logoTexture]);
 
   const { size } = useThree();
-  const isMobile = useMemo(() => size.width < 768, [size.width]);
-
   const [curve] = useState(() => new THREE.CatmullRomCurve3([new THREE.Vector3(), new THREE.Vector3(), new THREE.Vector3(), new THREE.Vector3()]));
   const [dragged, setDragged] = useState<THREE.Vector3 | null>(null);
   const [hovered, setHovered] = useState(false);

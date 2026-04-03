@@ -145,6 +145,7 @@ export const Education = () => (
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
+              style={{ contain: 'paint' }}
               className="relative w-full h-full glass rounded-[2.5rem] border border-border/40 shadow-2xl overflow-hidden flex items-center justify-center group hover:border-primary/20 transition-all duration-700"
             >
               <Lanyard />
