@@ -18,6 +18,16 @@ declare global {
   }
 }
 
+// Support for React 19+ / TypeScript 5.1+
+declare module 'react' {
+  namespace JSX {
+    interface IntrinsicElements {
+      meshLineGeometry: any;
+      meshLineMaterial: any;
+    }
+  }
+}
+
 interface LanyardProps {
   position?: [number, number, number];
   gravity?: [number, number, number];
