@@ -37,6 +37,10 @@ export const TECH_GROUPS: TechGroup[] = [
         name: "C#",
         logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg",
       },
+      {
+        name: "C",
+        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg",
+      },
     ],
   },
   {

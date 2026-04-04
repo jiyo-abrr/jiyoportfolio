@@ -106,9 +106,9 @@ function Scene({ isMobile }: { isMobile: boolean }) {
   };
 
   // Ultra-Short Lace Joints - 0.08 distance per segment for high-tension look
-  useRopeJoint(fixed, j1, [[0, 0, 0], [0, 0, 0], 0.08]);
-  useRopeJoint(j1, j2, [[0, 0, 0], [0, 0, 0], 0.08]);
-  useRopeJoint(j2, j3, [[0, 0, 0], [0, 0, 0], 0.08]);
+  useRopeJoint(fixed, j1, [[0, 0, 0], [0, 0, 0], 0.02]);
+  useRopeJoint(j1, j2, [[0, 0, 0], [0, 0, 0], 0.02]);
+  useRopeJoint(j2, j3, [[0, 0, 0], [0, 0, 0], 0.02]);
   useSphericalJoint(j3, card, [[0, 0, 0], [0, 1.15, 0]]);
 
   useEffect(() => {

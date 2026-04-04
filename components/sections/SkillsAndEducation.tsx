@@ -44,7 +44,7 @@ export const TechStacks = () => (
                   <div className="h-0.5 w-8 bg-border group-hover:bg-primary/40 group-hover:w-12 transition-all duration-500 rounded-full" />
                 </div>
 
-                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-x-6 gap-y-4 md:gap-y-8">
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-x-6 gap-y-4 md:gap-y-8">
                   {group.items.map((item) => (
                     <motion.div
                       key={item.name}
@@ -82,10 +82,11 @@ export const Education = () => (
       <div className="space-y-12">
         <span className="section-title">05. Academic Foundation</span>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-stretch">
+        <div className="flex flex-col md:flex-row gap-6 md:gap-8 items-stretch">
           {/* Left Column: Education Info */}
-          <div className="flex flex-col gap-8">
-            <div className="flex flex-col sm:flex-row items-center sm:items-center gap-6 md:gap-8 bg-secondary/5 p-8 md:p-8 rounded-xl md:rounded-xl border border-border/50 h-full justify-center text-center sm:text-left">
+          <div className="flex flex-col flex-[1.2] min-w-0 bg-secondary/[0.03] dark:bg-white/[0.015] border border-border/10 rounded-xl overflow-hidden divide-y divide-border/10 transition-all duration-700">
+            {/* University Info */}
+            <div className="flex flex-col sm:flex-row items-center sm:items-center gap-6 md:gap-8 p-8 md:p-10 justify-center text-center sm:text-left">
               <motion.div
                 whileHover={{ scale: 1.1 }}
                 className="relative h-20 w-20 md:h-24 md:w-24 shrink-0"
@@ -107,7 +108,8 @@ export const Education = () => (
               </div>
             </div>
 
-            <div className="space-y-8 bg-secondary/5 p-6 md:p-8 rounded-xl md:rounded-xl border border-border/50">
+            {/* Degree Info */}
+            <div className="space-y-8 p-8 md:p-10 bg-secondary/[0.02]">
               <div className="space-y-4">
                 <p className="text-xl md:text-2xl text-primary font-medium tracking-tight text-center sm:text-left">
                   Bachelor of Science in Computer Science
@@ -124,7 +126,7 @@ export const Education = () => (
 
               {/* GWA and Honors Cards */}
               <div className="grid grid-cols-2 gap-4">
-                <div className="glass p-5 md:p-8 rounded-xl flex flex-col justify-center items-center text-center group hover:border-primary/20 transition-all">
+                <div className="bg-secondary/[0.03] p-5 md:p-8 rounded-xl flex flex-col justify-center items-center text-center group hover:bg-secondary/[0.06] transition-all border border-border/5">
                   <p className="text-3xl md:text-4xl font-light text-primary group-hover:scale-110 transition-transform">
                     1.29
                   </p>
@@ -132,7 +134,7 @@ export const Education = () => (
                     Cumulative GWA
                   </p>
                 </div>
-                <div className="glass p-5 md:p-8 rounded-xl flex flex-col justify-center items-center text-center group hover:border-primary/20 transition-all">
+                <div className="bg-secondary/[0.03] p-5 md:p-8 rounded-xl flex flex-col justify-center items-center text-center group hover:bg-secondary/[0.06] transition-all border border-border/5">
                   <p className="text-lg md:text-xl font-medium text-foreground group-hover:text-primary transition-colors">
                     Magna Cum Laude
                   </p>
@@ -145,13 +147,13 @@ export const Education = () => (
           </div>
 
           {/* Right Column: Identity Port (Lanyard) */}
-          <div className="h-[400px] md:h-[500px] lg:h-auto min-h-[400px] md:min-h-[500px] w-full relative">
+          <div className="h-[400px] md:h-auto min-h-[400px] w-full relative flex-[0.8]">
             <motion.div 
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               style={{ contain: 'paint' }}
-              className="relative w-full h-full glass rounded-xl md:rounded-xl border border-border/40 shadow-2xl overflow-hidden flex items-center justify-center group hover:border-primary/20 transition-all duration-700"
+              className="relative w-full h-full bg-secondary/[0.03] dark:bg-white/[0.015] border border-border/10 rounded-xl md:rounded-xl overflow-hidden flex items-center justify-center group transition-all duration-700"
             >
               <Lanyard />
               <div className="absolute top-8 left-8 w-1.5 h-1.5 rounded-full bg-primary/20" />
