@@ -36,7 +36,7 @@ export const Hero = () => {
   }, [displayText, isDeleting, roleIndex, typingSpeed]);
 
   return (
-    <section className="relative min-h-[82vh] md:min-h-[90vh] flex items-center pt-28 md:pt-32 pb-10 md:pb-12 overflow-hidden">
+    <section className="relative min-h-[82vh] md:min-h-[90vh] flex items-center pt-28 md:pt-32 pb-10 md:pb-12">
       <div className="w-full">
         {/* Left Content: Text and CTA */}
         <div className="flex flex-col gap-8 md:gap-10 relative z-10">
@@ -91,7 +91,7 @@ export const Hero = () => {
               </div>
             </div>
 
-            <div className="flex items-center gap-4 sm:gap-6 pt-4 md:pt-6">
+            <div className="flex flex-wrap items-center gap-4 sm:gap-6 pt-4 md:pt-6">
               <motion.a
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -101,7 +101,7 @@ export const Hero = () => {
                 Get in touch <ArrowRight className="h-4 w-4 md:h-5 w-5" />
               </motion.a>
 
-              <div className="flex items-center gap-4 md:gap-8 pl-4 sm:pl-6 border-l border-border/50">
+              <div className="flex items-center gap-4 md:gap-8 pl-4 sm:pl-6 border-l border-border/50 max-sm:border-none max-sm:pl-0">
                 <a
                   href={HERO_CONTENT.socials.github}
                   target="_blank"
