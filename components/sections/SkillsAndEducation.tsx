@@ -13,11 +13,11 @@ const Lanyard = dynamic(() => import("@/components/visuals/Lanyard").then(mod =>
 
 export const TechStacks = () => (
   <SectionWrapper>
-    <section id="skills" className="py-10">
-      <div className="space-y-16">
+    <section id="skills" className="py-12 md:py-20">
+      <div className="space-y-12">
         <div className="space-y-4">
           <span className="section-title">04. Technical Arsenal</span>
-          <h2 className="text-3xl md:text-5xl font-medium tracking-tight text-foreground">
+          <h2 className="text-4xl md:text-6xl font-medium tracking-tight text-foreground">
             Tech Stacks
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl font-light">
@@ -26,45 +26,50 @@ export const TechStacks = () => (
           </p>
         </div>
 
-        <div className="space-y-8">
-          {TECH_GROUPS.map((group, idx) => (
-            <motion.div
-              key={group.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: idx * 0.1 }}
-              className="group flex flex-col md:flex-row md:items-start gap-6 md:gap-12 p-6 md:p-8 rounded-2xl md:rounded-3xl glass hover:border-primary/30 transition-all duration-500"
-            >
-              <h3 className="text-xs md:text-sm font-semibold uppercase tracking-widest text-muted-foreground md:w-48 shrink-0 md:pt-4">
-                {group.title}
-              </h3>
+        <div className="glass rounded-2xl border border-border/50 overflow-hidden shadow-xl backdrop-blur-md">
+          <div className="divide-y divide-border/10">
+            {TECH_GROUPS.map((group, idx) => (
+              <motion.div
+                key={group.title}
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.05 }}
+                className="group grid grid-cols-1 lg:grid-cols-[280px,1fr] gap-4 md:gap-8 p-6 md:p-8 hover:bg-primary/[0.01] transition-all duration-300 items-start border-l-2 border-l-transparent hover:border-l-primary/40"
+              >
+                <div className="flex flex-col gap-1.5 md:pt-1">
+                  <h3 className="text-xs md:text-sm font-bold uppercase tracking-[0.2em] text-muted-foreground/80 group-hover:text-primary transition-colors duration-300">
+                    {group.title}
+                  </h3>
+                  <div className="h-0.5 w-8 bg-border group-hover:bg-primary/40 group-hover:w-12 transition-all duration-500 rounded-full" />
+                </div>
 
-              <div className="flex flex-wrap gap-x-2 md:gap-x-4 gap-y-8 md:gap-y-10">
-                {group.items.map((item) => (
-                  <motion.div
-                    key={item.name}
-                    whileHover={{ scale: 1.1, y: -5 }}
-                    className="flex flex-col items-center gap-3 group/item w-16 md:w-24 text-center"
-                  >
-                    <div className="relative w-8 h-8 md:w-10 md:h-10 transition-all duration-300">
-                      <Image
-                        src={item.logo}
-                        alt={item.name}
-                        fill
-                        className={`object-contain drop-shadow-sm group-hover/item:drop-shadow-md transition-all ${
-                          item.invertLogo ? "dark:invert" : ""
-                        }`}
-                      />
-                    </div>
-                    <span className="text-[8px] md:text-[10px] font-medium text-muted-foreground/40 group-hover/item:text-primary uppercase tracking-wider transition-colors duration-300 leading-tight">
-                      {item.name}
-                    </span>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
-          ))}
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-x-6 gap-y-4 md:gap-y-8">
+                  {group.items.map((item) => (
+                    <motion.div
+                      key={item.name}
+                      whileHover={{ scale: 1.1, y: -2 }}
+                      className="flex flex-col items-center gap-2 transition-all duration-300 group/item min-h-[50px] justify-start pt-2"
+                    >
+                      <div className="relative w-6 h-6 md:w-7 md:h-7 shrink-0">
+                        <Image
+                          src={item.logo}
+                          alt={item.name}
+                          fill
+                          className={`object-contain transition-all duration-500 ${
+                            item.invertLogo ? "dark:invert" : ""
+                          }`}
+                        />
+                      </div>
+                      <span className="text-[8px] md:text-[9px] font-bold text-muted-foreground/60 group-hover/item:text-primary uppercase tracking-widest transition-all duration-300 mt-1 whitespace-nowrap">
+                        {item.name}
+                      </span>
+                    </motion.div>
+                  ))}
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
