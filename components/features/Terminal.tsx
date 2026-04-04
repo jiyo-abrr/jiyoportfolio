@@ -12,7 +12,7 @@ export const Terminal = () => {
   ];
 
   return (
-    <div className="w-full font-mono text-xs md:text-sm bg-[#0d1117] rounded-xl overflow-hidden border border-border/50 shadow-2xl">
+    <div className="w-full font-mono text-xs md:text-sm bg-[#0d1117] rounded-lg overflow-hidden border border-border/50 shadow-2xl">
       {/* Terminal Header */}
       <div className="flex items-center justify-between px-4 py-2 bg-[#161b22] border-b border-border/30">
         <div className="flex items-center gap-2">

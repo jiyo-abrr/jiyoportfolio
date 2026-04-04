@@ -36,8 +36,8 @@ export const Hero = () => {
   }, [displayText, isDeleting, roleIndex, typingSpeed]);
 
   return (
-    <section className="relative min-h-[90vh] flex items-center pt-20 md:pt-32 pb-12 overflow-hidden">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 w-full items-center">
+    <section className="relative min-h-[82vh] md:min-h-[90vh] flex items-center pt-28 md:pt-32 pb-10 md:pb-12 overflow-hidden">
+      <div className="w-full">
         {/* Left Content: Text and CTA */}
         <div className="flex flex-col gap-8 md:gap-10 relative z-10">
           <motion.div

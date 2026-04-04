@@ -126,7 +126,7 @@ export const Experience = () => {
                         className={`flex flex-col ${isEven ? 'md:items-start' : 'md:items-end'} w-full pl-10 md:pl-0 relative`}
                       >
                         <div className="w-full md:w-[45%]">
-                          <div className={`glass p-6 md:p-8 rounded-[1.5rem] md:rounded-[2rem] space-y-4 md:space-y-6 hover:border-primary/30 transition-all duration-500 ${isEven ? 'md:rounded-tl-none' : 'md:rounded-tr-none'}`}>
+                          <div className={`glass p-6 md:p-8 rounded-2xl md:rounded-3xl space-y-4 md:space-y-6 hover:border-primary/30 transition-all duration-500 ${isEven ? 'md:rounded-tl-none' : 'md:rounded-tr-none'}`}>
                             <div className="flex flex-wrap justify-between items-start gap-4">
                               <div className="space-y-1">
                                 <h4 className="text-lg md:text-2xl font-medium tracking-tight text-foreground">{role.role}</h4>

@@ -15,7 +15,7 @@ export const Projects = () => (
       
       <div className="grid grid-cols-1 gap-6">
         {PROJECTS.map((project, idx) => (
-          <div key={idx} className="group relative glass rounded-[2.5rem] overflow-hidden transition-all duration-500 hover:border-primary/30">
+          <div key={idx} className="group relative glass rounded-3xl md:rounded-3xl overflow-hidden transition-all duration-500 hover:border-primary/30">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 p-6 md:p-12">
               
               <div className="lg:col-span-8 space-y-6 md:space-y-8">

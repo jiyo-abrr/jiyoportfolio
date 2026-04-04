@@ -68,6 +68,14 @@ export const TECH_GROUPS: TechGroup[] = [
         name: "Figma",
         logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg",
       },
+      {
+        name: "HTML",
+        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
+      },
+      {
+        name: "CSS",
+        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg",
+      },
     ],
   },
   {
@@ -163,53 +171,15 @@ export const TECH_GROUPS: TechGroup[] = [
         name: "Webmin",
         logo: "https://cdn.simpleicons.org/webmin",
       },
-    ],
-  },
-  {
-    title: "Version Control",
-    items: [
       {
-        name: "Git",
-        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg",
-      },
-      {
-        name: "GitHub",
-        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg",
+        name: "Bash",
+        logo: "/bash-icon.svg",
         invertLogo: true,
       },
       {
-        name: "GitLab",
-        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/gitlab/gitlab-original.svg",
-      },
-      {
-        name: "Bitbucket",
-        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bitbucket/bitbucket-original.svg",
-      },
-      {
-        name: "Fork",
-        logo: "https://git-fork.com/favicon.ico",
-      },
-    ],
-  },
-  {
-    title: "Platforms & OS",
-    items: [
-      {
-        name: "MacOS",
-        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apple/apple-original.svg",
+        name: "Makefile",
+        logo: "/code-icon.svg",
         invertLogo: true,
-      },
-      {
-        name: "Ubuntu",
-        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ubuntu/ubuntu-original.svg",
-      },
-      {
-        name: "Debian",
-        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/debian/debian-original.svg",
-      },
-      {
-        name: "Windows",
-        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/windows8/windows8-original.svg",
       },
     ],
   },
@@ -232,6 +202,62 @@ export const TECH_GROUPS: TechGroup[] = [
       {
         name: "Anaconda",
         logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/anaconda/anaconda-original.svg",
+      },
+      {
+        name: "DBeaver",
+        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dbeaver/dbeaver-original.svg",
+      },
+      {
+        name: "DBngin",
+        logo: "/dbngin.svg",
+      },
+    ],
+  },
+  {
+    title: "Version Control",
+    items: [
+      {
+        name: "Git",
+        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg",
+      },
+      {
+        name: "GitHub",
+        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg",
+        invertLogo: true,
+      },
+      {
+        name: "Fork",
+        logo: "https://git-fork.com/favicon.ico",
+      },
+      {
+        name: "Bitbucket",
+        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bitbucket/bitbucket-original.svg",
+      },
+      {
+        name: "GitLab",
+        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/gitlab/gitlab-original.svg",
+      },
+    ],
+  },
+  {
+    title: "Platforms & OS",
+    items: [
+      {
+        name: "MacOS",
+        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apple/apple-original.svg",
+        invertLogo: true,
+      },
+      {
+        name: "Ubuntu",
+        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ubuntu/ubuntu-original.svg",
+      },
+      {
+        name: "Debian",
+        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/debian/debian-original.svg",
+      },
+      {
+        name: "Windows",
+        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/windows8/windows8-original.svg",
       },
     ],
   },

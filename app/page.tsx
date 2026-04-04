@@ -44,9 +44,11 @@ export default function Portfolio() {
             <Hero />
           </div>
 
-          <LogoMarquee />
+          <div className="-mt-8 md:mt-0 relative z-20">
+            <LogoMarquee />
+          </div>
 
-          <div className="container mx-auto px-6 py-20 md:py-32 max-w-5xl space-y-24 md:space-y-48">
+          <div className="container mx-auto px-6 pt-32 pb-20 md:py-32 max-w-5xl space-y-24 md:space-y-48">
             <About />
             <Experience />
             <Projects />

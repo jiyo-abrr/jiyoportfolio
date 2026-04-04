@@ -34,7 +34,7 @@ export const TechStacks = () => (
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1 }}
-              className="group flex flex-col md:flex-row md:items-start gap-6 md:gap-12 p-6 md:p-8 rounded-[2rem] md:rounded-[2.5rem] glass hover:border-primary/30 transition-all duration-500"
+              className="group flex flex-col md:flex-row md:items-start gap-6 md:gap-12 p-6 md:p-8 rounded-2xl md:rounded-3xl glass hover:border-primary/30 transition-all duration-500"
             >
               <h3 className="text-xs md:text-sm font-semibold uppercase tracking-widest text-muted-foreground md:w-48 shrink-0 md:pt-4">
                 {group.title}
@@ -80,7 +80,7 @@ export const Education = () => (
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-stretch">
           {/* Left Column: Education Info */}
           <div className="flex flex-col gap-8">
-            <div className="flex items-start md:items-center gap-6 md:gap-8 bg-secondary/5 p-6 md:p-8 rounded-[2.5rem] border border-border/50 h-full justify-center">
+            <div className="flex items-start md:items-center gap-6 md:gap-8 bg-secondary/5 p-6 md:p-8 rounded-3xl md:rounded-3xl border border-border/50 h-full justify-center">
               <motion.div
                 whileHover={{ scale: 1.1 }}
                 className="relative h-20 w-20 md:h-24 md:w-24 shrink-0"
@@ -102,7 +102,7 @@ export const Education = () => (
               </div>
             </div>
 
-            <div className="space-y-8 bg-secondary/5 p-6 md:p-8 rounded-[2.5rem] border border-border/50">
+            <div className="space-y-8 bg-secondary/5 p-6 md:p-8 rounded-3xl md:rounded-3xl border border-border/50">
               <div className="space-y-4">
                 <p className="text-xl md:text-2xl text-primary font-medium tracking-tight">
                   Bachelor of Science in Computer Science
@@ -146,7 +146,7 @@ export const Education = () => (
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               style={{ contain: 'paint' }}
-              className="relative w-full h-full glass rounded-[2.5rem] border border-border/40 shadow-2xl overflow-hidden flex items-center justify-center group hover:border-primary/20 transition-all duration-700"
+              className="relative w-full h-full glass rounded-3xl md:rounded-3xl border border-border/40 shadow-2xl overflow-hidden flex items-center justify-center group hover:border-primary/20 transition-all duration-700"
             >
               <Lanyard />
               <div className="absolute top-8 left-8 w-1.5 h-1.5 rounded-full bg-primary/20" />
