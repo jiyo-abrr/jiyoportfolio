@@ -85,7 +85,7 @@ export const Education = () => (
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-stretch">
           {/* Left Column: Education Info */}
           <div className="flex flex-col gap-8">
-            <div className="flex items-start md:items-center gap-6 md:gap-8 bg-secondary/5 p-6 md:p-8 rounded-xl md:rounded-xl border border-border/50 h-full justify-center">
+            <div className="flex flex-col sm:flex-row items-center sm:items-center gap-6 md:gap-8 bg-secondary/5 p-8 md:p-8 rounded-xl md:rounded-xl border border-border/50 h-full justify-center text-center sm:text-left">
               <motion.div
                 whileHover={{ scale: 1.1 }}
                 className="relative h-20 w-20 md:h-24 md:w-24 shrink-0"
@@ -98,7 +98,7 @@ export const Education = () => (
                 />
               </motion.div>
               <div className="space-y-2">
-                <h3 className="text-xl md:text-3xl font-medium tracking-tight text-foreground leading-tight">
+                <h3 className="text-xl md:text-3xl font-medium tracking-tight text-foreground leading-tight px-4 sm:px-0">
                   Polytechnic University of the Philippines
                 </h3>
                 <p className="text-sm md:text-lg text-muted-foreground font-light italic">
@@ -109,14 +109,14 @@ export const Education = () => (
 
             <div className="space-y-8 bg-secondary/5 p-6 md:p-8 rounded-xl md:rounded-xl border border-border/50">
               <div className="space-y-4">
-                <p className="text-xl md:text-2xl text-primary font-medium tracking-tight">
+                <p className="text-xl md:text-2xl text-primary font-medium tracking-tight text-center sm:text-left">
                   Bachelor of Science in Computer Science
                 </p>
-                <div className="flex flex-wrap items-center gap-3 font-mono text-[10px] md:text-sm text-muted-foreground">
-                  <span className="px-3 py-1.5 rounded bg-secondary/30 border border-border shadow-sm">
+                <div className="flex flex-wrap items-center justify-center sm:justify-start gap-3 font-mono text-[10px] md:text-sm text-muted-foreground">
+                  <span className="px-3 py-1.5 rounded bg-secondary/30 border border-border shadow-sm whitespace-nowrap">
                     Oct 2021 – Sep 2025
                   </span>
-                  <span className="px-3 py-1.5 rounded bg-primary/10 border border-primary/20 shadow-sm text-primary font-bold">
+                  <span className="px-3 py-1.5 rounded bg-primary/10 border border-primary/20 shadow-sm text-primary font-bold whitespace-nowrap text-center">
                     DOST-SEI Undergraduate Scholar
                   </span>
                 </div>
@@ -124,7 +124,7 @@ export const Education = () => (
 
               {/* GWA and Honors Cards */}
               <div className="grid grid-cols-2 gap-4">
-                <div className="glass p-6 md:p-8 rounded-xl flex flex-col justify-center items-center text-center group hover:border-primary/20 transition-all">
+                <div className="glass p-5 md:p-8 rounded-xl flex flex-col justify-center items-center text-center group hover:border-primary/20 transition-all">
                   <p className="text-3xl md:text-4xl font-light text-primary group-hover:scale-110 transition-transform">
                     1.29
                   </p>
@@ -132,7 +132,7 @@ export const Education = () => (
                     Cumulative GWA
                   </p>
                 </div>
-                <div className="glass p-6 md:p-8 rounded-xl flex flex-col justify-center items-center text-center group hover:border-primary/20 transition-all">
+                <div className="glass p-5 md:p-8 rounded-xl flex flex-col justify-center items-center text-center group hover:border-primary/20 transition-all">
                   <p className="text-lg md:text-xl font-medium text-foreground group-hover:text-primary transition-colors">
                     Magna Cum Laude
                   </p>
@@ -145,7 +145,7 @@ export const Education = () => (
           </div>
 
           {/* Right Column: Identity Port (Lanyard) */}
-          <div className="h-[500px] lg:h-auto min-h-[500px] w-full relative">
+          <div className="h-[400px] md:h-[500px] lg:h-auto min-h-[400px] md:min-h-[500px] w-full relative">
             <motion.div 
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
@@ -160,7 +160,7 @@ export const Education = () => (
                 BATCH 2025
               </div>
             </motion.div>
-            <div className="absolute inset-x-12 inset-y-12 bg-primary/5 blur-[80px] -z-10 rounded-full" />
+            <div className="absolute inset-x-12 inset-y-12 bg-primary/5 blur-[60px] md:blur-[80px] -z-10 rounded-full" />
           </div>
         </div>
       </div>

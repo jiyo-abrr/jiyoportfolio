@@ -9,10 +9,10 @@ import { useScroll, useSpring, useTransform } from "framer-motion";
 import { EXPERIENCES } from "@/lib/data/experience";
 
 const TimelineNode = ({ progress, threshold, isHovered }: { progress: any, threshold: number, isHovered: boolean }) => {
-  const isActive = useTransform(progress, [threshold - 0.1, threshold], [0, 1]);
-  const scale = useTransform(progress, [threshold - 0.1, threshold], [0.8, 1]);
-  const opacity = useTransform(progress, [threshold - 0.1, threshold], [0.3, 1]);
-  const glowOpacity = useTransform(progress, [threshold - 0.05, threshold], [0, 1]);
+  const isActive = useTransform(progress, [threshold - 0.01, threshold], [0, 1]);
+  const scale = useTransform(progress, [threshold - 0.01, threshold], [0.8, 1]);
+  const opacity = useTransform(progress, [threshold - 0.01, threshold], [0.3, 1]);
+  const glowOpacity = useTransform(progress, [threshold - 0.01, threshold], [0, 1]);
 
   return (
     <div className="absolute left-4 md:left-1/2 top-[19px] md:top-8 z-30 -translate-x-1/2">
