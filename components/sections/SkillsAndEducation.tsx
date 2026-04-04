@@ -8,7 +8,7 @@ import dynamic from "next/dynamic";
 
 const Lanyard = dynamic(() => import("@/components/visuals/Lanyard").then(mod => mod.Lanyard), { 
   ssr: false,
-  loading: () => <div className="w-full h-full bg-primary/5 rounded-3xl animate-pulse" />
+  loading: () => <div className="w-full h-full bg-primary/5 rounded-xl animate-pulse" />
 });
 
 export const TechStacks = () => (
@@ -26,7 +26,7 @@ export const TechStacks = () => (
           </p>
         </div>
 
-        <div className="glass rounded-2xl border border-border/50 overflow-hidden shadow-xl backdrop-blur-md">
+        <div className="glass rounded-xl border border-border/50 overflow-hidden shadow-xl backdrop-blur-md">
           <div className="divide-y divide-border/10">
             {TECH_GROUPS.map((group, idx) => (
               <motion.div
@@ -85,7 +85,7 @@ export const Education = () => (
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-stretch">
           {/* Left Column: Education Info */}
           <div className="flex flex-col gap-8">
-            <div className="flex items-start md:items-center gap-6 md:gap-8 bg-secondary/5 p-6 md:p-8 rounded-3xl md:rounded-3xl border border-border/50 h-full justify-center">
+            <div className="flex items-start md:items-center gap-6 md:gap-8 bg-secondary/5 p-6 md:p-8 rounded-xl md:rounded-xl border border-border/50 h-full justify-center">
               <motion.div
                 whileHover={{ scale: 1.1 }}
                 className="relative h-20 w-20 md:h-24 md:w-24 shrink-0"
@@ -107,7 +107,7 @@ export const Education = () => (
               </div>
             </div>
 
-            <div className="space-y-8 bg-secondary/5 p-6 md:p-8 rounded-3xl md:rounded-3xl border border-border/50">
+            <div className="space-y-8 bg-secondary/5 p-6 md:p-8 rounded-xl md:rounded-xl border border-border/50">
               <div className="space-y-4">
                 <p className="text-xl md:text-2xl text-primary font-medium tracking-tight">
                   Bachelor of Science in Computer Science
@@ -124,7 +124,7 @@ export const Education = () => (
 
               {/* GWA and Honors Cards */}
               <div className="grid grid-cols-2 gap-4">
-                <div className="glass p-6 md:p-8 rounded-2xl flex flex-col justify-center items-center text-center group hover:border-primary/20 transition-all">
+                <div className="glass p-6 md:p-8 rounded-xl flex flex-col justify-center items-center text-center group hover:border-primary/20 transition-all">
                   <p className="text-3xl md:text-4xl font-light text-primary group-hover:scale-110 transition-transform">
                     1.29
                   </p>
@@ -132,7 +132,7 @@ export const Education = () => (
                     Cumulative GWA
                   </p>
                 </div>
-                <div className="glass p-6 md:p-8 rounded-2xl flex flex-col justify-center items-center text-center group hover:border-primary/20 transition-all">
+                <div className="glass p-6 md:p-8 rounded-xl flex flex-col justify-center items-center text-center group hover:border-primary/20 transition-all">
                   <p className="text-lg md:text-xl font-medium text-foreground group-hover:text-primary transition-colors">
                     Magna Cum Laude
                   </p>
@@ -151,7 +151,7 @@ export const Education = () => (
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               style={{ contain: 'paint' }}
-              className="relative w-full h-full glass rounded-3xl md:rounded-3xl border border-border/40 shadow-2xl overflow-hidden flex items-center justify-center group hover:border-primary/20 transition-all duration-700"
+              className="relative w-full h-full glass rounded-xl md:rounded-xl border border-border/40 shadow-2xl overflow-hidden flex items-center justify-center group hover:border-primary/20 transition-all duration-700"
             >
               <Lanyard />
               <div className="absolute top-8 left-8 w-1.5 h-1.5 rounded-full bg-primary/20" />
