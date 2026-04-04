@@ -8,6 +8,45 @@ import { useState, useRef } from "react";
 import { useScroll, useSpring, useTransform } from "framer-motion";
 import { EXPERIENCES } from "@/lib/data/experience";
 
+const TimelineNode = ({ progress, threshold, isHovered }: { progress: any, threshold: number, isHovered: boolean }) => {
+  const isActive = useTransform(progress, [threshold - 0.1, threshold], [0, 1]);
+  const scale = useTransform(progress, [threshold - 0.1, threshold], [0.8, 1]);
+  const opacity = useTransform(progress, [threshold - 0.1, threshold], [0.3, 1]);
+  const glowOpacity = useTransform(progress, [threshold - 0.05, threshold], [0, 1]);
+
+  return (
+    <div className="absolute left-4 md:left-1/2 top-[19px] md:top-8 z-30 -translate-x-1/2">
+      <motion.div 
+        style={{ 
+          scale: isHovered ? 1.4 : scale,
+          opacity: opacity,
+        }}
+        className="h-3 w-3 rounded-full bg-primary border-2 border-background ring-4 ring-primary/5 relative z-10 transition-transform duration-300"
+      >
+        <motion.div 
+          style={{ opacity: glowOpacity }}
+          className="absolute inset-x-[-10px] inset-y-[-10px] bg-primary/20 blur-md rounded-full -z-10"
+        />
+      </motion.div>
+      
+      {/* Pulse Animation - Only when active */}
+      <motion.div 
+        style={{ opacity: isActive }}
+        animate={{ 
+          scale: [1, 1.5, 1],
+          opacity: [0.1, 0, 0.1]
+        }}
+        transition={{ 
+          duration: 3,
+          repeat: Infinity,
+          ease: "easeInOut"
+        }}
+        className="absolute inset-0 bg-primary rounded-full -z-10"
+      />
+    </div>
+  );
+};
+
 export const Experience = () => {
   const [hoveredCompany, setHoveredCompany] = useState<string | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -42,41 +81,20 @@ export const Experience = () => {
             className="absolute left-4 md:left-1/2 top-0 bottom-0 w-[2px] md:w-[3px] bg-gradient-to-b from-primary via-blue-400 to-blue-500 -translate-x-1/2 rounded-full origin-top z-10"
           />
 
-          
           <div className="space-y-24 md:space-y-32">
             {EXPERIENCES.map((company, companyIdx) => {
               const isEven = companyIdx % 2 === 0;
               const isHovered = hoveredCompany === company.id;
+              // FMC is at the start (0), Lamina is approx at 0.7 progress
+              const threshold = companyIdx === 0 ? 0.05 : 0.7;
               
               return (
                 <div key={companyIdx} className="relative">
-                  {/* Centered Node Dot - Fixed Alignment */}
-                  <div className="absolute left-4 md:left-1/2 top-[19px] md:top-8 z-30 -translate-x-1/2">
-                    <motion.div 
-                      initial={{ scale: 0.8, opacity: 0.4 }}
-                      whileInView={{ scale: 1, opacity: 0.8 }}
-                      viewport={{ once: true }}
-                      animate={{ 
-                        scale: isHovered ? 1.4 : 1,
-                        opacity: isHovered ? 1 : 0.8,
-                      }}
-                      className="h-3 w-3 rounded-full bg-primary border-2 border-background ring-4 ring-primary/5 shadow-[0_0_10px_rgba(59,130,246,0.5)]" 
-                    />
-                    
-                    {/* Subtle Pulse Animation */}
-                    <motion.div 
-                      animate={{ 
-                        scale: [1, 1.5, 1],
-                        opacity: [0.2, 0, 0.2]
-                      }}
-                      transition={{ 
-                        duration: 3,
-                        repeat: Infinity,
-                        ease: "easeInOut"
-                      }}
-                      className="absolute inset-0 bg-primary rounded-full -z-10"
-                    />
-                  </div>
+                  <TimelineNode 
+                    progress={pathScaleY} 
+                    threshold={threshold} 
+                    isHovered={isHovered} 
+                  />
 
                   {/* Company Header */}
                   <div className={`flex flex-col ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'} items-center gap-6 md:gap-12 relative z-20`}>

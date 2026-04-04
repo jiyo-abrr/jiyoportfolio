@@ -135,7 +135,7 @@ export const Contact = () => {
           </div>
 
           {/* Right Side: Form */}
-          <div className="glass rounded-[1.5rem] md:rounded-[2rem] p-6 md:p-8 shadow-xl shadow-primary/5 border-primary/10">
+          <div className="glass rounded-xl p-6 md:p-8 shadow-xl shadow-primary/5 border-primary/10">
             <form onSubmit={handleSubmit} className="space-y-4 md:space-y-5">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
                 <div className="space-y-1.5">
@@ -149,7 +149,7 @@ export const Contact = () => {
                     value={formState.name}
                     onChange={(e) => setFormState({...formState, name: e.target.value})}
                     suppressHydrationWarning
-                    className="w-full h-11 md:h-12 bg-background border border-border/50 rounded-xl px-5 text-sm focus:outline-none focus:border-primary/50 transition-all placeholder:text-muted-foreground/30 shadow-inner"
+                    className="w-full h-11 md:h-12 bg-background border border-border/50 rounded-lg px-5 text-sm focus:outline-none focus:border-primary/50 transition-all placeholder:text-muted-foreground/30 shadow-inner"
                   />
                 </div>
                 <div className="space-y-1.5">
@@ -163,7 +163,7 @@ export const Contact = () => {
                     value={formState.email}
                     onChange={(e) => setFormState({...formState, email: e.target.value})}
                     suppressHydrationWarning
-                    className="w-full h-11 md:h-12 bg-background border border-border/50 rounded-xl px-5 text-sm focus:outline-none focus:border-primary/50 transition-all placeholder:text-muted-foreground/30 shadow-inner"
+                    className="w-full h-11 md:h-12 bg-background border border-border/50 rounded-lg px-5 text-sm focus:outline-none focus:border-primary/50 transition-all placeholder:text-muted-foreground/30 shadow-inner"
                   />
                 </div>
               </div>
@@ -179,7 +179,7 @@ export const Contact = () => {
                   value={formState.subject}
                   onChange={(e) => setFormState({...formState, subject: e.target.value})}
                   suppressHydrationWarning
-                  className="w-full h-11 md:h-12 bg-background border border-border/50 rounded-xl px-5 text-sm focus:outline-none focus:border-primary/50 transition-all placeholder:text-muted-foreground/30 shadow-inner"
+                  className="w-full h-11 md:h-12 bg-background border border-border/50 rounded-lg px-5 text-sm focus:outline-none focus:border-primary/50 transition-all placeholder:text-muted-foreground/30 shadow-inner"
                 />
               </div>
 
@@ -200,7 +200,7 @@ export const Contact = () => {
                     target.style.height = target.scrollHeight + 'px';
                   }}
                   suppressHydrationWarning
-                  className="w-full bg-background border border-border/50 rounded-xl p-5 text-sm focus:outline-none focus:border-primary/50 transition-all placeholder:text-muted-foreground/30 shadow-inner resize-none min-h-[120px] max-h-[400px]"
+                  className="w-full bg-background border border-border/50 rounded-lg p-5 text-sm focus:outline-none focus:border-primary/50 transition-all placeholder:text-muted-foreground/30 shadow-inner resize-none min-h-[120px] max-h-[400px]"
                 />
               </div>
 
@@ -210,7 +210,7 @@ export const Contact = () => {
                 disabled={isSending}
                 type="submit"
                 suppressHydrationWarning
-                className="w-full h-12 md:h-14 bg-foreground text-background rounded-xl font-semibold flex items-center justify-center gap-3 hover:bg-primary transition-all duration-500 disabled:opacity-50 shadow-lg shadow-primary/10"
+                className="w-full h-12 md:h-14 bg-foreground text-background rounded-lg font-semibold flex items-center justify-center gap-3 hover:bg-primary transition-all duration-500 disabled:opacity-50 shadow-lg shadow-primary/10"
               >
                 {isSending ? (
                   <>
@@ -235,7 +235,7 @@ export const Contact = () => {
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -10 }}
-                    className={`p-4 rounded-xl text-center text-xs font-bold uppercase tracking-widest ${
+                    className={`p-4 rounded-lg text-center text-xs font-bold uppercase tracking-widest ${
                       status === "success" ? "bg-emerald-500/10 text-emerald-500 border border-emerald-500/20" : "bg-red-500/10 text-red-500 border border-red-500/20"
                     }`}
                   >
