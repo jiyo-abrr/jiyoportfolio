@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
 
-const navItems = ["About", "Experience", "Projects", "Skills", "Education", "Contact"];
+const navItems = ["About", "Experience", "Education", "Skills", "Projects", "Contact"];
 
 export const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -34,7 +34,7 @@ export const Header = () => {
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
         >
           <span className="text-lg md:text-xl font-bold tracking-tighter text-foreground">
-            <span className="text-primary">{"</"}</span>jiyo.dev
+            <span className="text-primary">{"< "}</span>jiyo.dev<span className="text-primary">{" />"}</span>
           </span>
         </motion.div>
 

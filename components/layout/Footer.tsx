@@ -12,9 +12,9 @@ export const Footer = () => {
           <div className="flex flex-row items-center justify-between">
             <div className="flex items-center gap-2">
               <p className="text-3xl font-medium tracking-tighter text-foreground">
-                <span className="text-primary">{"<"}</span>
+                <span className="text-primary">{"< "}</span>
                 jiyo.dev
-                <span className="text-primary">{"/>"}</span>
+                <span className="text-primary">{" />"}</span>
               </p>
             </div>
 

@@ -38,22 +38,22 @@ export default function Portfolio() {
       <Header />
 
       {/* Main Content Area */}
-      <div className="relative z-10 w-full">
+      <div className="relative z-10 w-full overflow-x-hidden">
         <div className="flex flex-col">
           <div className="container mx-auto px-6 max-w-5xl">
             <Hero />
           </div>
 
-          <div className="-mt-8 md:mt-0 relative z-20">
+          <div className="relative z-20 mt-12 md:mt-20">
             <LogoMarquee />
           </div>
 
-          <div className="container mx-auto px-6 pt-32 pb-20 md:py-32 max-w-5xl space-y-24 md:space-y-48">
+          <div className="container mx-auto px-6 pt-16 md:pt-24 pb-20 md:py-32 max-w-5xl space-y-24 md:space-y-48">
             <About />
             <Experience />
-            <Projects />
-            <TechStacks />
             <Education />
+            <TechStacks />
+            <Projects />
             <Contact />
           </div>
 

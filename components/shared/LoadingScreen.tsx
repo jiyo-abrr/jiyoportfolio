@@ -52,11 +52,11 @@ export const LoadingScreen = () => {
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
-              className="text-5xl md:text-6xl font-bold tracking-tighter text-foreground flex items-center"
+              className="text-5xl md:text-6xl font-bold text-foreground flex items-center"
             >
-              <span className="text-primary mr-1">{"<"}</span>
+              <span className="text-primary">{"< "}</span>
               jiyo.dev
-              <span className="text-primary ml-1">{"/>"}</span>
+              <span className="text-primary">{" />"}</span>
             </motion.div>
 
             {/* Roles/Initializing Section */}

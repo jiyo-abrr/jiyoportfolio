@@ -2,6 +2,8 @@ export interface TechItem {
   name: string;
   logo: string;
   invertLogo?: boolean;
+  brandColor?: string;
+  tag?: string;
 }
 
 export interface TechGroup {
@@ -16,14 +18,20 @@ export const TECH_GROUPS: TechGroup[] = [
       {
         name: "Python",
         logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
+        brandColor: "#3776AB",
+        tag: "Program Language"
       },
       {
         name: "TypeScript",
         logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg",
+        brandColor: "#3178C6",
+        tag: "Typed Language"
       },
       {
         name: "JavaScript",
         logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
+        brandColor: "#F7DF1E",
+        tag: "Scripting"
       },
       {
         name: "PHP",
@@ -50,18 +58,26 @@ export const TECH_GROUPS: TechGroup[] = [
         name: "Next.js",
         logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg",
         invertLogo: true,
+        brandColor: "#000000",
+        tag: "Fullstack"
       },
       {
         name: "React.js",
         logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+        brandColor: "#61DAFB",
+        tag: "UI Library"
       },
       {
         name: "Vue.js",
         logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg",
+        brandColor: "#4FC08D",
+        tag: "UI Framework"
       },
       {
         name: "Tailwind CSS",
         logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg",
+        brandColor: "#06B6D4",
+        tag: "Styling"
       },
       {
         name: "Material UI",
@@ -88,14 +104,20 @@ export const TECH_GROUPS: TechGroup[] = [
       {
         name: "FastAPI",
         logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg",
+        brandColor: "#05998B",
+        tag: "Server Language"
       },
       {
         name: "Laravel",
         logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-original.svg",
+        brandColor: "#FF2D20",
+        tag: "MVC PHP"
       },
       {
         name: "Node.js",
         logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
+        brandColor: "#339933",
+        tag: "Runtime"
       },
       {
         name: "SpringBoot",
@@ -132,14 +154,20 @@ export const TECH_GROUPS: TechGroup[] = [
       {
         name: "MySQL",
         logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg",
+        brandColor: "#4479A1",
+        tag: "SQL DB"
       },
       {
         name: "PostgreSQL",
         logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg",
+        brandColor: "#4169E1",
+        tag: "Relational"
       },
       {
         name: "Redis",
         logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg",
+        brandColor: "#DC382D",
+        tag: "In-Memory"
       },
       {
         name: "Elasticsearch",

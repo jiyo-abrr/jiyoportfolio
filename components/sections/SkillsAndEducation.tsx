@@ -5,76 +5,313 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { TECH_GROUPS } from "@/lib/data/tech-stacks";
 import dynamic from "next/dynamic";
+import { useState, useRef } from "react";
+import { ChevronDown, ChevronUp } from "lucide-react";
+import { AnimatePresence } from "framer-motion";
+
+const CORE_TECH = [
+  { name: "Python", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg", brandColor: "#3776AB", tag: "Program Language" },
+  { name: "TypeScript", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg", brandColor: "#3178C6", tag: "Typed Language" },
+  { name: "FastAPI", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg", brandColor: "#05998B", tag: "Server Language" },
+  { name: "Node.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg", brandColor: "#339933", tag: "Runtime" },
+  { name: "Next.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg", invertLogo: true, brandColor: "#000000", tag: "Fullstack" },
+  { name: "Tailwind CSS", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg", brandColor: "#06B6D4", tag: "Styling" },
+  { name: "MySQL", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg", brandColor: "#4479A1", tag: "SQL DB" },
+  { name: "Ubuntu", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ubuntu/ubuntu-original.svg", brandColor: "#E95420", tag: "Server OS" },
+];
 
 const Lanyard = dynamic(() => import("@/components/visuals/Lanyard").then(mod => mod.Lanyard), { 
   ssr: false,
   loading: () => <div className="w-full h-full bg-primary/5 rounded-xl animate-pulse" />
 });
 
-export const TechStacks = () => (
-  <SectionWrapper>
-    <section id="skills" className="py-12 md:py-20">
-      <div className="space-y-12">
-        <div className="space-y-4">
-          <span className="section-title">04. Technical Arsenal</span>
-          <h2 className="text-4xl md:text-6xl font-medium tracking-tight text-foreground">
-            Tech Stacks
-          </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl font-light">
-            A curated selection of tools and technologies I use to build robust,
-            scalable systems.
-          </p>
-        </div>
-
-        <div className="glass rounded-xl border border-border/50 overflow-hidden shadow-xl backdrop-blur-md">
-          <div className="divide-y divide-border/10">
-            {TECH_GROUPS.map((group, idx) => (
-              <motion.div
-                key={group.title}
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.05 }}
-                className="group grid grid-cols-1 lg:grid-cols-[280px,1fr] gap-4 md:gap-8 p-6 md:p-8 hover:bg-primary/[0.01] transition-all duration-300 items-start border-l-2 border-l-transparent hover:border-l-primary/40"
-              >
-                <div className="flex flex-col gap-1.5 md:pt-1">
-                  <h3 className="text-xs md:text-sm font-bold uppercase tracking-[0.2em] text-muted-foreground/80 group-hover:text-primary transition-colors duration-300">
-                    {group.title}
-                  </h3>
-                  <div className="h-0.5 w-8 bg-border group-hover:bg-primary/40 group-hover:w-12 transition-all duration-500 rounded-full" />
-                </div>
-
-                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-x-6 gap-y-4 md:gap-y-8">
-                  {group.items.map((item) => (
-                    <motion.div
-                      key={item.name}
-                      whileHover={{ scale: 1.1, y: -2 }}
-                      className="flex flex-col items-center gap-2 transition-all duration-300 group/item min-h-[50px] justify-start pt-2"
-                    >
-                      <div className="relative w-6 h-6 md:w-7 md:h-7 shrink-0">
-                        <Image
-                          src={item.logo}
-                          alt={item.name}
-                          fill
-                          className={`object-contain transition-all duration-500 ${
-                            item.invertLogo ? "dark:invert" : ""
-                          }`}
-                        />
-                      </div>
-                      <span className="text-[8px] md:text-[9px] font-bold text-muted-foreground/60 group-hover/item:text-primary uppercase tracking-widest transition-all duration-300 mt-1 whitespace-nowrap">
-                        {item.name}
-                      </span>
-                    </motion.div>
-                  ))}
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
+const StaticLanyardCard = () => (
+  <div className="flex flex-col gap-6 items-center w-full">
+    <motion.div 
+      initial={{ opacity: 0, scale: 0.95 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      viewport={{ once: true }}
+      className="relative w-[280px] h-[400px] rounded-2xl overflow-hidden shadow-2xl border border-white/10"
+    >
+      <Image 
+        src="/Abarre.JPG" 
+        alt="Identity Photo" 
+        fill 
+        className="object-cover"
+        priority
+      />
+    </motion.div>
+    
+    <div className="flex items-center justify-between w-[280px]">
+      <div className="relative w-12 h-12 opacity-40 -ml-1">
+        <Image 
+          src="/jiyo-logo.png" 
+          alt="Jiyo Logo" 
+          fill 
+          className="object-contain" 
+        />
       </div>
-    </section>
-  </SectionWrapper>
+      <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-muted-foreground/40 whitespace-nowrap -mr-1">
+        BATCH 2025
+      </span>
+    </div>
+  </div>
 );
+
+const TechIcon = ({ 
+  item, 
+  index, 
+  isExpanded, 
+  snappySmoothSpring 
+}: { 
+  item: any, 
+  index: number, 
+  isExpanded: boolean, 
+  snappySmoothSpring: any 
+}) => {
+  const isCore = !isExpanded;
+  const staggerDelay = isCore ? index * 0.15 : index * 0.08;
+  const cycleTime = isCore ? 4.0 : 10.0;
+  const [isHovering, setIsHovering] = useState(false);
+
+  return (
+    <motion.div
+      layoutId={`tech-item-${item.name}`}
+      onHoverStart={() => setIsHovering(true)}
+      onHoverEnd={() => setIsHovering(false)}
+      initial={{ opacity: 0, scale: 0.8 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ ...snappySmoothSpring, delay: index * 0.05 }}
+      whileHover={{ scale: 1.15, y: -8 }}
+      className="flex flex-col items-center gap-2 md:gap-4 cursor-pointer relative group/item"
+    >
+      <motion.div 
+        layoutId={`tech-logo-container-${item.name}`}
+        transition={snappySmoothSpring}
+        style={{ "--brand-color": item.brandColor || "#3b82f6" } as any}
+        className="relative w-10 h-10 md:w-12 md:h-12 shrink-0 transition-all duration-500 rounded-full flex items-center justify-center"
+      >
+        {/* The Sequential "Scan" Smooth Glow (Vibrant & High-Z for Mobile) */}
+        <motion.div
+          animate={isHovering ? { opacity: 0 } : { 
+            opacity: [0, 1, 0],
+            scale: [1, 1.6, 1],
+          }}
+          transition={{ 
+            duration: 1.5, 
+            delay: isHovering ? 0 : staggerDelay, 
+            repeat: Infinity,
+            repeatDelay: Math.max(0, cycleTime - 1.5), 
+            ease: "easeInOut"
+          }}
+          className="absolute inset-[-28px] pointer-events-none z-10 rounded-full bg-[var(--brand-color)]/50 blur-3xl"
+        />
+
+        {/* The Intense Local Hover Glow (Steady Ambient Halo) */}
+        <motion.div
+          animate={{ 
+            opacity: isHovering ? 1.0 : 0,
+            scale: isHovering ? 1.8 : 1,
+          }}
+          transition={{ 
+            duration: 0.5,
+            ease: "easeOut" 
+          }}
+          className="absolute inset-[-28px] pointer-events-none z-10 rounded-full bg-[var(--brand-color)]/60 blur-3xl"
+        />
+
+        <div className="relative w-full h-full z-20 group-hover/item:drop-shadow-[0_0_20px_var(--brand-color)] transition-all duration-300">
+          <Image
+            src={item.logo}
+            alt={item.name}
+            fill
+            className={`object-contain transition-all duration-500 ${
+              item.invertLogo ? "dark:invert" : ""
+            }`}
+          />
+        </div>
+      </motion.div>
+      
+      <motion.span 
+        layoutId={`tech-name-${item.name}`}
+        transition={snappySmoothSpring}
+        className="text-[9px] md:text-[11px] font-bold text-muted-foreground/60 uppercase tracking-widest whitespace-nowrap group-hover/item:text-primary transition-colors"
+      >
+        {item.name}
+      </motion.span>
+
+      {item.tag && (
+        <motion.span 
+          initial={{ opacity: 0, scale: 0.8 }}
+          whileHover={{ opacity: 1, scale: 1 }}
+          className="px-2 py-0.5 rounded-full bg-primary/10 border border-primary/20 text-[7px] md:text-[8px] font-bold text-primary opacity-0 pointer-events-none group-hover/item:opacity-100 transition-all whitespace-nowrap mt-1"
+        >
+          {item.tag}
+        </motion.span>
+      )}
+    </motion.div>
+  );
+};
+
+export const TechStacks = () => {
+  const [isExpanded, setIsExpanded] = useState(false);
+  const sectionRef = useRef<HTMLDivElement>(null);
+
+  const snappySmoothSpring = {
+    type: "spring" as const,
+    stiffness: 220,
+    damping: 24,
+    mass: 1
+  };
+
+  const toggleExpanded = () => {
+    if (isExpanded) {
+      // Scroll back up to the top of the section when collapsing
+      sectionRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+    setIsExpanded(!isExpanded);
+  };
+
+  return (
+    <SectionWrapper>
+      <section 
+        id="skills" 
+        ref={sectionRef}
+        className="py-12 md:py-20 overflow-visible scroll-mt-32"
+      >
+        <div className="space-y-12">
+          {/* Header Info */}
+          <div className="space-y-4">
+            <span className="section-title">04. Technical Arsenal</span>
+            <h2 className="text-4xl md:text-6xl font-medium tracking-tight text-foreground">
+              Tech Stacks
+            </h2>
+            <p className="text-muted-foreground text-lg max-w-2xl font-light">
+              A curated selection of tools and technologies I use to build robust,
+              scalable systems.
+            </p>
+          </div>
+
+          {/* Unified Seamless Container (Overflow-visible to prevent box clipping) */}
+          <motion.div 
+            layout
+            transition={snappySmoothSpring}
+            className="glass rounded-3xl border border-border/50 shadow-2xl backdrop-blur-md relative group/main"
+          >
+            <motion.div layout className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
+            
+            {/* Animated Border Sweep */}
+            <div className="absolute inset-x-0 top-0 h-[1.5px] bg-gradient-to-r from-transparent via-primary/40 to-transparent animate-scan-x" />
+            
+            
+            <div className="flex flex-col relative min-h-[300px]">
+              <AnimatePresence initial={false}>
+                {!isExpanded ? (
+                  /* Core Tech Preview AREA */
+                  <motion.div 
+                    key="core-preview"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0, position: "absolute", top: 0, left: 0, right: 0 }}
+                    transition={snappySmoothSpring}
+                    className="p-8 md:p-12 space-y-10 w-full"
+                  >
+                    <div className="flex flex-col gap-1.5">
+                      <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-primary/80">
+                        Core Technologies I worked daily
+                      </h3>
+                      <div className="h-0.5 w-12 bg-primary/40 rounded-full" />
+                    </div>
+
+                    <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-4 lg:grid-cols-8 gap-8 md:gap-12">
+                      {CORE_TECH.map((item, idx) => (
+                        <TechIcon 
+                          key={item.name} 
+                          item={item} 
+                          index={idx} 
+                          isExpanded={isExpanded} 
+                          snappySmoothSpring={snappySmoothSpring} 
+                        />
+                      ))}
+                    </div>
+                  </motion.div>
+                ) : (
+                  /* Full Catalog AREA */
+                  <motion.div
+                    key="full-catalog"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={snappySmoothSpring}
+                    className="w-full"
+                  >
+                    <div className="divide-y divide-border/10">
+                      {TECH_GROUPS.map((group, gIdx) => (
+                        <div key={group.title} className="p-8 md:p-10">
+                           <motion.div
+                             initial={{ opacity: 0, x: -20 }}
+                             animate={{ opacity: 1, x: 0 }}
+                             transition={{ delay: gIdx * 0.05 }}
+                             className="grid grid-cols-1 lg:grid-cols-[280px,1fr] gap-4 md:gap-8 hover:bg-primary/[0.02] transition-colors duration-500 items-start"
+                           >
+                            <div className="flex flex-col gap-1.5 md:pt-1">
+                              <h3 className="text-xs md:text-sm font-bold uppercase tracking-[0.2em] text-muted-foreground/80">
+                                {group.title}
+                              </h3>
+                              <div className="h-0.5 w-8 bg-border rounded-full" />
+                            </div>
+
+                            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-x-6 gap-y-10">
+                              {(() => {
+                                let globalIndexOffset = 0;
+                                for (let i = 0; i < gIdx; i++) {
+                                  globalIndexOffset += TECH_GROUPS[i].items.length;
+                                }
+                                return group.items.map((item, iIdx) => (
+                                  <TechIcon 
+                                    key={item.name} 
+                                    item={item} 
+                                    index={globalIndexOffset + iIdx} 
+                                    isExpanded={isExpanded} 
+                                    snappySmoothSpring={snappySmoothSpring} 
+                                  />
+                                ));
+                              })()}
+                            </div>
+                           </motion.div>
+                        </div>
+                      ))}
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+
+              {/* Expansion Button Area */}
+              <motion.div layout className="p-6 flex justify-center bg-gradient-to-t from-background/5 to-transparent border-t border-border/5 mt-auto">
+                <button 
+                  onClick={toggleExpanded}
+                  className="flex items-center gap-3 px-8 py-2.5 rounded-full bg-secondary/10 border border-border/40 hover:bg-secondary/20 hover:border-primary/20 transition-all duration-300 group shadow-lg overflow-hidden relative"
+                >
+                  <motion.div layout className="flex items-center gap-2 relative z-10">
+                    <span className="text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] text-muted-foreground/80 group-hover:text-primary transition-colors">
+                      {isExpanded ? "Show Less" : "See All Technologies"}
+                    </span>
+                    <motion.div
+                      animate={{ rotate: isExpanded ? 180 : 0 }}
+                      transition={snappySmoothSpring}
+                    >
+                      <ChevronDown className="w-3.5 h-3.5 text-primary/80 group-hover:text-primary transition-colors" />
+                    </motion.div>
+                  </motion.div>
+                </button>
+              </motion.div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+    </SectionWrapper>
+  );
+};
 
 export const Education = () => (
   <SectionWrapper>
@@ -147,21 +384,31 @@ export const Education = () => (
           </div>
 
           {/* Right Column: Identity Port (Lanyard) */}
-          <div className="h-[400px] md:h-auto min-h-[400px] w-full relative flex-[0.8]">
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              style={{ contain: 'paint' }}
-              className="relative w-full h-full bg-secondary/[0.03] dark:bg-white/[0.015] border border-border/10 rounded-xl md:rounded-xl overflow-hidden flex items-center justify-center group transition-all duration-700"
-            >
-              <Lanyard />
-              <div className="absolute top-8 left-8 w-1.5 h-1.5 rounded-full bg-primary/20" />
-              <div className="absolute top-8 right-8 w-1.5 h-1.5 rounded-full bg-primary/20" />
-              <div className="absolute bottom-6 left-10 text-[10px] font-bold uppercase tracking-[0.4em] text-muted-foreground/30 pointer-events-none">
-                BATCH 2025
-              </div>
-            </motion.div>
+          <div className="h-[450px] md:h-auto min-h-[450px] w-full relative flex-[0.8]">
+            {/* Desktop View: 3D Lanyard */}
+            <div className="hidden md:block w-full h-full">
+              <motion.div 
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true, amount: 0.2 }}
+                className="relative w-full h-full bg-secondary/[0.03] dark:bg-white/[0.015] border border-border/10 rounded-xl md:rounded-xl overflow-hidden flex items-center justify-center group transition-all duration-700"
+              >
+                <Lanyard />
+                <div className="absolute top-8 left-8 w-1.5 h-1.5 rounded-full bg-primary/20" />
+                <div className="absolute top-8 right-8 w-1.5 h-1.5 rounded-full bg-primary/20" />
+                <div className="absolute bottom-6 left-10 text-[10px] font-bold uppercase tracking-[0.4em] text-muted-foreground/30 pointer-events-none">
+                  BATCH 2025
+                </div>
+              </motion.div>
+            </div>
+
+            {/* Mobile View: Static Optimized Photo Only */}
+            <div className="block md:hidden w-full h-full">
+               <div className="w-full h-full bg-secondary/[0.03] dark:bg-white/[0.015] border border-border/10 rounded-xl overflow-hidden flex items-center justify-center p-8">
+                  <StaticLanyardCard />
+               </div>
+            </div>
+
             <div className="absolute inset-x-12 inset-y-12 bg-primary/5 blur-[60px] md:blur-[80px] -z-10 rounded-full" />
           </div>
         </div>

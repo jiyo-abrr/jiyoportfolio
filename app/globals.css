@@ -96,10 +96,11 @@
     @apply border-border outline-ring/50;
   }
   html {
+    @apply overflow-x-hidden w-full;
     transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
   }
   body {
-    @apply bg-background text-foreground antialiased selection:bg-primary/20 selection:text-foreground font-sans font-light;
+    @apply bg-background text-foreground antialiased selection:bg-primary/20 selection:text-foreground font-sans font-light overflow-x-hidden w-full;
     transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
   }
   section {

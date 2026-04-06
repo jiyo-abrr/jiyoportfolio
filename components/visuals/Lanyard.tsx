@@ -37,6 +37,7 @@ export const Lanyard = ({ position = [0, 0, 8], gravity = [0, -40, 0] }: Lanyard
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
+    if (typeof window === 'undefined') return;
     const checkMobile = () => setIsMobile(window.innerWidth < 768);
     checkMobile();
     window.addEventListener('resize', checkMobile);
@@ -47,11 +48,12 @@ export const Lanyard = ({ position = [0, 0, 8], gravity = [0, -40, 0] }: Lanyard
     <div className="w-full h-full relative pointer-events-auto">
       <Canvas 
         camera={{ position, fov: 30 }} 
-        dpr={isMobile ? 1 : [1, 2]}
+        dpr={isMobile ? [1, 1.5] : [1, 2]}
+        gl={{ antialias: false, powerPreference: 'high-performance' }}
         performance={{ min: 0.5 }}
       >
         <Suspense fallback={null}>
-          <Physics interpolate={!isMobile} gravity={gravity}>
+          <Physics interpolate={!isMobile} gravity={gravity} updatePriority={isMobile ? 1 : undefined}>
             <Scene isMobile={isMobile} />
           </Physics>
           <Environment blur={0.75}>
