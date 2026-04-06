@@ -12,6 +12,7 @@ export const Hero = () => {
   const [isDeleting, setIsDeleting] = useState(false);
   const [typingSpeed, setTypingSpeed] = useState(100);
   const [isMobile, setIsMobile] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
   // Parallax / Mouse Tracking
   const mouseX = useMotionValue(0);
@@ -30,6 +31,7 @@ export const Hero = () => {
   const [buttonPos, setButtonPos] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
+    setMounted(true);
     const handleResize = () => setIsMobile(window.innerWidth < 1024);
     handleResize();
     window.addEventListener("resize", handleResize);
@@ -223,7 +225,7 @@ export const Hero = () => {
           </motion.div>
 
           {/* Branded Logo (RESTORED TO BIG DRAMATIC IMPACT) */}
-          {!isMobile && (
+          {mounted && !isMobile && (
             <motion.div
               initial={{ opacity: 0, scale: 0.8, x: 20 }}
               animate={{ opacity: 1, scale: 1, x: 0 }}

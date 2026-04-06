@@ -3,19 +3,34 @@
 import { ModeToggle } from "@/components/shared/mode-toggle";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const navItems = ["About", "Experience", "Education", "Skills", "Projects", "Contact"];
 
 export const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
+  
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isOpen]);
 
   const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
     e.preventDefault();
     const element = document.getElementById(id.toLowerCase());
     if (element) {
-      element.scrollIntoView({ behavior: "smooth", block: "start" });
       setIsOpen(false);
+      // Small delay to allow the menu closing animation to start/unmount and prevent scroll interruption
+      setTimeout(() => {
+        element.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 10);
     }
   };
 
