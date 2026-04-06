@@ -52,7 +52,7 @@ export const LoadingScreen = () => {
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
-              className="text-5xl md:text-6xl font-bold text-foreground flex items-center"
+              className="text-5xl md:text-6xl font-mono font-bold text-foreground flex items-center"
             >
               <span className="text-primary">{"< "}</span>
               jiyo.dev

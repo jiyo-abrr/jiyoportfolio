@@ -140,7 +140,7 @@ export const Hero = () => {
                 </motion.div>
 
                 <div className="space-y-1 md:space-y-4 flex-1">
-                  <h1 className="text-4xl sm:text-7xl lg:text-8xl font-medium tracking-tight text-foreground leading-[1.1] md:leading-[1]">
+                  <h1 className="text-4xl sm:text-7xl lg:text-8xl font-display font-medium tracking-tight text-foreground leading-[1.1] md:leading-[1]">
                     {HERO_CONTENT.name}<span className="text-primary italic animate-pulse">.</span>
                   </h1>
 

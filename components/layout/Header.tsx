@@ -33,7 +33,7 @@ export const Header = () => {
           className="flex items-center gap-2 cursor-pointer"
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
         >
-          <span className="text-lg md:text-xl font-bold tracking-tighter text-foreground">
+          <span className="text-lg md:text-xl font-mono font-bold tracking-tighter text-foreground">
             <span className="text-primary">{"< "}</span>jiyo.dev<span className="text-primary">{" />"}</span>
           </span>
         </motion.div>
