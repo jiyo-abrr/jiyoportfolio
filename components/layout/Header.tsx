@@ -9,7 +9,12 @@ const navItems = ["About", "Experience", "Education", "Skills", "Projects", "Con
 
 export const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [hasHydrated, setHasHydrated] = useState(false);
   
+  useEffect(() => {
+    setHasHydrated(true);
+  }, []);
+
   // Lock body scroll when mobile menu is open
   useEffect(() => {
     if (isOpen) {
@@ -77,7 +82,7 @@ export const Header = () => {
             onClick={() => setIsOpen(!isOpen)}
             className="md:hidden p-2 text-muted-foreground hover:text-primary transition-colors"
           >
-            {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            {hasHydrated && (isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />)}
           </button>
         </div>
       </div>

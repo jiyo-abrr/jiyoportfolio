@@ -3,7 +3,15 @@
 import { motion } from "framer-motion";
 import { Terminal as TerminalIcon } from "lucide-react";
 
+import { useState, useEffect } from "react";
+
 export const Terminal = () => {
+  const [hasHydrated, setHasHydrated] = useState(false);
+
+  useEffect(() => {
+    setHasHydrated(true);
+  }, []);
+
   const commands = [
     { label: "> jiyo --status", result: "[SYSTEM]: Operating at 100% efficiency" },
     { label: "> jiyo --skills", result: "[STACK]: Next.js, FastAPI, RabbitMQ, Docker" },
@@ -22,7 +30,7 @@ export const Terminal = () => {
             <div className="w-2.5 h-2.5 rounded-full bg-[#27c93f]" />
           </div>
           <span className="text-[10px] text-muted-foreground/60 flex items-center gap-1.5 ml-2">
-            <TerminalIcon className="w-3 h-3" /> system-terminal
+            {hasHydrated && <TerminalIcon className="w-3 h-3" />} system-terminal
           </span>
         </div>
         <div className="text-[10px] text-muted-foreground/30">zsh</div>

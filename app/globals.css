@@ -110,7 +110,7 @@
 }
 
 .glass {
-  @apply backdrop-blur-sm bg-white/80 dark:bg-white/[0.03] border border-border/50 shadow-sm;
+  @apply backdrop-blur-sm bg-white/80 dark:bg-white/[0.03] border border-border/80 dark:border-border/50 shadow-sm;
 }
 
 .section-title {

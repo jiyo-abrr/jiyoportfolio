@@ -15,8 +15,10 @@ const roles = [
 export const LoadingScreen = () => {
   const [loading, setLoading] = useState(true);
   const [activeStep, setActiveStep] = useState(0);
+  const [hasHydrated, setHasHydrated] = useState(false);
 
   useEffect(() => {
+    setHasHydrated(true);
     const timer = setTimeout(() => setLoading(false), 4500);
     
     // Cycle through roles as loading steps - slowed down
@@ -73,7 +75,7 @@ export const LoadingScreen = () => {
                     }}
                     className="p-2 transition-colors"
                   >
-                    <role.icon className="w-5 h-5" />
+                    {hasHydrated && <role.icon className="w-5 h-5" />}
                   </motion.div>
                 ))}
               </div>

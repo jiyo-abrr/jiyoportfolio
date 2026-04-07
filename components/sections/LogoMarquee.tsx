@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion"
 import { Code, Globe, Database, Cpu, Terminal } from "lucide-react"
+import { useState, useEffect } from "react";
 import { MARQUEE_LOGOS } from "@/lib/data/logo-marquee";
 
 const separatorIcons = [
@@ -9,10 +10,16 @@ const separatorIcons = [
   { Icon: Globe, color: "text-emerald-500/40" },
   { Icon: Database, color: "text-amber-500/40" },
   { Icon: Cpu, color: "text-purple-500/40" },
-  { Icon: Terminal, color: "text-rose-500/40" }
+  { Icon: Terminal, color: "text-cyan-500/40" }
 ]
 
 export const LogoMarquee = () => {
+  const [hasHydrated, setHasHydrated] = useState(false);
+  
+  useEffect(() => {
+    setHasHydrated(true);
+  }, []);
+
   // We'll create a list of items where each item is a logo followed by an icon
   const items = [...MARQUEE_LOGOS, ...MARQUEE_LOGOS, ...MARQUEE_LOGOS, ...MARQUEE_LOGOS];
 
@@ -46,9 +53,10 @@ export const LogoMarquee = () => {
                       src={logo.src} 
                       alt={logo.alt} 
                       className={`h-full w-auto object-contain opacity-80 md:opacity-40 hover:opacity-100 transition-all duration-500 grayscale-0 md:grayscale md:hover:grayscale-0 ${logo.invert ? 'dark:invert' : ''}`}
+                      suppressHydrationWarning
                     />
                   </div>
-                  <Icon className={`w-3.5 h-3.5 md:w-5 md:h-5 ${color} shrink-0`} />
+                  {hasHydrated && <Icon className={`w-3.5 h-3.5 md:w-5 md:h-5 ${color} shrink-0`} />}
                 </div>
               );
             })}

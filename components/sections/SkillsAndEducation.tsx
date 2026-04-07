@@ -5,7 +5,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { TECH_GROUPS } from "@/lib/data/tech-stacks";
 import dynamic from "next/dynamic";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import { AnimatePresence } from "framer-motion";
 
@@ -39,6 +39,7 @@ const StaticLanyardCard = () => (
         fill 
         className="object-cover"
         priority
+        suppressHydrationWarning
       />
     </motion.div>
     
@@ -49,6 +50,7 @@ const StaticLanyardCard = () => (
           alt="Jiyo Logo" 
           fill 
           className="object-contain" 
+          suppressHydrationWarning
         />
       </div>
       <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-muted-foreground/40 whitespace-nowrap -mr-1">
@@ -62,12 +64,14 @@ const TechIcon = ({
   item, 
   index, 
   isExpanded, 
-  snappySmoothSpring 
+  snappySmoothSpring,
+  hasHydrated
 }: { 
   item: any, 
   index: number, 
   isExpanded: boolean, 
-  snappySmoothSpring: any 
+  snappySmoothSpring: any,
+  hasHydrated: boolean
 }) => {
   const isCore = !isExpanded;
   const staggerDelay = isCore ? index * 0.15 : index * 0.08;
@@ -88,37 +92,41 @@ const TechIcon = ({
       <motion.div 
         layoutId={`tech-logo-container-${item.name}`}
         transition={snappySmoothSpring}
-        style={{ "--brand-color": item.brandColor || "#3b82f6" } as any}
+        style={hasHydrated ? ({ "--brand-color": item.brandColor || "#3b82f6" } as any) : {}}
         className="relative w-10 h-10 md:w-12 md:h-12 shrink-0 transition-all duration-500 rounded-full flex items-center justify-center"
       >
         {/* The Sequential "Scan" Smooth Glow (Vibrant & High-Z for Mobile) */}
-        <motion.div
-          animate={isHovering ? { opacity: 0 } : { 
-            opacity: [0, 1, 0],
-            scale: [1, 1.6, 1],
-          }}
-          transition={{ 
-            duration: 1.5, 
-            delay: isHovering ? 0 : staggerDelay, 
-            repeat: Infinity,
-            repeatDelay: Math.max(0, cycleTime - 1.5), 
-            ease: "easeInOut"
-          }}
-          className="absolute inset-[-28px] pointer-events-none z-10 rounded-full bg-[var(--brand-color)]/50 blur-3xl"
-        />
+        {hasHydrated && (
+          <motion.div
+            animate={isHovering ? { opacity: 0 } : { 
+              opacity: [0, 1, 0],
+              scale: [1, 1.6, 1],
+            }}
+            transition={{ 
+              duration: 1.5, 
+              delay: isHovering ? 0 : staggerDelay, 
+              repeat: Infinity,
+              repeatDelay: Math.max(0, cycleTime - 1.5), 
+              ease: "easeInOut"
+            }}
+            className="absolute inset-[-28px] pointer-events-none z-10 rounded-full bg-[var(--brand-color)]/50 blur-3xl"
+          />
+        )}
 
         {/* The Intense Local Hover Glow (Steady Ambient Halo) */}
-        <motion.div
-          animate={{ 
-            opacity: isHovering ? 1.0 : 0,
-            scale: isHovering ? 1.8 : 1,
-          }}
-          transition={{ 
-            duration: 0.5,
-            ease: "easeOut" 
-          }}
-          className="absolute inset-[-28px] pointer-events-none z-10 rounded-full bg-[var(--brand-color)]/60 blur-3xl"
-        />
+        {hasHydrated && (
+          <motion.div
+            animate={{ 
+              opacity: isHovering ? 1.0 : 0,
+              scale: isHovering ? 1.8 : 1,
+            }}
+            transition={{ 
+              duration: 0.5,
+              ease: "easeOut" 
+            }}
+            className="absolute inset-[-28px] pointer-events-none z-10 rounded-full bg-[var(--brand-color)]/60 blur-3xl"
+          />
+        )}
 
         <div className="relative w-full h-full z-20 group-hover/item:drop-shadow-[0_0_20px_var(--brand-color)] transition-all duration-300">
           <Image
@@ -128,6 +136,7 @@ const TechIcon = ({
             className={`object-contain transition-all duration-500 ${
               item.invertLogo ? "dark:invert" : ""
             }`}
+            suppressHydrationWarning
           />
         </div>
       </motion.div>
@@ -155,7 +164,12 @@ const TechIcon = ({
 
 export const TechStacks = () => {
   const [isExpanded, setIsExpanded] = useState(false);
+  const [hasHydrated, setHasHydrated] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    setHasHydrated(true);
+  }, []);
 
   const snappySmoothSpring = {
     type: "spring" as const,
@@ -231,6 +245,7 @@ export const TechStacks = () => {
                           index={idx} 
                           isExpanded={isExpanded} 
                           snappySmoothSpring={snappySmoothSpring} 
+                          hasHydrated={hasHydrated}
                         />
                       ))}
                     </div>
@@ -274,6 +289,7 @@ export const TechStacks = () => {
                                     index={globalIndexOffset + iIdx} 
                                     isExpanded={isExpanded} 
                                     snappySmoothSpring={snappySmoothSpring} 
+                                    hasHydrated={hasHydrated}
                                   />
                                 ));
                               })()}
@@ -300,7 +316,7 @@ export const TechStacks = () => {
                       animate={{ rotate: isExpanded ? 180 : 0 }}
                       transition={snappySmoothSpring}
                     >
-                      <ChevronDown className="w-3.5 h-3.5 text-primary/80 group-hover:text-primary transition-colors" />
+                      {hasHydrated && <ChevronDown className="w-3.5 h-3.5 text-primary/80 group-hover:text-primary transition-colors" />}
                     </motion.div>
                   </motion.div>
                 </button>
@@ -313,7 +329,14 @@ export const TechStacks = () => {
   );
 };
 
-export const Education = () => (
+export const Education = () => {
+  const [hasHydrated, setHasHydrated] = useState(false);
+
+  useEffect(() => {
+    setHasHydrated(true);
+  }, []);
+
+  return (
   <SectionWrapper>
     <section id="education" className="py-10">
       <div className="space-y-12">
@@ -333,6 +356,7 @@ export const Education = () => (
                   alt="PUP Logo"
                   fill
                   className="object-contain drop-shadow-[0_0_10px_rgba(59,130,246,0.3)]"
+                  suppressHydrationWarning
                 />
               </motion.div>
               <div className="space-y-2">
@@ -415,4 +439,5 @@ export const Education = () => (
       </div>
     </section>
   </SectionWrapper>
-);
+  );
+};

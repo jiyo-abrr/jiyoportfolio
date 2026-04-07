@@ -11,7 +11,12 @@ export const ChatWidget = () => {
   ])
   const [input, setInput] = useState("")
   const [isTyping, setIsTyping] = useState(false)
+  const [hasHydrated, setHasHydrated] = useState(false)
   const scrollRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    setHasHydrated(true)
+  }, [])
 
   useEffect(() => {
     if (scrollRef.current) {
@@ -63,7 +68,7 @@ export const ChatWidget = () => {
             <div className="p-4 md:p-6 border-b border-border/50 flex items-center justify-between bg-primary/5">
               <div className="flex items-center gap-3">
                 <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-primary/10 flex items-center justify-center">
-                  <Bot className="w-4 h-4 md:w-5 md:h-5 text-primary" />
+                  {hasHydrated && <Bot className="w-4 h-4 md:w-5 md:h-5 text-primary" />}
                 </div>
                 <div>
                   <h3 className="text-xs font-semibold tracking-tight text-foreground">System Assistant</h3>
@@ -77,7 +82,7 @@ export const ChatWidget = () => {
                 onClick={() => setIsOpen(false)}
                 className="p-2 hover:bg-secondary/80 rounded-full transition-colors"
               >
-                <X className="w-4 h-4 text-muted-foreground" />
+                {hasHydrated && <X className="w-4 h-4 text-muted-foreground" />}
               </button>
             </div>
 
@@ -96,7 +101,7 @@ export const ChatWidget = () => {
                     <div className={`w-7 h-7 md:w-8 md:h-8 rounded-full shrink-0 flex items-center justify-center ${
                       msg.role === "user" ? "bg-primary text-primary-foreground" : "bg-secondary text-muted-foreground border border-border/50"
                     }`}>
-                      {msg.role === "user" ? <User className="w-3.5 h-3.5" /> : <Bot className="w-3.5 h-3.5" />}
+                      {hasHydrated && (msg.role === "user" ? <User className="w-3.5 h-3.5" /> : <Bot className="w-3.5 h-3.5" />)}
                     </div>
                     <div className={`p-3 md:p-4 rounded-[1.25rem] md:rounded-[1.5rem] text-xs md:text-sm leading-relaxed ${
                       msg.role === "user" 
@@ -112,7 +117,7 @@ export const ChatWidget = () => {
                 <div className="flex justify-start">
                   <div className="flex gap-3">
                     <div className="w-8 h-8 rounded-full bg-secondary border border-border/50 flex items-center justify-center">
-                      <Bot className="w-4 h-4 text-muted-foreground" />
+                      {hasHydrated && <Bot className="w-4 h-4 text-muted-foreground" />}
                     </div>
                     <div className="p-4 rounded-[1.5rem] rounded-tl-none bg-background/80 border border-border/50 flex items-center gap-2">
                       <div className="flex gap-1">
@@ -144,7 +149,7 @@ export const ChatWidget = () => {
                 href={mailtoLink}
                 className="shrink-0 px-3 py-1.5 rounded-full border border-primary/30 bg-primary/10 text-primary text-[10px] uppercase tracking-widest font-bold hover:bg-primary hover:text-primary-foreground transition-all flex items-center gap-2"
               >
-                <Mail className="w-3 h-3" /> Email Jeo
+                {hasHydrated && <Mail className="w-3 h-3" />} Email Jeo
               </a>
             </div>
 
@@ -164,7 +169,7 @@ export const ChatWidget = () => {
                   disabled={!input.trim() || isTyping}
                   className="absolute right-2 p-2 bg-primary text-primary-foreground rounded-full hover:scale-110 active:scale-95 transition-all disabled:opacity-50 disabled:scale-100 shadow-lg shadow-primary/20"
                 >
-                  <Send className="w-4 h-4" />
+                  {hasHydrated && <Send className="w-4 h-4" />}
                 </button>
               </form>
             </div>
@@ -181,7 +186,7 @@ export const ChatWidget = () => {
           isOpen ? "bg-foreground text-background" : "bg-primary text-primary-foreground ring-4 ring-primary/10"
         }`}
       >
-        {isOpen ? <X className="w-6 h-6" /> : <MessageSquare className="w-6 h-6" />}
+        {hasHydrated && (isOpen ? <X className="w-6 h-6" /> : <MessageSquare className="w-6 h-6" />)}
         {!isOpen && (
           <span className="absolute -top-1 -right-1 w-4 h-4 bg-emerald-500 border-2 border-background rounded-full animate-pulse" />
         )}

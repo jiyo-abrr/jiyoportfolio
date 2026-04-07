@@ -40,9 +40,7 @@ export default function Portfolio() {
       {/* Main Content Area */}
       <div className="relative z-10 w-full overflow-x-hidden">
         <div className="flex flex-col">
-          <div className="container mx-auto px-6 max-w-5xl">
-            <Hero />
-          </div>
+          <Hero />
 
           <div className="relative z-20 mt-12 md:mt-20">
             <LogoMarquee />

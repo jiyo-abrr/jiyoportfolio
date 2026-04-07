@@ -2,7 +2,7 @@
 
 import { SectionWrapper } from "@/components/layout/SectionWrapper";
 import { Mail, ArrowRight, Copy, Check, Send, User, MessageSquare, AtSign, Type } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { CONTACT_CONTENT } from "@/lib/data/contact";
 
@@ -10,12 +10,17 @@ export const Contact = () => {
   const [copied, setCopied] = useState(false);
   const [isSending, setIsSending] = useState(false);
   const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
+  const [hasHydrated, setHasHydrated] = useState(false);
   const [formState, setFormState] = useState({
     name: "",
     email: "",
     subject: "",
     message: ""
   });
+
+  useEffect(() => {
+    setHasHydrated(true);
+  }, []);
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(CONTACT_CONTENT.email);
@@ -94,7 +99,7 @@ export const Contact = () => {
             <div className="space-y-6 md:space-y-8 pt-4 md:pt-8">
               <div className="flex items-center gap-4 md:gap-6 group">
                 <div className="w-12 h-12 md:w-14 md:h-14 rounded-xl md:rounded-2xl bg-secondary border border-border/50 flex items-center justify-center text-muted-foreground group-hover:text-primary group-hover:border-primary/30 transition-all duration-500 shadow-sm">
-                  <Mail className="w-5 h-5 md:w-6 md:h-6" />
+                  {hasHydrated && <Mail className="w-5 h-5 md:w-6 md:h-6" />}
                 </div>
                 <div className="space-y-1">
                   <p className="text-[9px] md:text-[10px] font-bold uppercase tracking-widest text-muted-foreground/60">Email me directly</p>
@@ -104,7 +109,7 @@ export const Contact = () => {
                     className="text-base md:text-lg font-medium hover:text-primary transition-colors flex items-center gap-2"
                   >
                     <span className="truncate max-w-[200px] md:max-w-none">{CONTACT_CONTENT.email}</span>
-                    {copied ? <Check className="w-4 h-4 text-emerald-500" /> : <Copy className="w-4 h-4 opacity-30" />}
+                    {hasHydrated && (copied ? <Check className="w-4 h-4 text-emerald-500" /> : <Copy className="w-4 h-4 opacity-30" />)}
                   </button>
                 </div>
               </div>
@@ -117,7 +122,7 @@ export const Contact = () => {
                 <div className="space-y-2">
                   <p className="text-[9px] md:text-[10px] font-bold uppercase tracking-widest text-muted-foreground/60">Socials</p>
                   <div className="flex items-center gap-4">
-                     {CONTACT_CONTENT.socials.map((social) => (
+                     {hasHydrated && CONTACT_CONTENT.socials.map((social) => (
                        <a 
                          key={social.label}
                          href={social.link} 
@@ -140,7 +145,7 @@ export const Contact = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
                 <div className="space-y-1.5">
                   <label className="text-[9px] font-bold uppercase tracking-widest text-muted-foreground ml-3 flex items-center gap-2">
-                    <User className="w-3 h-3" /> Your Name
+                    {hasHydrated && <User className="w-3 h-3" />} Your Name
                   </label>
                   <input 
                     required
@@ -154,7 +159,7 @@ export const Contact = () => {
                 </div>
                 <div className="space-y-1.5">
                   <label className="text-[9px] font-bold uppercase tracking-widest text-muted-foreground ml-3 flex items-center gap-2">
-                    <AtSign className="w-3 h-3" /> Email Address
+                    {hasHydrated && <AtSign className="w-3 h-3" />} Email Address
                   </label>
                   <input 
                     required
@@ -170,7 +175,7 @@ export const Contact = () => {
 
               <div className="space-y-1.5">
                 <label className="text-[9px] font-bold uppercase tracking-widest text-muted-foreground ml-3 flex items-center gap-2">
-                  <Type className="w-3 h-3" /> Subject
+                  {hasHydrated && <Type className="w-3 h-3" />} Subject
                 </label>
                 <input 
                   required
@@ -185,7 +190,7 @@ export const Contact = () => {
 
               <div className="space-y-1.5">
                 <label className="text-[9px] font-bold uppercase tracking-widest text-muted-foreground ml-3 flex items-center gap-2">
-                  <MessageSquare className="w-3 h-3" /> Message
+                  {hasHydrated && <MessageSquare className="w-3 h-3" />} Message
                 </label>
                 <textarea 
                   required
@@ -223,7 +228,7 @@ export const Contact = () => {
                   </>
                 ) : (
                   <>
-                    <Send className="w-5 h-5" />
+                    {hasHydrated && <Send className="w-5 h-5" />}
                     <span className="text-[9px] md:text-[10px] uppercase tracking-[0.3em] font-bold">Send Message</span>
                   </>
                 )}

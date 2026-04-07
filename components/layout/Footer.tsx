@@ -3,7 +3,15 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 
+import { useState, useEffect } from "react";
+
 export const Footer = () => {
+  const [hasHydrated, setHasHydrated] = useState(false);
+
+  useEffect(() => {
+    setHasHydrated(true);
+  }, []);
+
   return (
     <footer className="mt-20 border-t border-border/40 pt-16 pb-12 bg-secondary/5 relative overflow-hidden">
       <div className="container mx-auto px-6 max-w-5xl relative z-10">
@@ -55,6 +63,7 @@ export const Footer = () => {
                     alt="Next.js"
                     fill
                     className="object-contain dark:invert"
+                    suppressHydrationWarning
                   />
                 </div>
                 <div className="relative h-4 w-16 grayscale hover:grayscale-0 transition-all">
@@ -63,6 +72,7 @@ export const Footer = () => {
                     alt="Tailwind CSS"
                     fill
                     className="object-contain"
+                    suppressHydrationWarning
                   />
                 </div>
                 <div className="relative h-4 w-16 grayscale hover:grayscale-0 transition-all">
@@ -71,13 +81,14 @@ export const Footer = () => {
                     alt="shadcn/ui"
                     fill
                     className="object-contain dark:invert"
+                    suppressHydrationWarning
                   />
                 </div>
               </div>
             </div>
 
             <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-muted-foreground/40 text-center sm:text-right leading-loose">
-              &copy; {new Date().getFullYear()} Jeo C. Abarre <br />
+              &copy; {hasHydrated ? new Date().getFullYear() : "2026"} Jeo C. Abarre <br />
               All rights reserved <br />
               <span className="opacity-50">v3.2 • Last updated: March 2026</span>
             </p>

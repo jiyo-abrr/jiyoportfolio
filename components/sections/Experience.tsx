@@ -4,7 +4,7 @@ import { Calendar, MapPin, ArrowRight, Globe } from "lucide-react";
 import { SectionWrapper } from "@/components/layout/SectionWrapper";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useScroll, useSpring, useTransform } from "framer-motion";
 import { EXPERIENCES } from "@/lib/data/experience";
 
@@ -49,7 +49,12 @@ const TimelineNode = ({ progress, threshold, isHovered }: { progress: any, thres
 
 export const Experience = () => {
   const [hoveredCompany, setHoveredCompany] = useState<string | null>(null);
+  const [hasHydrated, setHasHydrated] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
+  
+  useEffect(() => {
+    setHasHydrated(true);
+  }, []);
   
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -110,10 +115,12 @@ export const Experience = () => {
                         <div className={`flex flex-col ${isEven ? 'md:text-right' : 'md:text-left'} text-left`}>
                           <h3 className="text-xl md:text-2xl font-medium tracking-tight text-foreground whitespace-nowrap">{company.company}</h3>
                           <div className={`flex items-center gap-2 text-[10px] md:text-xs font-mono text-muted-foreground uppercase tracking-widest justify-start ${isEven ? 'md:justify-end' : 'md:justify-start'}`}>
-                            {company.location.includes('(Remote)') ? (
-                              <Globe className="h-3 w-3 text-primary/60" />
-                            ) : (
-                              <MapPin className="h-3 w-3 text-primary/60" />
+                            {hasHydrated && (
+                              company.location.includes('(Remote)') ? (
+                                <Globe className="h-3 w-3 text-primary/60" />
+                              ) : (
+                                <MapPin className="h-3 w-3 text-primary/60" />
+                              )
                             )}
                             {company.location}
                           </div>
@@ -125,6 +132,7 @@ export const Experience = () => {
                             width={40} 
                             height={40} 
                             className={`object-contain ${company.invertLogo ? 'dark:invert' : ''}`} 
+                            suppressHydrationWarning
                           />
                         </div>
                       </div>
@@ -149,7 +157,7 @@ export const Experience = () => {
                               <div className="space-y-1">
                                 <h4 className="text-lg md:text-2xl font-medium tracking-tight text-foreground">{role.role}</h4>
                                 <div className="flex items-center gap-2 text-[10px] md:text-xs font-mono text-primary/80 font-bold">
-                                  <Calendar className="h-3.5 w-3.5" />
+                                  {hasHydrated && <Calendar className="h-3.5 w-3.5" />}
                                   {role.period}
                                 </div>
                               </div>
@@ -160,7 +168,7 @@ export const Experience = () => {
                             <ul className="space-y-2 md:space-y-3">
                               {role.description.map((item, i) => (
                                 <li key={i} className="text-muted-foreground text-xs md:text-sm font-light leading-relaxed flex items-start gap-2 md:gap-3">
-                                  <ArrowRight className="h-3.5 w-3.5 md:h-4 md:w-4 text-primary/30 mt-0.5 shrink-0" />
+                                  {hasHydrated && <ArrowRight className="h-3.5 w-3.5 md:h-4 md:w-4 text-primary/30 mt-0.5 shrink-0" />}
                                   <span 
                                     className="flex-1" 
                                     dangerouslySetInnerHTML={{ __html: item }}

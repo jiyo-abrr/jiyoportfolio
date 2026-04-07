@@ -4,8 +4,15 @@ import { SectionWrapper } from "@/components/layout/SectionWrapper";
 import { Code, Server } from "lucide-react";
 import { Terminal } from "@/components/features/Terminal";
 import { ABOUT_CONTENT } from "@/lib/data/about";
+import { useState, useEffect } from "react";
 
 export const About = () => {
+  const [hasHydrated, setHasHydrated] = useState(false);
+  
+  useEffect(() => {
+    setHasHydrated(true);
+  }, []);
+
   const icons = {
     Code: <Code className="h-6 w-6" />,
     Server: <Server className="h-6 w-6" />,
@@ -35,7 +42,7 @@ export const About = () => {
           {ABOUT_CONTENT.stats.map((stat) => (
             <div key={stat.id} className="p-8 md:p-10 rounded-xl md:rounded-xl glass flex flex-col justify-between gap-8 hover:border-primary/30 transition-all duration-500">
               <div className="h-12 w-12 md:h-14 md:w-14 rounded-full bg-primary/10 flex items-center justify-center text-primary">
-                {icons[stat.icon as keyof typeof icons]}
+                {hasHydrated && icons[stat.icon as keyof typeof icons]}
               </div>
               <div>
                 <p className="text-4xl md:text-5xl font-medium tracking-tighter">
