@@ -280,7 +280,7 @@ export const Hero = () => {
                   <motion.div
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    className="lg:hidden relative w-24 h-24 sm:w-32 sm:h-32 shrink-0"
+                    className="lg:hidden relative w-28 h-28 sm:w-36 sm:h-36 shrink-0"
                   >
                     <Image src="/jiyo-logo.png" alt="Jiyo Logo" fill className="object-contain drop-shadow-[0_0_20px_rgba(59,130,246,0.3)]" suppressHydrationWarning />
                   </motion.div>
@@ -369,8 +369,8 @@ export const Hero = () => {
                 className="relative group select-none pointer-events-none"
               >
                 <div className="absolute inset-x-12 inset-y-16 bg-primary/10 blur-[80px] md:blur-[100px] rounded-full animate-pulse scale-125 shadow-[0_0_80px_rgba(59,130,246,0.1)]" />
-                <div className="relative w-64 h-64 lg:w-[350px] lg:h-[350px] 2xl:w-[480px] 2xl:h-[480px] flex items-center justify-center">
-                  <Image src="/jiyo-logo.png" alt="Jiyo Logo" fill className="object-contain drop-shadow-[0_0_40px_rgba(59,130,246,0.2)] p-10" suppressHydrationWarning />
+                <div className="relative w-80 h-80 lg:w-[420px] lg:h-[420px] 2xl:w-[560px] 2xl:h-[560px] flex items-center justify-center">
+                  <Image src="/jiyo-logo.png" alt="Jiyo Logo" fill className="object-contain drop-shadow-[0_0_40px_rgba(59,130,246,0.2)] p-4" suppressHydrationWarning />
                 </div>
               </motion.div>
             </motion.div>
