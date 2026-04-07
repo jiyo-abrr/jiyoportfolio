@@ -137,8 +137,8 @@ export const LoadingScreen = () => {
             </motion.div>
 
             {/* Roles/Initializing Section */}
-            <div className="w-full space-y-6">
-              <div className="flex justify-center gap-4">
+            <div className="w-full flex flex-col items-center gap-4">
+              <div className="flex justify-between w-full">
                 {roles.map((role, i) => (
                   <motion.div
                     key={i}
@@ -156,49 +156,47 @@ export const LoadingScreen = () => {
                 ))}
               </div>
 
-              <div className="relative">
-                {/* Centered Role Label */}
-                <div className="flex justify-center mb-1">
-                   <AnimatePresence mode="wait">
-                     <motion.div
-                       key={activeStep}
-                       initial={{ opacity: 0, y: 5 }}
-                       animate={{ opacity: 1, y: 0 }}
-                       exit={{ opacity: 0, y: -5 }}
-                       className="text-center"
-                     >
-                       <p className="text-[10px] uppercase tracking-[0.4em] text-muted-foreground font-semibold">
-                         {roles[activeStep].label}
-                       </p>
-                     </motion.div>
-                   </AnimatePresence>
-                </div>
-                
-                {/* Progress Bar & Telemetry Container */}
-                <div className="relative w-full">
-                  <div className="w-full h-[1px] bg-primary/10 rounded-full overflow-hidden">
-                    <motion.div 
-                      className="h-full bg-primary"
-                      initial={{ width: "0%" }}
-                      animate={{ width: `${progress}%` }}
-                      transition={{ duration: 0.4 }}
-                    />
-                  </div>
-                  {/* Floating Percentage Readout */}
-                  <div className="absolute top-2 right-0">
-                    <span className="text-[9px] font-mono text-primary/40 italic tabular-nums">{progress}%</span>
-                  </div>
-                </div>
+              {/* Centered Role Label */}
+              <div className="flex justify-center">
+                 <AnimatePresence mode="wait">
+                   <motion.div
+                     key={activeStep}
+                     initial={{ opacity: 0, y: 5 }}
+                     animate={{ opacity: 1, y: 0 }}
+                     exit={{ opacity: 0, y: -5 }}
+                     className="text-center"
+                   >
+                     <p className="text-[10px] uppercase tracking-[0.4em] text-muted-foreground font-semibold mr-[-0.4em]">
+                       {roles[activeStep].label}
+                     </p>
+                   </motion.div>
+                 </AnimatePresence>
               </div>
+              
+              {/* Progress Bar & Telemetry Container */}
+              <div className="relative w-full">
+                <div className="w-full h-[1px] bg-primary/10 rounded-full overflow-hidden">
+                  <motion.div 
+                    className="h-full bg-primary"
+                    initial={{ width: "0%" }}
+                    animate={{ width: `${progress}%` }}
+                    transition={{ duration: 0.4 }}
+                  />
+                </div>
+                 {/* Floating Percentage Readout */}
+                 <div className="absolute bottom-full right-0 mb-2">
+                   <span className="text-[10px] font-mono text-primary/40 tabular-nums">{progress}%</span>
+                 </div>
+               </div>
             </div>
             
-            <motion.p 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 0.4 }}
-              className="absolute bottom-[-60px] text-[8px] uppercase tracking-[0.5em] font-mono"
-            >
-              System Initialization v3.2
-            </motion.p>
+             <motion.p 
+               initial={{ opacity: 0 }}
+               animate={{ opacity: 0.4 }}
+               className="absolute bottom-[-60px] text-[8px] uppercase tracking-[0.5em] font-mono mr-[-0.5em]"
+             >
+               System Initialization v3.2
+             </motion.p>
           </div>
 
           {/* 3. LAYER: HUD & DIAGNOSTICS */}

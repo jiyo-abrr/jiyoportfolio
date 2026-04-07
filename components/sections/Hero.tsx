@@ -205,21 +205,21 @@ export const Hero = () => {
       </div>
 
       {/* BOTTOM HUD BLOCK */}
-      <div className="absolute bottom-10 md:bottom-16 inset-x-0 px-4 md:px-10 z-20 flex items-center font-mono text-[7px] md:text-[9px] uppercase tracking-[0.2em] md:tracking-[0.4em] pointer-events-auto cursor-default">
+      <div className="absolute bottom-6 md:bottom-8 inset-x-0 px-4 md:px-10 z-20 flex items-center font-mono text-[7px] md:text-[9px] uppercase tracking-[0.2em] md:tracking-[0.4em] pointer-events-auto cursor-default">
          <div className="relative w-full flex items-center justify-between">
             {/* Wide Desktop Edge: Left (Only XL+) */}
             <span className="hidden xl:block dark:text-foreground/20 text-foreground/40 font-bold opacity-30 hover:opacity-100 transition-opacity duration-300">{`{ node_01 }`}</span>
 
             {/* Dynamic Inner/Main Corners */}
             <div className="hidden md:flex xl:absolute xl:left-1/2 xl:-translate-x-1/2 w-full xl:max-w-5xl justify-between px-0 xl:px-6 transition-all duration-500">
-               <div className="flex items-center gap-4 opacity-40 hover:opacity-100 transition-opacity duration-300">
+               <div className="flex items-center gap-10 opacity-40 hover:opacity-100 transition-opacity duration-300">
                   <div className="flex items-center gap-2">
                      {hasHydrated && <MapPin className="h-4 w-4 text-primary/40" />}
                      <span className="whitespace-nowrap">14.64N / 120.97E</span>
                   </div>
                   <span className="opacity-100 whitespace-nowrap">// caloocan, rp</span>
                </div>
-               <div className="flex items-center gap-4 opacity-40 hover:opacity-100 transition-opacity duration-300">
+               <div className="flex items-center gap-10 opacity-40 hover:opacity-100 transition-opacity duration-300">
                   <span className="whitespace-nowrap">{hasHydrated ? phtTime : "--:--:--"} PHT</span>
                   <div className="flex items-center gap-2">
                      <span className="opacity-100 whitespace-nowrap">// active</span>
@@ -326,8 +326,8 @@ export const Hero = () => {
               </div>
             </div>
 
-            {/* CTAs & Socials (Surgically Fit Alignment) */}
-            <div className="flex flex-row items-center gap-4 xs:gap-8 md:gap-14 pt-4 flex-wrap">
+            {/* CTAs & Socials (Surgically Fit Alignment: Side-by-Side) */}
+            <div className="flex flex-row items-center gap-6 sm:gap-8 md:gap-14 pt-4 flex-nowrap overflow-visible">
               <motion.a
                 ref={buttonRef}
                 animate={{ x: buttonPos.x, y: buttonPos.y }}
@@ -335,12 +335,12 @@ export const Hero = () => {
                 whileTap={{ scale: 0.95 }}
                 transition={{ type: "spring", stiffness: 150, damping: 15 }}
                 href="#contact"
-                className="w-fit h-9 md:h-12 px-5 md:px-10 flex items-center justify-center gap-2.5 rounded-full bg-foreground text-background text-[11px] md:text-base font-bold hover:bg-primary transition-all shadow-[0_20px_40px_-5px_rgba(0,0,0,0.3)] hover:shadow-primary/25 whitespace-nowrap"
+                className="w-fit h-9 md:h-12 px-5 md:px-10 flex items-center justify-center gap-2.5 rounded-full bg-foreground text-background text-[11px] md:text-base font-bold hover:bg-primary transition-all shadow-[0_20px_40px_-5px_rgba(0,0,0,0.3)] hover:shadow-primary/25 whitespace-nowrap shrink-0"
               >
                  Get in touch {hasHydrated && <ArrowRight className="h-3.5 w-3.5 md:h-5 w-5" />}
               </motion.a>
 
-              <div className="flex items-center gap-5 md:gap-10 px-2 sm:px-0 text-muted-foreground/30">
+              <div className="flex items-center gap-5 md:gap-10 text-muted-foreground/30 shrink-0">
                 <a href={HERO_CONTENT.socials.github} target="_blank" className="hover:text-primary transition-all group">
                   {hasHydrated && <Github className="h-5 w-5 md:h-8 md:w-8 group-hover:scale-110" />}
                 </a>
