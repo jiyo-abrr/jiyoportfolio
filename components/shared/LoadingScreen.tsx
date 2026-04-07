@@ -50,12 +50,12 @@ export const LoadingScreen = () => {
 
   useEffect(() => {
     setHasHydrated(true);
-    const timer = setTimeout(() => setLoading(false), 4500);
+    const timer = setTimeout(() => setLoading(false), 6000);
     
-    // Cycle through roles as loading steps - slowed down
+    // Cycle through roles as loading steps - even slower for cinematic effect
     const stepTimer = setInterval(() => {
       setActiveStep(prev => (prev < roles.length - 1 ? prev + 1 : prev));
-    }, 800);
+    }, 1100);
 
     return () => {
       clearTimeout(timer);
