@@ -10,8 +10,8 @@ export interface Project {
 }
 
 export const PROJECTS_CONTENT = {
-  title: "Selected Works",
-  subtitle: "03. Selected Works",
+  title: "Projects",
+  subtitle: "05. Projects",
   description: "Key projects and architectural implementations."
 };
 

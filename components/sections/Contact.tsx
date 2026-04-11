@@ -4,6 +4,8 @@ import { SectionWrapper } from "@/components/layout/SectionWrapper";
 import { Mail, ArrowRight, Copy, Check, Send, User, MessageSquare, AtSign, Type } from "lucide-react";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { MatrixFrame } from "@/components/shared/MatrixFrame";
+
 import { CONTACT_CONTENT } from "@/lib/data/contact";
 
 const CornerBracket = ({ position, size = "w-4 h-4" }: { position: "tl" | "tr" | "bl" | "br", size?: string }) => {
@@ -157,15 +159,12 @@ export const Contact = () => {
             </div>
 
             {/* Right Column: Large Terminal Form Card */}
-            <div className="relative group/form w-full h-full">
-              {/* Tactical Corner Accents */}
-              <CornerBracket position="tl" size="w-6 h-6" />
-              <CornerBracket position="tr" size="w-6 h-6" />
-              <CornerBracket position="bl" size="w-6 h-6" />
-              <CornerBracket position="br" size="w-6 h-6" />
-              
-              {/* HUD Metadata Labels with Pulsing Glow */}
-              <div className="bg-secondary/5 dark:bg-secondary/10 backdrop-blur-2xl rounded-none p-5 md:p-8 border border-cyan-400/30 dark:border-cyan-400/20 relative overflow-hidden h-full flex flex-col shadow-[0_0_50px_-10px_rgba(34,211,238,0.1)] dark:shadow-[0_0_50px_-10px_rgba(34,211,238,0.15)] group-hover/form:border-cyan-400/50 transition-colors duration-700">
+            <MatrixFrame className="w-full h-full">
+              <div className="bg-secondary/5 dark:bg-secondary/10 backdrop-blur-2xl rounded-none p-5 md:p-8 relative overflow-hidden h-full flex flex-col transition-all duration-700">
+
+
+
+
 
                 {/* Background Pulse Glow */}
                 <motion.div 
@@ -284,7 +283,7 @@ export const Contact = () => {
                   </AnimatePresence>
                 </form>
               </div>
-            </div>
+            </MatrixFrame>
           </div>
         </div>
       </section>

@@ -7,6 +7,8 @@ import { TECH_GROUPS } from "@/lib/data/tech-stacks";
 import { useState, useRef, useEffect } from "react";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import { AnimatePresence } from "framer-motion";
+import { MatrixFrame } from "@/components/shared/MatrixFrame";
+
 
 const CORE_TECH = [
   { name: "Python", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg", brandColor: "#3776AB", tag: "Program Language" },
@@ -195,11 +197,16 @@ export const TechStacks = () => {
           </div>
 
           {/* Unified Seamless Container (Overflow-visible to prevent box clipping) */}
-          <motion.div 
-            layout
-            transition={snappySmoothSpring}
-            className="glass rounded-3xl border border-border/50 shadow-2xl backdrop-blur-md relative group/main"
-          >
+          <MatrixFrame className="w-full">
+            <motion.div 
+              layout
+              transition={snappySmoothSpring}
+              className="bg-white/40 dark:bg-white/[0.02] backdrop-blur-md relative group/main"
+            >
+
+
+
+
             <motion.div layout className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
             
             {/* Animated Border Sweep */}
@@ -248,14 +255,15 @@ export const TechStacks = () => {
                     transition={snappySmoothSpring}
                     className="w-full"
                   >
-                    <div className="divide-y divide-border/10">
+                    <div className="">
+
                       {TECH_GROUPS.map((group, gIdx) => (
                         <div key={group.title} className="p-8 md:p-10">
                            <motion.div
                              initial={{ opacity: 0, x: -20 }}
                              animate={{ opacity: 1, x: 0 }}
                              transition={{ delay: gIdx * 0.05 }}
-                             className="grid grid-cols-1 lg:grid-cols-[280px,1fr] gap-4 md:gap-8 hover:bg-primary/[0.02] transition-colors duration-500 items-start"
+                             className="grid grid-cols-1 lg:grid-cols-[280px,1fr] gap-4 md:gap-8 transition-colors duration-500 items-start"
                            >
                             <div className="flex flex-col gap-1.5 md:pt-1">
                               <h3 className="text-xs md:text-sm font-bold uppercase tracking-[0.2em] text-muted-foreground/80">
@@ -311,11 +319,13 @@ export const TechStacks = () => {
               </motion.div>
             </div>
           </motion.div>
-        </div>
-      </section>
-    </SectionWrapper>
-  );
+        </MatrixFrame>
+      </div>
+    </section>
+  </SectionWrapper>
+);
 };
+
 
 export const Education = () => {
   const [hasHydrated, setHasHydrated] = useState(false);
@@ -328,11 +338,23 @@ export const Education = () => {
   <SectionWrapper>
     <section id="education" className="py-10">
       <div className="space-y-12">
-        <span className="section-title">05. Academic Foundation</span>
+        <div className="flex flex-col gap-2">
+          <span className="section-title">03. Academic Foundation</span>
+          <h2 className="text-3xl md:text-5xl font-medium tracking-tight text-foreground">
+            Academic <span className="text-primary italic">Foundation</span>
+          </h2>
+        </div>
 
         <div className="flex flex-col md:flex-row gap-6 md:gap-8 items-stretch">
           {/* Left Column: Education Info */}
-          <div className="flex flex-col flex-[1.2] min-w-0 bg-white/40 dark:bg-white/[0.015] border border-border/30 dark:border-border/10 rounded-xl overflow-hidden divide-y divide-border/10 transition-all duration-700 shadow-lg shadow-primary/5 dark:shadow-none">
+          <MatrixFrame className="flex-[1.2]">
+            <div className="flex flex-col h-full min-w-0 bg-white/40 dark:bg-white/[0.015] backdrop-blur-md relative overflow-hidden transition-all duration-700">
+
+
+
+              <div className="absolute top-0 inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
+
+
             {/* University Info */}
             <div className="flex flex-col sm:flex-row items-center sm:items-center gap-6 md:gap-8 p-8 md:p-10 justify-center text-center sm:text-left">
               <motion.div
@@ -392,14 +414,22 @@ export const Education = () => {
                   </p>
                 </div>
               </div>
+              </div>
             </div>
-          </div>
+          </MatrixFrame>
+
 
           {/* Right Column: Identity Photo (Uniform) */}
           <div className="h-[520px] md:h-auto min-h-[520px] md:min-h-[450px] w-full relative flex-[0.8]">
-             <div className="w-full h-full bg-white/40 dark:bg-white/[0.015] border border-border/30 dark:border-border/10 rounded-xl overflow-hidden flex items-center justify-center p-3 md:p-4 shadow-lg shadow-primary/5 dark:shadow-none">
-                <StaticLanyardCard />
-             </div>
+             <MatrixFrame className="w-full h-full">
+               <div className="w-full h-full bg-white/40 dark:bg-white/[0.015] backdrop-blur-md relative overflow-hidden flex items-center justify-center p-3 md:p-4">
+                  <div className="absolute top-0 inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
+                  <StaticLanyardCard />
+               </div>
+             </MatrixFrame>
+
+
+
              <div className="absolute inset-x-12 inset-y-12 bg-primary/5 blur-[60px] md:blur-[80px] -z-10 rounded-full" />
           </div>
         </div>
