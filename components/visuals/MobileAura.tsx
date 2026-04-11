@@ -42,7 +42,7 @@ export const MobileAura = () => {
         transition={{
           duration: 20,
           repeat: Infinity,
-          linear: true,
+          ease: "linear",
           delay: 2,
         }}
         className="absolute -bottom-1/4 -right-1/4 w-[120vw] h-[120vw] bg-[radial-gradient(circle_at_center,rgba(99,82,210,0.04),transparent_50%)] blur-[100px]"
