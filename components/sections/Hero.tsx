@@ -151,7 +151,7 @@ export const Hero = () => {
 
       {/* ── BOTTOM HUD BAR ── */}
       <div className="absolute bottom-[calc(1rem+env(safe-area-inset-bottom,0px))] md:bottom-5 inset-x-0 z-20 px-4 md:px-8 pointer-events-none">
-        <div className="flex items-center justify-between font-mono text-[7px] md:text-[8px] lg:text-[9px] uppercase tracking-[0.2em] md:tracking-[0.25em] lg:tracking-[0.3em] text-foreground/20">
+        <div className="flex items-center justify-between font-mono text-[9px] md:text-[10px] lg:text-[9px] uppercase tracking-[0.2em] md:tracking-[0.25em] lg:tracking-[0.3em] text-foreground/20">
           <div className="flex items-center gap-1.5 md:gap-2">
             {hasHydrated && <MapPin className="h-3 w-3 text-primary/35 shrink-0" />}
             <span>120.97E</span>
@@ -172,23 +172,34 @@ export const Hero = () => {
 
           {/* LEFT: TEXT */}
           <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+            initial="hidden"
+            animate="visible"
+            variants={{
+              hidden: { opacity: 0 },
+              visible: {
+                opacity: 1,
+                transition: {
+                  staggerChildren: 0.12,
+                  delayChildren: 0.1
+                }
+              }
+            }}
             className="flex flex-col gap-4 md:gap-6 lg:gap-8 flex-[1.3] w-full"
           >
             {/* Status badge */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.15, duration: 0.6 }}
-              className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full border border-primary/12 bg-primary/4 backdrop-blur-sm w-fit"
+              variants={{
+                hidden: { opacity: 0, y: 10, scale: 0.95 },
+                visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.6 } }
+              }}
+              className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/20 bg-primary/8 backdrop-blur-md w-fit shadow-[0_0_20px_rgba(59,130,246,0.1)] relative overflow-hidden group"
             >
-              <span className="relative flex h-1.5 w-1.5">
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+              <span className="relative flex h-1 w-1">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-                <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.7)]" />
+                <span className="relative inline-flex rounded-full h-1 w-1 bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.7)]" />
               </span>
-              <span className="font-mono text-[8px] md:text-[9px] uppercase tracking-[0.35em] text-primary/60 font-bold">
+              <span className="font-mono text-[9px] md:text-[10px] uppercase tracking-[0.35em] text-primary font-bold">
                 {HERO_CONTENT.greeting}
               </span>
             </motion.div>
@@ -198,16 +209,18 @@ export const Hero = () => {
               {/* Mobile logo */}
               {hasHydrated && (
                 <motion.div
-                  initial={{ opacity: 0, scale: 0.85 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 0.3, duration: 0.8 }}
-                  className="lg:hidden relative w-20 h-20 sm:w-28 sm:h-28 shrink-0"
+                  variants={{
+                    hidden: { opacity: 0, scale: 0.8 },
+                    visible: { opacity: 1, scale: 1, transition: { type: "spring", damping: 12 } }
+                  }}
+                  className="lg:hidden relative w-22 h-22 sm:w-30 sm:h-30 shrink-0"
                 >
+                  {/* Mobile Aura removed per user request */}
                   <Image
                     src="/jiyo-logo.png"
                     alt="Jiyo Logo"
                     fill
-                    className="object-contain drop-shadow-[0_0_25px_rgba(59,130,246,0.35)]"
+                    className="relative z-10 object-contain drop-shadow-[0_0_30px_rgba(59,130,246,0.4)]"
                     suppressHydrationWarning
                   />
                 </motion.div>
@@ -217,8 +230,8 @@ export const Hero = () => {
                 {/* Name with glitch */}
                 <div className="relative overflow-hidden">
                   <h1
-                    className={`text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-display font-bold tracking-tight text-foreground leading-none transition-all duration-100 ${
-                      glitchActive ? "translate-x-[2px] text-primary" : ""
+                    className={`text-4xl xs:text-5xl sm:text-6xl md:text-6xl lg:text-7xl xl:text-8xl font-display font-bold tracking-tight leading-none transition-all duration-100 ${
+                      glitchActive ? "translate-x-[2px] text-primary" : "text-foreground text-shimmer"
                     }`}
                   >
                     {HERO_CONTENT.name}
@@ -230,7 +243,7 @@ export const Hero = () => {
                         <motion.div
                           initial={{ opacity: 0 }} animate={{ opacity: 0.5 }} exit={{ opacity: 0 }}
                           transition={{ duration: 0.05 }}
-                          className="absolute inset-0 text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-display font-bold tracking-tight leading-none text-cyan-400 translate-x-[-3px] translate-y-[2px] select-none pointer-events-none"
+                          className="absolute inset-0 text-4xl xs:text-5xl sm:text-6xl md:text-6xl lg:text-7xl xl:text-8xl font-display font-bold tracking-tight leading-none text-cyan-400 translate-x-[-3px] translate-y-[2px] select-none pointer-events-none"
                           style={{ clipPath: "inset(20% 0 65% 0)" }}
                         >
                           {HERO_CONTENT.name}.
@@ -238,7 +251,7 @@ export const Hero = () => {
                         <motion.div
                           initial={{ opacity: 0 }} animate={{ opacity: 0.4 }} exit={{ opacity: 0 }}
                           transition={{ duration: 0.05, delay: 0.05 }}
-                          className="absolute inset-0 text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-display font-bold tracking-tight leading-none text-red-400 translate-x-[3px] translate-y-[-1px] select-none pointer-events-none"
+                          className="absolute inset-0 text-4xl xs:text-5xl sm:text-6xl md:text-6xl lg:text-7xl xl:text-8xl font-display font-bold tracking-tight leading-none text-red-400 translate-x-[3px] translate-y-[-1px] select-none pointer-events-none"
                           style={{ clipPath: "inset(55% 0 15% 0)" }}
                         >
                           {HERO_CONTENT.name}.
@@ -251,8 +264,8 @@ export const Hero = () => {
                 {/* Animated role typewriter */}
                 <div className="min-h-[24px] md:min-h-[36px] flex items-center mt-1.5 md:mt-2">
                   <div className="flex items-center gap-1.5 md:gap-2 font-mono">
-                    <span className="text-primary/40 text-xs md:text-base select-none">&gt;</span>
-                    <p className="text-sm md:text-lg lg:text-2xl text-primary/75 font-light tracking-tight leading-none">
+                    <span className="text-primary/40 text-sm md:text-base select-none">&gt;</span>
+                    <p className="text-base md:text-lg lg:text-2xl text-primary/75 font-light tracking-tight leading-none">
                       {displayText}
                       <motion.span
                         animate={{ opacity: [1, 0] }}
@@ -267,26 +280,31 @@ export const Hero = () => {
 
             {/* Description */}
             <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.4, duration: 0.8 }}
-              className="text-xs sm:text-sm md:text-base lg:text-lg text-foreground/40 font-light max-w-xl leading-relaxed"
+              variants={{
+                hidden: { opacity: 0, y: 10 },
+                visible: { opacity: 1, y: 0, transition: { duration: 0.8 } }
+              }}
+              className="text-base sm:text-lg lg:text-lg text-foreground/60 font-medium max-w-xl leading-relaxed mt-1"
             >
-              {HERO_CONTENT.description}
+              A <span className="text-foreground font-bold">Software Developer</span> who builds 
+              <span className="text-primary/80 font-semibold px-1">scalable web systems</span>, 
+              <span className="text-primary/80 font-semibold px-1">automation tools</span>, and 
+              <span className="text-primary/80 font-semibold px-1">intelligent applications</span>.
             </motion.p>
 
             {/* Tech Focus Tags */}
             <motion.div
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5, duration: 0.7 }}
+              variants={{
+                hidden: { opacity: 0, y: 10 },
+                visible: { opacity: 1, y: 0, transition: { duration: 0.7 } }
+              }}
               className="flex flex-wrap gap-2"
             >
-              <div className="flex items-center gap-1.5 md:gap-2 px-2.5 md:px-3 py-1.5 rounded-md border border-emerald-500/20 bg-emerald-500/5 text-[7px] md:text-[9px] font-mono font-bold uppercase tracking-widest text-emerald-400/80">
+              <div className="flex items-center gap-1.5 md:gap-2 px-2 md:px-2.5 py-1 rounded-md border border-emerald-500/20 bg-emerald-500/5 text-[8px] md:text-[9px] font-mono font-bold uppercase tracking-widest text-emerald-400/80">
                 <span className="w-1 h-1 rounded-full bg-emerald-400 shadow-[0_0_6px_rgba(52,211,153,0.6)] shrink-0" />
                 {HERO_CONTENT.focus}
               </div>
-              <div className="flex items-center gap-1.5 md:gap-2 px-2.5 md:px-3 py-1.5 rounded-md border border-primary/12 bg-primary/4 text-[7px] md:text-[9px] font-mono font-bold uppercase tracking-widest text-primary/45">
+              <div className="flex items-center gap-1.5 md:gap-2 px-2 md:px-2.5 py-1 rounded-md border border-primary/12 bg-primary/4 text-[8px] md:text-[9px] font-mono font-bold uppercase tracking-widest text-primary/45">
                 <TerminalIcon className="h-2 w-2 md:h-2.5 md:w-2.5 shrink-0" />
                 {HERO_CONTENT.learning}
               </div>
@@ -294,10 +312,11 @@ export const Hero = () => {
 
             {/* CTAs */}
             <motion.div
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6, duration: 0.8 }}
-              className="flex flex-row items-center gap-4 md:gap-8 pt-1 md:pt-2 flex-wrap"
+              variants={{
+                hidden: { opacity: 0, y: 15 },
+                visible: { opacity: 1, y: 0, transition: { duration: 0.8 } }
+              }}
+              className="flex flex-row items-center gap-4 md:gap-8 pt-4 md:pt-6 flex-wrap"
             >
               <motion.a
                 ref={buttonRef}
@@ -306,11 +325,12 @@ export const Hero = () => {
                 whileTap={{ scale: 0.96 }}
                 transition={{ type: "spring", stiffness: 180, damping: 14 }}
                 href="#contact"
-                className="group relative w-fit h-10 md:h-12 px-6 md:px-9 flex items-center justify-center gap-2.5 rounded-md overflow-hidden font-bold text-[11px] md:text-sm uppercase tracking-widest text-background bg-primary hover:bg-primary/90 transition-colors shadow-[0_0_28px_rgba(59,130,246,0.22)] hover:shadow-[0_0_42px_rgba(59,130,246,0.38)] whitespace-nowrap"
+                className="group relative w-fit h-9 md:h-12 px-5 md:px-9 flex items-center justify-center gap-2 rounded-md overflow-hidden font-bold text-[11px] md:text-sm uppercase tracking-widest text-background bg-primary hover:bg-primary/90 transition-colors shadow-[0_0_28px_rgba(59,130,246,0.3)] hover:shadow-[0_0_42px_rgba(59,130,246,0.5)] whitespace-nowrap"
               >
-                <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-500 ease-in-out" />
-                Get in touch
-                {hasHydrated && <ArrowUpRight className="h-3.5 w-3.5 md:h-4 md:w-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />}
+                <div className="absolute inset-0 bg-white/10 blur-xl animate-breathe pointer-events-none" />
+                <span className="relative z-10 absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-500 ease-in-out" />
+                <span className="relative z-10">Get in touch</span>
+                {hasHydrated && <ArrowUpRight className="relative z-10 h-3.5 w-3.5 md:h-4 md:w-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />}
               </motion.a>
 
               <div className="flex items-center gap-4 md:gap-7 text-foreground/30">
@@ -322,7 +342,7 @@ export const Hero = () => {
                 </a>
                 <a href={HERO_CONTENT.cvPath} target="_blank" className="group flex items-center gap-2 hover:text-primary transition-all text-[9px] md:text-[10px] font-mono font-bold uppercase tracking-[0.3em]" aria-label="Resume">
                   {hasHydrated && <FileText className="h-5 w-5 md:h-6 md:w-6 group-hover:scale-110 transition-transform" />}
-                  <span className="hidden sm:inline">CV</span>
+                  <span className="inline font-bold">CV</span>
                 </a>
               </div>
             </motion.div>

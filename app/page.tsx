@@ -13,6 +13,7 @@ import { Contact } from "@/components/sections/Contact";
 import { Footer } from "@/components/layout/Footer";
 import { LogoMarquee } from "@/components/sections/LogoMarquee";
 import { LoadingScreen } from "@/components/shared/LoadingScreen";
+import { MobileAura } from "@/components/visuals/MobileAura";
 
 export default function Portfolio() {
   return (
@@ -33,6 +34,9 @@ export default function Portfolio() {
           hoverFillColor="var(--square-hover)"
           className="opacity-35"
         />
+
+        {/* Dynamic Mobile Energy */}
+        <MobileAura />
       </div>
 
       <Header />

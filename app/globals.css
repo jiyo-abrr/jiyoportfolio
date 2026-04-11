@@ -130,3 +130,34 @@
   content: '';
   @apply flex-1 h-[1.5px] bg-gradient-to-r from-primary/60 to-transparent;
 }
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.animate-shimmer {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.05),
+    transparent
+  );
+  background-size: 200% 100%;
+  animation: shimmer 3s infinite linear;
+}
+
+@keyframes breathe {
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.05); }
+}
+
+.animate-breathe {
+  animation: breathe 4s infinite ease-in-out;
+}
+
+.text-shimmer {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-foreground via-foreground/80 to-foreground;
+  background-size: 200% auto;
+  animation: shimmer 4s linear infinite;
+}

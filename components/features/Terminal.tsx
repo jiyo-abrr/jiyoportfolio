@@ -29,11 +29,11 @@ export const Terminal = () => {
             <div className="w-2.5 h-2.5 rounded-full bg-[#ffbd2e]" />
             <div className="w-2.5 h-2.5 rounded-full bg-[#27c93f]" />
           </div>
-          <span className="text-[10px] text-muted-foreground/60 flex items-center gap-1.5 ml-2">
+          <span className="text-xs text-muted-foreground/60 flex items-center gap-1.5 ml-2">
             {hasHydrated && <TerminalIcon className="w-3 h-3" />} system-terminal
           </span>
         </div>
-        <div className="text-[10px] text-muted-foreground/30">zsh</div>
+        <div className="text-xs text-muted-foreground/30">zsh</div>
       </div>
 
       {/* Terminal Body */}

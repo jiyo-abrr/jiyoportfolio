@@ -48,7 +48,7 @@ export const About = () => {
                 <p className="text-4xl md:text-5xl font-medium tracking-tighter">
                   {stat.value}
                 </p>
-                <p className="text-[10px] md:text-sm font-medium text-muted-foreground mt-2 uppercase tracking-widest">{stat.label}</p>
+                <p className="text-xs md:text-sm font-medium text-muted-foreground mt-2 uppercase tracking-widest">{stat.label}</p>
               </div>
             </div>
           ))}
