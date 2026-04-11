@@ -72,8 +72,15 @@ const ExperienceCard = ({
       <div className="w-full md:w-[45%] group">
         <div 
           onClick={() => setIsExpanded(!isExpanded)}
-          className={`glass p-6 md:p-8 rounded-xl cursor-pointer hover:border-primary/40 transition-all duration-500 overflow-hidden relative ${isEven ? 'md:rounded-tl-none' : 'md:rounded-tr-none'} ${isExpanded ? 'border-primary/30 shadow-[0_0_30px_-10px_rgba(var(--primary-rgb),0.1)]' : 'border-border/40'}`}
+          className={`glass p-6 md:p-8 rounded-xl cursor-pointer transition-all duration-500 relative ${isEven ? 'md:rounded-tl-none' : 'md:rounded-tr-none'} 
+            ${isExpanded 
+              ? 'border-primary/40 shadow-[0_0_30px_-10px_rgba(var(--primary-rgb),0.2)] outline outline-1 outline-primary/60 outline-offset-4' 
+              : 'border-primary/20 dark:border-primary/10 outline outline-[1px] outline-primary/30 dark:outline-primary/20 outline-offset-2'
+            } hover:outline-primary/50 hover:border-primary/40`}
         >
+
+
+
           {/* Header Section */}
           <div className="flex items-start gap-4 md:gap-6">
             <motion.div
@@ -213,7 +220,7 @@ export const Experience = () => {
                       className={`flex items-center gap-6 w-full md:w-1/2 ${isEven ? 'md:justify-end' : 'md:justify-start'} pl-12 md:pl-0 relative`}
                     >
                       <div className={`flex items-center gap-6 md:gap-8 ${isEven ? 'md:flex-row-reverse' : 'md:flex-row'}`}>
-                        <div className={`h-16 w-16 md:h-24 md:w-24 rounded-2xl md:rounded-3xl bg-secondary/40 border border-border/50 flex items-center justify-center p-3 md:p-5 transition-all duration-500 ${isHovered ? 'border-primary/40 scale-110 shadow-[0_0_40px_-10px_rgba(var(--primary-rgb),0.2)] bg-secondary/60' : ''} shrink-0`}>
+                        <div className={`h-16 w-16 md:h-24 md:w-24 rounded-2xl md:rounded-3xl bg-secondary/40 flex items-center justify-center p-3 md:p-5 transition-all duration-500 outline outline-[1px] outline-primary/30 dark:outline-primary/20 outline-offset-2 hover:outline-primary/50 ${isHovered ? 'outline-primary/50 scale-110 shadow-[0_0_40px_-10px_rgba(var(--primary-rgb),0.2)] bg-secondary/60' : ''} shrink-0`}>
                           <Image 
                             src={company.logo} 
                             alt={company.company} 

@@ -197,22 +197,11 @@ export const TechStacks = () => {
           </div>
 
           {/* Unified Seamless Container (Overflow-visible to prevent box clipping) */}
-          <MatrixFrame className="w-full">
-            <motion.div 
-              layout
-              transition={snappySmoothSpring}
-              className="bg-white/40 dark:bg-white/[0.02] backdrop-blur-md relative group/main"
-            >
-
-
-
-
-            <motion.div layout className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
-            
-            {/* Animated Border Sweep */}
-            <div className="absolute inset-x-0 top-0 h-[1.5px] bg-gradient-to-r from-transparent via-primary/40 to-transparent animate-scan-x" />
-            
-            
+          <motion.div 
+            layout
+            transition={snappySmoothSpring}
+            className="bg-white/40 dark:bg-white/[0.02] backdrop-blur-md relative group/main outline outline-[1px] outline-primary/30 dark:outline-primary/20 outline-offset-2 hover:outline-primary/50 transition-all duration-500 rounded-xl"
+          >
             <div className="flex flex-col relative min-h-[300px]">
               <AnimatePresence initial={false}>
                 {!isExpanded ? (
@@ -319,9 +308,9 @@ export const TechStacks = () => {
               </motion.div>
             </div>
           </motion.div>
-        </MatrixFrame>
-      </div>
-    </section>
+        </div>
+      </section>
+
   </SectionWrapper>
 );
 };
@@ -347,12 +336,7 @@ export const Education = () => {
 
         <div className="flex flex-col md:flex-row gap-6 md:gap-8 items-stretch">
           {/* Left Column: Education Info */}
-          <MatrixFrame className="flex-[1.2]">
-            <div className="flex flex-col h-full min-w-0 bg-white/40 dark:bg-white/[0.015] backdrop-blur-md relative overflow-hidden transition-all duration-700">
-
-
-
-              <div className="absolute top-0 inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
+          <div className="flex-[1.2] flex flex-col h-full min-w-0 bg-white/40 dark:bg-white/[0.015] backdrop-blur-md relative overflow-hidden transition-all duration-700 outline outline-[1px] outline-primary/30 dark:outline-primary/20 outline-offset-2 hover:outline-primary/50 rounded-xl">
 
 
             {/* University Info */}
@@ -416,17 +400,15 @@ export const Education = () => {
               </div>
               </div>
             </div>
-          </MatrixFrame>
+
 
 
           {/* Right Column: Identity Photo (Uniform) */}
           <div className="h-[520px] md:h-auto min-h-[520px] md:min-h-[450px] w-full relative flex-[0.8]">
-             <MatrixFrame className="w-full h-full">
-               <div className="w-full h-full bg-white/40 dark:bg-white/[0.015] backdrop-blur-md relative overflow-hidden flex items-center justify-center p-3 md:p-4">
-                  <div className="absolute top-0 inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
-                  <StaticLanyardCard />
-               </div>
-             </MatrixFrame>
+             <div className="w-full h-full bg-white/40 dark:bg-white/[0.015] backdrop-blur-md relative overflow-hidden flex items-center justify-center p-3 md:p-4 outline outline-[1px] outline-primary/30 dark:outline-primary/20 outline-offset-2 hover:outline-primary/50 transition-all duration-500 rounded-xl">
+                <StaticLanyardCard />
+             </div>
+
 
 
 

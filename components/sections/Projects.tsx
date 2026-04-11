@@ -23,7 +23,7 @@ export const Projects = () => {
         
         <div className="grid grid-cols-1 gap-6">
           {PROJECTS.map((project, idx) => (
-            <div key={idx} className="group relative glass rounded-xl md:rounded-xl overflow-hidden transition-all duration-500 hover:border-primary/30">
+            <div key={idx} className="group relative glass rounded-xl md:rounded-xl overflow-hidden transition-all duration-500 hover:border-primary/40 outline outline-[1px] outline-primary/30 dark:outline-primary/20 outline-offset-2 hover:outline-offset-4 hover:outline-primary/50">
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 p-6 md:p-12">
                 
                 <div className="lg:col-span-8 space-y-6 md:space-y-8">

@@ -29,7 +29,7 @@ export const About = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {/* Large Text Block */}
-          <div className="md:col-span-2 p-6 md:p-12 rounded-xl md:rounded-xl glass flex flex-col justify-center gap-6 hover:border-primary/30 transition-all duration-500">
+          <div className="md:col-span-2 p-6 md:p-12 rounded-xl md:rounded-xl glass flex flex-col justify-center gap-6 hover:border-primary/40 transition-all duration-500 outline outline-[1px] outline-primary/30 dark:outline-primary/20 outline-offset-2 hover:outline-primary/50">
             <h3 className="text-xl md:text-3xl font-medium leading-relaxed tracking-tight">
               Passionate about <span className="text-primary italic">{ABOUT_CONTENT.highlight.italic}</span> and <span className="text-primary font-medium">{ABOUT_CONTENT.highlight.bold}</span>.
             </h3>
@@ -40,7 +40,7 @@ export const About = () => {
 
           {/* Stats */}
           {ABOUT_CONTENT.stats.map((stat) => (
-            <div key={stat.id} className="p-8 md:p-10 rounded-xl md:rounded-xl glass flex flex-col justify-between gap-8 hover:border-primary/30 transition-all duration-500">
+            <div key={stat.id} className="p-8 md:p-10 rounded-xl md:rounded-xl glass flex flex-col justify-between gap-8 hover:border-primary/40 transition-all duration-500 outline outline-[1px] outline-primary/30 dark:outline-primary/20 outline-offset-2 hover:outline-primary/50">
               <div className="h-12 w-12 md:h-14 md:w-14 rounded-full bg-primary/10 flex items-center justify-center text-primary">
                 <div className={`transition-opacity duration-500 ${hasHydrated ? "opacity-100" : "opacity-0"}`}>
                   {icons[stat.icon as keyof typeof icons]}
@@ -56,7 +56,7 @@ export const About = () => {
           ))}
 
           {/* Terminal Component */}
-          <div className="md:col-span-2 rounded-xl md:rounded-xl overflow-hidden">
+          <div className="md:col-span-2 rounded-xl md:rounded-xl transition-all duration-500 outline outline-[1px] outline-primary/30 dark:outline-primary/20 outline-offset-2 hover:outline-primary/50">
             <Terminal />
           </div>
 

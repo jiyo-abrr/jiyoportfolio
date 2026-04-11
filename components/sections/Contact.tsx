@@ -4,19 +4,8 @@ import { SectionWrapper } from "@/components/layout/SectionWrapper";
 import { Mail, ArrowRight, Copy, Check, Send, User, MessageSquare, AtSign, Type } from "lucide-react";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { MatrixFrame } from "@/components/shared/MatrixFrame";
 
 import { CONTACT_CONTENT } from "@/lib/data/contact";
-
-const CornerBracket = ({ position, size = "w-4 h-4" }: { position: "tl" | "tr" | "bl" | "br", size?: string }) => {
-  const styles = {
-    tl: "top-[-1.5px] left-[-1.5px] border-t-2 border-l-2",
-    tr: "top-[-1.5px] right-[-1.5px] border-t-2 border-r-2",
-    bl: "bottom-[-1.5px] left-[-1.5px] border-b-2 border-l-2",
-    br: "bottom-[-1.5px] right-[-1.5px] border-b-2 border-r-2",
-  };
-  return <div className={`absolute ${size} border-primary/40 ${styles[position]} z-20`} />;
-};
 
 export const Contact = () => {
   const [copied, setCopied] = useState(false);
@@ -116,8 +105,6 @@ export const Contact = () => {
                 {/* Email Block */}
                 <div className="flex items-center gap-6 group">
                   <div className="w-12 h-12 md:w-16 md:h-16 bg-secondary/10 border border-primary/20 flex items-center justify-center relative flex-shrink-0">
-                    <CornerBracket position="tl" size="w-3 h-3" />
-                    <CornerBracket position="br" size="w-3 h-3" />
                     <Mail className="w-5 h-5 md:w-6 md:h-6 text-primary/60 group-hover:text-primary transition-colors" />
                   </div>
                   <div className="space-y-2 overflow-hidden">
@@ -159,8 +146,9 @@ export const Contact = () => {
             </div>
 
             {/* Right Column: Large Terminal Form Card */}
-            <MatrixFrame className="w-full h-full">
-              <div className="bg-secondary/5 dark:bg-secondary/10 backdrop-blur-2xl rounded-none p-5 md:p-8 relative overflow-hidden h-full flex flex-col transition-all duration-700">
+            <div className="w-full h-full bg-secondary/5 dark:bg-secondary/10 backdrop-blur-2xl rounded-xl p-5 md:p-8 relative overflow-hidden h-full flex flex-col transition-all duration-700 outline outline-[1px] outline-primary/30 dark:outline-primary/20 outline-offset-2 hover:outline-primary/50">
+
+
 
 
 
@@ -283,9 +271,9 @@ export const Contact = () => {
                   </AnimatePresence>
                 </form>
               </div>
-            </MatrixFrame>
           </div>
         </div>
+
       </section>
     </SectionWrapper>
   );
