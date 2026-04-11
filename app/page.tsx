@@ -17,7 +17,7 @@ import { MobileAura } from "@/components/visuals/MobileAura";
 
 export default function Portfolio() {
   return (
-    <main className="relative min-h-dvh w-full bg-background selection:bg-primary/10">
+    <main className="relative min-h-svh w-full bg-background selection:bg-primary/10">
       <LoadingScreen />
       {/* Background Layer */}
       <div className="fixed inset-0 z-0 pointer-events-none">

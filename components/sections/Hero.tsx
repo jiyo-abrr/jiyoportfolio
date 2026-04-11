@@ -136,7 +136,7 @@ export const Hero = () => {
 
   return (
     // No bg-background — fully transparent so the page background shows through
-    <section className="relative min-h-dvh flex flex-col w-full overflow-hidden">
+    <section className="relative min-h-svh flex flex-col w-full overflow-hidden">
 
       {/* ── BACKGROUND LAYER ── */}
       <div className="absolute inset-0 z-0 pointer-events-none">

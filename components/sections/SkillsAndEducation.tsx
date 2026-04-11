@@ -22,7 +22,7 @@ const CORE_TECH = [
 ];
 
 const StaticLanyardCard = () => (
-  <div className="flex flex-col gap-3 items-center w-full h-full mx-auto">
+  <div className="flex flex-col gap-3 items-center w-full md:h-full h-auto mx-auto">
     <motion.div 
       initial={{ opacity: 0, scale: 0.95 }}
       whileInView={{ opacity: 1, scale: 1 }}
@@ -405,7 +405,7 @@ export const Education = () => {
 
           {/* Right Column: Identity Photo (Uniform) */}
           <div className="h-auto md:h-auto w-full relative flex-[0.8]">
-             <div className="w-full h-full bg-white/40 dark:bg-white/[0.015] backdrop-blur-md relative overflow-hidden flex items-center justify-center p-1.5 outline outline-[1px] outline-primary/30 dark:outline-primary/20 outline-offset-2 hover:outline-primary/50 transition-all duration-500 rounded-xl">
+             <div className="w-full h-auto md:h-full bg-white/40 dark:bg-white/[0.015] backdrop-blur-md relative overflow-hidden flex md:items-center md:justify-center p-1.5 outline outline-[1px] outline-primary/30 dark:outline-primary/20 outline-offset-2 hover:outline-primary/50 transition-all duration-500 rounded-xl">
                 <StaticLanyardCard />
              </div>
 
