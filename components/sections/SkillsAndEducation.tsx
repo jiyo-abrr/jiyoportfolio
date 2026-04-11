@@ -31,7 +31,7 @@ const StaticLanyardCard = () => (
       initial={{ opacity: 0, scale: 0.95 }}
       whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ once: true }}
-      className="relative w-[280px] h-[400px] rounded-2xl overflow-hidden shadow-2xl border border-white/10"
+      className="relative w-[280px] h-[400px] rounded-2xl overflow-hidden shadow-2xl border border-primary/20 bg-card"
     >
       <Image 
         src="/Abarre.JPG" 
@@ -344,7 +344,7 @@ export const Education = () => {
 
         <div className="flex flex-col md:flex-row gap-6 md:gap-8 items-stretch">
           {/* Left Column: Education Info */}
-          <div className="flex flex-col flex-[1.2] min-w-0 bg-secondary/[0.03] dark:bg-white/[0.015] border border-border/10 rounded-xl overflow-hidden divide-y divide-border/10 transition-all duration-700">
+          <div className="flex flex-col flex-[1.2] min-w-0 bg-white/40 dark:bg-white/[0.015] border border-border/30 dark:border-border/10 rounded-xl overflow-hidden divide-y divide-border/10 transition-all duration-700 shadow-lg shadow-primary/5 dark:shadow-none">
             {/* University Info */}
             <div className="flex flex-col sm:flex-row items-center sm:items-center gap-6 md:gap-8 p-8 md:p-10 justify-center text-center sm:text-left">
               <motion.div
@@ -370,7 +370,7 @@ export const Education = () => {
             </div>
 
             {/* Degree Info */}
-            <div className="space-y-8 p-8 md:p-10 bg-secondary/[0.02]">
+            <div className="space-y-8 p-8 md:p-10 bg-white/20 dark:bg-secondary/[0.02]">
               <div className="space-y-4">
                 <p className="text-xl md:text-2xl text-primary font-medium tracking-tight text-center sm:text-left">
                   Bachelor of Science in Computer Science
@@ -415,7 +415,7 @@ export const Education = () => {
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true, amount: 0.2 }}
-                className="relative w-full h-full bg-secondary/[0.03] dark:bg-white/[0.015] border border-border/10 rounded-xl md:rounded-xl overflow-hidden flex items-center justify-center group transition-all duration-700"
+                className="relative w-full h-full bg-white/40 dark:bg-white/[0.015] border border-border/30 dark:border-border/10 rounded-xl md:rounded-xl overflow-hidden flex items-center justify-center group transition-all duration-700 shadow-lg shadow-primary/5 dark:shadow-none"
               >
                 <Lanyard />
                 <div className="absolute top-8 left-8 w-1.5 h-1.5 rounded-full bg-primary/20" />
@@ -428,7 +428,7 @@ export const Education = () => {
 
             {/* Mobile View: Static Optimized Photo Only */}
             <div className="block md:hidden w-full h-full">
-               <div className="w-full h-full bg-secondary/[0.03] dark:bg-white/[0.015] border border-border/10 rounded-xl overflow-hidden flex items-center justify-center p-8">
+               <div className="w-full h-full bg-white/40 dark:bg-white/[0.015] border border-border/30 dark:border-border/10 rounded-xl overflow-hidden flex items-center justify-center p-8 shadow-lg shadow-primary/5 dark:shadow-none">
                   <StaticLanyardCard />
                </div>
             </div>

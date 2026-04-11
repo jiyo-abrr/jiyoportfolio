@@ -42,29 +42,39 @@
 }
 
 :root {
-  --background: oklch(0.99 0.002 250); 
-  --foreground: oklch(0.2 0.02 250);   
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.2 0.02 250);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.2 0.02 250);
-  --primary: oklch(0.45 0.15 250);    
-  --primary-foreground: oklch(1 0 0);
-  --secondary: oklch(0.96 0.01 250);
-  --secondary-foreground: oklch(0.3 0.04 250);
-  --muted: oklch(0.97 0.005 250);
-  --muted-foreground: oklch(0.45 0.02 250); 
-  --accent: oklch(0.94 0.02 250);
-  --accent-foreground: oklch(0.2 0.02 250);
-  --destructive: oklch(0.5 0.15 25);
-  --border: oklch(0.9 0.01 250);
-  --input: oklch(0.9 0.01 250);
-  --ring: oklch(0.45 0.15 250);
+  /* === WARM IVORY + VIOLET-INDIGO LIGHT THEME === */
+  --background: oklch(0.97 0.008 75);       /* warm ivory — premium parchment base */
+  --foreground: oklch(0.16 0.025 265);      /* deep navy — sharp editorial contrast */
+
+  --card: oklch(0.995 0.004 75);            /* warm white — slightly lifted surface */
+  --card-foreground: oklch(0.16 0.025 265);
+
+  --popover: oklch(0.995 0.004 75);
+  --popover-foreground: oklch(0.16 0.025 265);
+
+  --primary: oklch(0.43 0.2 272);           /* rich violet-indigo — vibrant modern accent */
+  --primary-foreground: oklch(0.99 0 0);
+
+  --secondary: oklch(0.93 0.012 75);        /* warm light gray */
+  --secondary-foreground: oklch(0.28 0.03 265);
+
+  --muted: oklch(0.94 0.009 75);            /* warm muted bg */
+  --muted-foreground: oklch(0.46 0.025 265);/* cool-gray mid tone */
+
+  --accent: oklch(0.91 0.018 75);           /* warm accent surface */
+  --accent-foreground: oklch(0.16 0.025 265);
+
+  --destructive: oklch(0.52 0.18 25);
+
+  --border: oklch(0.86 0.015 265 / 0.4);   /* cool-tinted border */
+  --input: oklch(0.87 0.012 265 / 0.35);
+  --ring: oklch(0.43 0.2 272);
+
   --radius: 0.8rem;
-  
-  /* Square Background: Light Blue @ 10% */
-  --square-line: rgba(59, 130, 246, 0.1); 
-  --square-hover: rgba(59, 130, 246, 0.05);
+
+  /* Square Background: Violet @ 8% */
+  --square-line: rgba(99, 82, 210, 0.08);
+  --square-hover: rgba(99, 82, 210, 0.04);
 }
 
 .dark {
@@ -110,7 +120,7 @@
 }
 
 .glass {
-  @apply backdrop-blur-sm bg-white/80 dark:bg-white/[0.03] border border-border/80 dark:border-border/50 shadow-sm;
+  @apply backdrop-blur-md bg-white/40 dark:bg-white/[0.03] border border-border/60 dark:border-border/50 shadow-lg shadow-primary/5 dark:shadow-none;
 }
 
 .section-title {

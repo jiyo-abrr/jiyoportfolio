@@ -4,6 +4,7 @@ import * as THREE from 'three';
 import { useEffect, useRef, useState, useMemo, Suspense } from 'react';
 import { Canvas, useFrame, useThree, extend } from '@react-three/fiber';
 import { useTexture, Environment, Lightformer, RoundedBox, Text } from '@react-three/drei';
+import { useTheme } from 'next-themes';
 import { BallCollider, CuboidCollider, Physics, RigidBody, useRopeJoint, useSphericalJoint } from '@react-three/rapier';
 import { MeshLineGeometry, MeshLineMaterial } from 'meshline';
 
@@ -74,6 +75,9 @@ export const Lanyard = ({ position = [0, 0, 8], gravity = [0, -40, 0] }: Lanyard
 };
 
 function Scene({ isMobile }: { isMobile: boolean }) {
+  const { theme } = useTheme();
+  const isLight = theme === 'light';
+  
   const band = useRef<any>(null);
   const fixed = useRef<any>(null);
   const j1 = useRef<any>(null);
@@ -199,7 +203,10 @@ function Scene({ isMobile }: { isMobile: boolean }) {
             {/* The Badge/Card Case */}
             <mesh>
               <boxGeometry args={[1.7, 2.22, 0.08]} />
-              <meshStandardMaterial color="#ffffff" roughness={0.25} />
+              <meshStandardMaterial 
+                color={isLight ? "#fbfaf7" : "#ffffff"} 
+                roughness={0.25} 
+              />
             </mesh>
 
             {/* Front Face (Photo) - Fixed to 4:5 Aspect Ratio (4000x5000) */}
@@ -216,7 +223,7 @@ function Scene({ isMobile }: { isMobile: boolean }) {
             
             <mesh position={[0, 1.15, 0]}>
               <boxGeometry args={[0.2, 0.1, 0.1]} />
-              <meshStandardMaterial color="#111111" />
+              <meshStandardMaterial color={isLight ? "#4a446a" : "#111111"} />
             </mesh>
           </group>
         </RigidBody>
@@ -226,7 +233,7 @@ function Scene({ isMobile }: { isMobile: boolean }) {
       <mesh ref={band}>
         <meshLineGeometry />
         <meshLineMaterial
-          color="#0a0a0a"
+          color={isLight ? "#6d5dfc" : "#0d0d0d"}
           depthTest={false}
           resolution={[size.width, size.height]}
           lineWidth={0.24}

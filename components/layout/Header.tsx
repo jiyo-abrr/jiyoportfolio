@@ -46,28 +46,28 @@ export const Header = () => {
       transition={{ duration: 0.5 }}
       className="fixed top-0 left-0 right-0 z-[100] px-4 md:px-6 py-4"
     >
-      <div className="max-w-5xl mx-auto flex items-center justify-between glass px-4 md:px-6 py-3 rounded-2xl border-border/40 shadow-xl shadow-black/5 bg-background/60 backdrop-blur-xl">
+      <div className="max-w-5xl mx-auto flex items-center justify-between glass px-4 md:px-5 py-3 rounded-2xl border-border/40 shadow-xl shadow-black/5 bg-background/60 backdrop-blur-xl">
         {/* Brand with Pop-up Effect */}
         <motion.div 
           whileHover={{ scale: 1.05 }}
           className="flex items-center gap-2 cursor-pointer"
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
         >
-          <span className="text-lg md:text-xl font-mono font-bold tracking-tighter text-foreground">
+          <span className="text-base md:text-lg font-mono font-bold tracking-tighter text-foreground whitespace-nowrap">
             <span className="text-primary">{"< "}</span>jiyo.dev<span className="text-primary">{" />"}</span>
           </span>
         </motion.div>
 
         {/* Desktop Navigation with Per-Item Pop-up */}
-        <nav className="hidden md:flex items-center gap-6">
+        <nav className="hidden md:flex items-center gap-3 lg:gap-6">
           {navItems.map((item) => (
             <motion.a 
               key={item} 
               href={`#${item.toLowerCase()}`}
               onClick={(e) => scrollToSection(e, item)}
-              whileHover={{ scale: 1.15, y: -2 }}
+              whileHover={{ scale: 1.1, y: -2 }}
               whileTap={{ scale: 0.95 }}
-              className="text-xs font-semibold uppercase tracking-widest text-muted-foreground hover:text-primary transition-colors px-2 py-1"
+              className="text-[10px] lg:text-xs font-semibold uppercase tracking-wider lg:tracking-widest text-muted-foreground hover:text-primary transition-colors px-1.5 lg:px-2 py-1 whitespace-nowrap"
             >
               {item}
             </motion.a>
