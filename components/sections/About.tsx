@@ -42,7 +42,9 @@ export const About = () => {
           {ABOUT_CONTENT.stats.map((stat) => (
             <div key={stat.id} className="p-8 md:p-10 rounded-xl md:rounded-xl glass flex flex-col justify-between gap-8 hover:border-primary/30 transition-all duration-500">
               <div className="h-12 w-12 md:h-14 md:w-14 rounded-full bg-primary/10 flex items-center justify-center text-primary">
-                {hasHydrated && icons[stat.icon as keyof typeof icons]}
+                <div className={`transition-opacity duration-500 ${hasHydrated ? "opacity-100" : "opacity-0"}`}>
+                  {icons[stat.icon as keyof typeof icons]}
+                </div>
               </div>
               <div>
                 <p className="text-4xl md:text-5xl font-medium tracking-tighter">

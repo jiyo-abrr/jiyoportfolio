@@ -76,9 +76,21 @@ export const Hero = () => {
 
   useEffect(() => {
     setHasHydrated(true);
-    const handleResize = () => setIsMobile(window.innerWidth < 1024);
-    handleResize();
+    let timeoutId: NodeJS.Timeout;
+
+    const checkMobile = () => {
+      const mobile = window.innerWidth < 1024;
+      setIsMobile(prev => prev !== mobile ? mobile : prev);
+    };
+
+    const handleResize = () => {
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(checkMobile, 100);
+    };
+
+    checkMobile();
     window.addEventListener("resize", handleResize);
+
     const handleMouseMove = (e: MouseEvent) => {
       if (!isMobile) {
         mouseX.set(e.clientX - window.innerWidth / 2);
@@ -96,6 +108,7 @@ export const Hero = () => {
     return () => {
       window.removeEventListener("resize", handleResize);
       window.removeEventListener("mousemove", handleMouseMove);
+      clearTimeout(timeoutId);
     };
   }, [mouseX, mouseY, isMobile]);
 
@@ -133,9 +146,9 @@ export const Hero = () => {
 
       {/* ── TOP HUD BAR (lg+ only, avoids 768px clutter) ── */}
       <div className="hidden lg:block absolute top-[84px] inset-x-0 z-20 px-8 pointer-events-none">
-        <div className="flex items-center justify-between font-mono text-[9px] uppercase tracking-[0.3em] text-foreground/20">
+        <div className={`flex items-center justify-between font-mono text-[9px] uppercase tracking-[0.3em] text-foreground/20 transition-opacity duration-700 ${hasHydrated ? "opacity-100" : "opacity-0"}`}>
           <div className="flex items-center gap-3">
-            {hasHydrated && <GitBranch className="h-3 w-3 text-primary/35" />}
+            <GitBranch className="h-3 w-3 text-primary/35" />
             <span>branch:<span className="text-primary/50 font-bold ml-1">main*</span></span>
           </div>
           <div className="flex items-center gap-2">
@@ -144,23 +157,23 @@ export const Hero = () => {
           </div>
           <div className="flex items-center gap-3">
             <span>env:<span className="text-primary/50 font-bold ml-1">production</span></span>
-            {hasHydrated && <Cpu className="h-3 w-3 text-primary/35" />}
+            <Cpu className="h-3 w-3 text-primary/35" />
           </div>
         </div>
       </div>
 
       {/* ── BOTTOM HUD BAR ── */}
       <div className="absolute bottom-[calc(1rem+env(safe-area-inset-bottom,0px))] md:bottom-5 inset-x-0 z-20 px-4 md:px-8 pointer-events-none">
-        <div className="flex items-center justify-between font-mono text-[9px] md:text-[10px] lg:text-[9px] uppercase tracking-[0.2em] md:tracking-[0.25em] lg:tracking-[0.3em] text-foreground/20">
+        <div className={`flex items-center justify-between font-mono text-[9px] md:text-[10px] lg:text-[9px] uppercase tracking-[0.2em] md:tracking-[0.25em] lg:tracking-[0.3em] text-foreground/20 transition-opacity duration-700 ${hasHydrated ? "opacity-100" : "opacity-0"}`}>
           <div className="flex items-center gap-1.5 md:gap-2">
-            {hasHydrated && <MapPin className="h-3 w-3 text-primary/35 shrink-0" />}
+            <MapPin className="h-3 w-3 text-primary/35 shrink-0" />
             <span>120.97E</span>
             <span className="hidden lg:inline text-foreground/12">// caloocan, rp</span>
           </div>
           <div className="hidden lg:block text-foreground/12">node_01 // rp_grid</div>
           <div className="flex items-center gap-1.5 md:gap-2">
             <span>{hasHydrated ? phtTime : "--:--:--"} PHT</span>
-            {hasHydrated && <Clock className="h-3 w-3 text-primary/35 shrink-0" />}
+            <Clock className="h-3 w-3 text-primary/35 shrink-0" />
           </div>
         </div>
       </div>
@@ -207,13 +220,12 @@ export const Hero = () => {
             {/* Name + Role Row */}
             <div className="flex flex-row lg:flex-col items-center lg:items-start gap-3 md:gap-5 lg:gap-2">
               {/* Mobile logo */}
-              {hasHydrated && (
                 <motion.div
                   variants={{
                     hidden: { opacity: 0, scale: 0.8 },
                     visible: { opacity: 1, scale: 1, transition: { type: "spring", damping: 12 } }
                   }}
-                  className="lg:hidden relative w-22 h-22 sm:w-30 sm:h-30 shrink-0"
+                  className={`lg:hidden relative w-22 h-22 sm:w-30 sm:h-30 shrink-0 transition-opacity duration-1000 ${hasHydrated ? "opacity-100" : "opacity-0"}`}
                 >
                   {/* Mobile Aura removed per user request */}
                   <Image
@@ -224,7 +236,6 @@ export const Hero = () => {
                     suppressHydrationWarning
                   />
                 </motion.div>
-              )}
 
               <div className="min-w-0">
                 {/* Name with glitch */}
@@ -333,15 +344,15 @@ export const Hero = () => {
                 {hasHydrated && <ArrowUpRight className="relative z-10 h-3.5 w-3.5 md:h-4 md:w-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />}
               </motion.a>
 
-              <div className="flex items-center gap-4 md:gap-7 text-foreground/30">
+              <div className={`flex items-center gap-4 md:gap-7 text-foreground/30 transition-opacity duration-1000 ${hasHydrated ? "opacity-100" : "opacity-0"}`}>
                 <a href={HERO_CONTENT.socials.github} target="_blank" className="group hover:text-primary transition-all" aria-label="GitHub">
-                  {hasHydrated && <Github className="h-5 w-5 md:h-6 md:w-6 group-hover:scale-110 transition-transform" />}
+                  <Github className="h-5 w-5 md:h-6 md:w-6 group-hover:scale-110 transition-transform" />
                 </a>
                 <a href={HERO_CONTENT.socials.linkedin} target="_blank" className="group hover:text-primary transition-all" aria-label="LinkedIn">
-                  {hasHydrated && <Linkedin className="h-5 w-5 md:h-6 md:w-6 group-hover:scale-110 transition-transform" />}
+                  <Linkedin className="h-5 w-5 md:h-6 md:w-6 group-hover:scale-110 transition-transform" />
                 </a>
                 <a href={HERO_CONTENT.cvPath} target="_blank" className="group flex items-center gap-2 hover:text-primary transition-all text-[9px] md:text-[10px] font-mono font-bold uppercase tracking-[0.3em]" aria-label="Resume">
-                  {hasHydrated && <FileText className="h-5 w-5 md:h-6 md:w-6 group-hover:scale-110 transition-transform" />}
+                  <FileText className="h-5 w-5 md:h-6 md:w-6 group-hover:scale-110 transition-transform" />
                   <span className="inline font-bold">CV</span>
                 </a>
               </div>

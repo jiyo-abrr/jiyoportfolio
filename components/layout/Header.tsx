@@ -82,7 +82,9 @@ export const Header = () => {
             onClick={() => setIsOpen(!isOpen)}
             className="md:hidden p-2 text-muted-foreground hover:text-primary transition-colors"
           >
-            {hasHydrated && (isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />)}
+            <div className={`transition-all duration-500 ${hasHydrated ? "opacity-100" : "opacity-0"}`}>
+              {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            </div>
           </button>
         </div>
       </div>

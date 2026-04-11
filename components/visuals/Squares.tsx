@@ -34,10 +34,14 @@ const Squares: React.FC<SquaresProps> = ({
     if (!ctx) return;
 
     const resizeCanvas = () => {
-      canvas.width = canvas.offsetWidth;
-      canvas.height = canvas.offsetHeight;
-      numSquaresX.current = Math.ceil(canvas.width / squareSize) + 1;
-      numSquaresY.current = Math.ceil(canvas.height / squareSize) + 1;
+      const newWidth = canvas.offsetWidth;
+      const newHeight = canvas.offsetHeight;
+      if (canvas.width !== newWidth || canvas.height !== newHeight) {
+        canvas.width = newWidth;
+        canvas.height = newHeight;
+        numSquaresX.current = Math.ceil(canvas.width / squareSize) + 1;
+        numSquaresY.current = Math.ceil(canvas.height / squareSize) + 1;
+      }
     };
 
     window.addEventListener('resize', resizeCanvas);

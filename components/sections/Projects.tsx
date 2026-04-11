@@ -65,12 +65,18 @@ export const Projects = () => {
 
                 <div className="lg:col-span-4 flex flex-col justify-center items-start lg:items-end gap-4 md:gap-6 pt-8 lg:pt-0 border-t lg:border-t-0 lg:border-l border-border/50 lg:pl-12">
                   <a href={project.github} className="flex items-center gap-3 text-sm font-medium text-foreground hover:text-primary transition-all group/link bg-background/50 px-6 py-3 rounded-full border border-border/50 w-full justify-between shadow-sm hover:shadow-md" target="_blank" rel="noopener noreferrer">
-                    <span className="flex items-center gap-2">{hasHydrated && <Github className="h-4 w-4" />} Source Code</span>
-                    {hasHydrated && <ArrowUpRight className="h-4 w-4 opacity-50 group-hover/link:opacity-100 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-all" />}
+                    <span className="flex items-center gap-2">
+                      <Github className={`h-4 w-4 transition-opacity duration-500 ${hasHydrated ? "opacity-100" : "opacity-0"}`} /> 
+                      Source Code
+                    </span>
+                    <ArrowUpRight className={`h-4 w-4 opacity-50 group-hover/link:opacity-100 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-all ${hasHydrated ? "opacity-100" : "opacity-0"}`} />
                   </a>
                   <a href={project.demo} className="flex items-center gap-3 text-sm font-medium text-background bg-foreground hover:bg-primary transition-all group/link px-6 py-3 rounded-full w-full justify-between shadow-md hover:shadow-lg" target="_blank" rel="noopener noreferrer">
-                    <span className="flex items-center gap-2">{hasHydrated && <Globe className="h-4 w-4" />} Live Preview</span>
-                    {hasHydrated && <ArrowUpRight className="h-4 w-4 opacity-50 group-hover/link:opacity-100 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-all" />}
+                    <span className="flex items-center gap-2">
+                      <Globe className={`h-4 w-4 transition-opacity duration-500 ${hasHydrated ? "opacity-100" : "opacity-0"}`} /> 
+                      Live Preview
+                    </span>
+                    <ArrowUpRight className={`h-4 w-4 opacity-50 group-hover/link:opacity-100 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-all ${hasHydrated ? "opacity-100" : "opacity-0"}`} />
                   </a>
                 </div>
 

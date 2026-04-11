@@ -50,12 +50,12 @@ export const LoadingScreen = () => {
 
   useEffect(() => {
     setHasHydrated(true);
-    const timer = setTimeout(() => setLoading(false), 6000);
+    const timer = setTimeout(() => setLoading(false), 3000);
     
-    // Cycle through roles as loading steps - even slower for cinematic effect
+    // Cycle through roles as loading steps - faster for improved UX
     const stepTimer = setInterval(() => {
       setActiveStep(prev => (prev < roles.length - 1 ? prev + 1 : prev));
-    }, 1100);
+    }, 550);
 
     return () => {
       clearTimeout(timer);
@@ -90,7 +90,7 @@ export const LoadingScreen = () => {
               y: [-20, 20, -20]
             }}
             transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
-            className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-primary/20 rounded-full blur-[120px] pointer-events-none"
+            className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-primary/20 rounded-full blur-[60px] md:blur-[120px] pointer-events-none will-change-transform"
           />
           <motion.div 
             animate={{ 
@@ -100,7 +100,7 @@ export const LoadingScreen = () => {
               y: [20, -20, 20]
             }}
             transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-            className="absolute bottom-1/4 right-1/4 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[150px] pointer-events-none"
+            className="absolute bottom-1/4 right-1/4 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[80px] md:blur-[150px] pointer-events-none will-change-transform"
           />
           
           {/* Logo-Centric HUD Pulse Ripple */}

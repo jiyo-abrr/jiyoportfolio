@@ -95,38 +95,32 @@ const TechIcon = ({
         style={hasHydrated ? ({ "--brand-color": item.brandColor || "#3b82f6" } as any) : {}}
         className="relative w-10 h-10 md:w-12 md:h-12 shrink-0 transition-all duration-500 rounded-full flex items-center justify-center"
       >
-        {/* The Sequential "Scan" Smooth Glow (Vibrant & High-Z for Mobile) */}
-        {hasHydrated && (
-          <motion.div
-            animate={isHovering ? { opacity: 0 } : { 
-              opacity: [0, 1, 0],
-              scale: [1, 1.6, 1],
-            }}
-            transition={{ 
-              duration: 1.5, 
-              delay: isHovering ? 0 : staggerDelay, 
-              repeat: Infinity,
-              repeatDelay: Math.max(0, cycleTime - 1.5), 
-              ease: "easeInOut"
-            }}
-            className="absolute inset-[-28px] pointer-events-none z-10 rounded-full bg-[var(--brand-color)]/50 blur-3xl"
-          />
-        )}
+        <motion.div
+          animate={isHovering ? { opacity: 0 } : { 
+            opacity: [0, 1, 0],
+            scale: [1, 1.6, 1],
+          }}
+          transition={{ 
+            duration: 1.5, 
+            delay: isHovering ? 0 : staggerDelay, 
+            repeat: Infinity,
+            repeatDelay: Math.max(0, cycleTime - 1.5), 
+            ease: "easeInOut"
+          }}
+          className={`absolute inset-[-28px] pointer-events-none z-10 rounded-full bg-[var(--brand-color)]/50 blur-3xl transition-opacity duration-1000 ${hasHydrated ? "opacity-100" : "opacity-0"}`}
+        />
 
-        {/* The Intense Local Hover Glow (Steady Ambient Halo) */}
-        {hasHydrated && (
-          <motion.div
-            animate={{ 
-              opacity: isHovering ? 1.0 : 0,
-              scale: isHovering ? 1.8 : 1,
-            }}
-            transition={{ 
-              duration: 0.5,
-              ease: "easeOut" 
-            }}
-            className="absolute inset-[-28px] pointer-events-none z-10 rounded-full bg-[var(--brand-color)]/60 blur-3xl"
-          />
-        )}
+        <motion.div
+          animate={{ 
+            opacity: isHovering ? 1.0 : 0,
+            scale: isHovering ? 1.8 : 1,
+          }}
+          transition={{ 
+            duration: 0.5,
+            ease: "easeOut" 
+          }}
+          className={`absolute inset-[-28px] pointer-events-none z-10 rounded-full bg-[var(--brand-color)]/60 blur-3xl transition-opacity duration-500 ${hasHydrated ? "opacity-100" : "opacity-0"}`}
+        />
 
         <div className="relative w-full h-full z-20 group-hover/item:drop-shadow-[0_0_20px_var(--brand-color)] transition-all duration-300">
           <Image
@@ -316,7 +310,7 @@ export const TechStacks = () => {
                       animate={{ rotate: isExpanded ? 180 : 0 }}
                       transition={snappySmoothSpring}
                     >
-                      {hasHydrated && <ChevronDown className="w-3.5 h-3.5 text-primary/80 group-hover:text-primary transition-colors" />}
+                      <ChevronDown className={`w-3.5 h-3.5 text-primary/80 group-hover:text-primary transition-all duration-500 ${hasHydrated ? "opacity-100" : "opacity-0"}`} />
                     </motion.div>
                   </motion.div>
                 </button>

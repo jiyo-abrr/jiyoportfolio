@@ -114,13 +114,11 @@ export const Experience = () => {
                       <div className={`flex items-center gap-4 md:gap-6 flex-row-reverse ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
                         <div className={`flex flex-col ${isEven ? 'md:text-right' : 'md:text-left'} text-left`}>
                           <h3 className="text-xl md:text-2xl font-medium tracking-tight text-foreground whitespace-nowrap">{company.company}</h3>
-                          <div className={`flex items-center gap-2 text-[10px] md:text-xs font-mono text-muted-foreground uppercase tracking-widest justify-start ${isEven ? 'md:justify-end' : 'md:justify-start'}`}>
-                            {hasHydrated && (
-                              company.location.includes('(Remote)') ? (
-                                <Globe className="h-3 w-3 text-primary/60" />
-                              ) : (
-                                <MapPin className="h-3 w-3 text-primary/60" />
-                              )
+                          <div className={`flex items-center gap-2 text-[10px] md:text-xs font-mono text-muted-foreground uppercase tracking-widest justify-start ${isEven ? 'md:justify-end' : 'md:justify-start'} transition-opacity duration-500 ${hasHydrated ? "opacity-100" : "opacity-0"}`}>
+                            {company.location.includes('(Remote)') ? (
+                              <Globe className="h-3 w-3 text-primary/60" />
+                            ) : (
+                              <MapPin className="h-3 w-3 text-primary/60" />
                             )}
                             {company.location}
                           </div>
@@ -156,8 +154,8 @@ export const Experience = () => {
                             <div className="flex flex-wrap justify-between items-start gap-4">
                               <div className="space-y-1">
                                 <h4 className="text-lg md:text-2xl font-medium tracking-tight text-foreground">{role.role}</h4>
-                                <div className="flex items-center gap-2 text-[10px] md:text-xs font-mono text-primary/80 font-bold">
-                                  {hasHydrated && <Calendar className="h-3.5 w-3.5" />}
+                                <div className={`flex items-center gap-2 text-[10px] md:text-xs font-mono text-primary/80 font-bold transition-opacity duration-500 ${hasHydrated ? "opacity-100" : "opacity-0"}`}>
+                                  <Calendar className="h-3.5 w-3.5" />
                                   {role.period}
                                 </div>
                               </div>
@@ -168,7 +166,7 @@ export const Experience = () => {
                             <ul className="space-y-2 md:space-y-3">
                               {role.description.map((item, i) => (
                                 <li key={i} className="text-muted-foreground text-xs md:text-sm font-light leading-relaxed flex items-start gap-2 md:gap-3">
-                                  {hasHydrated && <ArrowRight className="h-3.5 w-3.5 md:h-4 md:w-4 text-primary/30 mt-0.5 shrink-0" />}
+                                  <ArrowRight className={`h-3.5 w-3.5 md:h-4 md:w-4 text-primary/30 mt-0.5 shrink-0 transition-opacity duration-500 ${hasHydrated ? "opacity-100" : "opacity-0"}`} />
                                   <span 
                                     className="flex-1" 
                                     dangerouslySetInnerHTML={{ __html: item }}

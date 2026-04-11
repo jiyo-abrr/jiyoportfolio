@@ -56,7 +56,7 @@ export const LogoMarquee = () => {
                       suppressHydrationWarning
                     />
                   </div>
-                  {hasHydrated && <Icon className={`w-3.5 h-3.5 md:w-5 md:h-5 ${color} shrink-0`} />}
+                  <Icon className={`w-3.5 h-3.5 md:w-5 md:h-5 ${color} shrink-0 transition-opacity duration-500 ${hasHydrated ? "opacity-100" : "opacity-0"}`} />
                 </div>
               );
             })}

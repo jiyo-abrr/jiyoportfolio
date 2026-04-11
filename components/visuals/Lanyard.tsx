@@ -39,10 +39,24 @@ export const Lanyard = ({ position = [0, 0, 8], gravity = [0, -40, 0] }: Lanyard
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
-    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    let timeoutId: NodeJS.Timeout;
+
+    const checkMobile = () => {
+      const mobile = window.innerWidth < 768;
+      setIsMobile(prev => prev !== mobile ? mobile : prev);
+    };
+
+    const handleResize = () => {
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(checkMobile, 100);
+    };
+
     checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      clearTimeout(timeoutId);
+    };
   }, []);
 
   return (
