@@ -22,12 +22,12 @@ const CORE_TECH = [
 ];
 
 const StaticLanyardCard = () => (
-  <div className="flex flex-col gap-3 items-center w-full h-auto mx-auto">
+  <div className="flex flex-col gap-3 items-center w-full h-full mx-auto">
     <motion.div 
       initial={{ opacity: 0, scale: 0.95 }}
       whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ once: true }}
-      className="relative w-full aspect-[3/4] sm:flex-1 min-h-[280px] rounded-xl overflow-hidden shadow-2xl border border-primary/20 bg-card"
+      className="relative w-full aspect-[3/4] md:aspect-auto md:flex-1 min-h-[280px] rounded-xl overflow-hidden shadow-2xl border border-primary/20 bg-card"
     >
       <Image 
         src="/Abarre.JPG" 
