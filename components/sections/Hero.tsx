@@ -123,7 +123,7 @@ export const Hero = () => {
 
   return (
     // No bg-background — fully transparent so the page background shows through
-    <section className="relative min-h-screen flex flex-col w-full overflow-hidden">
+    <section className="relative min-h-dvh flex flex-col w-full overflow-hidden">
 
       {/* ── BACKGROUND LAYER ── */}
       <div className="absolute inset-0 z-0 pointer-events-none">
@@ -150,7 +150,7 @@ export const Hero = () => {
       </div>
 
       {/* ── BOTTOM HUD BAR ── */}
-      <div className="absolute bottom-4 md:bottom-5 inset-x-0 z-20 px-4 md:px-8 pointer-events-none">
+      <div className="absolute bottom-[calc(1rem+env(safe-area-inset-bottom,0px))] md:bottom-5 inset-x-0 z-20 px-4 md:px-8 pointer-events-none">
         <div className="flex items-center justify-between font-mono text-[7px] md:text-[8px] lg:text-[9px] uppercase tracking-[0.2em] md:tracking-[0.25em] lg:tracking-[0.3em] text-foreground/20">
           <div className="flex items-center gap-1.5 md:gap-2">
             {hasHydrated && <MapPin className="h-3 w-3 text-primary/35 shrink-0" />}

@@ -200,7 +200,7 @@ export const LoadingScreen = () => {
           </div>
 
           {/* 3. LAYER: HUD & DIAGNOSTICS */}
-          <div className="absolute bottom-8 left-8 flex flex-col gap-1 select-none pointer-events-none overflow-hidden h-24">
+          <div className="absolute bottom-[34px] left-[38px] flex flex-col gap-1 select-none pointer-events-none overflow-hidden h-24">
              <div className="text-[8px] font-bold text-primary/40 uppercase mb-2">// INIT_LOGS:</div>
              <AnimatePresence>
                 {bootLogs.slice(0, activeStep + 1).map((log, i) => (
