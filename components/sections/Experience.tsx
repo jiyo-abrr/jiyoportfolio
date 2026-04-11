@@ -1,12 +1,12 @@
 "use client"
 
-import { Calendar, MapPin, ArrowRight, Globe } from "lucide-react";
+import { Calendar, MapPin, ArrowRight, Globe, ChevronDown, Plus, Minus } from "lucide-react";
 import { SectionWrapper } from "@/components/layout/SectionWrapper";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { useState, useRef, useEffect } from "react";
 import { useScroll, useSpring, useTransform } from "framer-motion";
-import { EXPERIENCES } from "@/lib/data/experience";
+import { EXPERIENCES, Role } from "@/lib/data/experience";
 
 const TimelineNode = ({ progress, threshold, isHovered }: { progress: any, threshold: number, isHovered: boolean }) => {
   const isActive = useTransform(progress, [threshold - 0.01, threshold], [0, 1]);
@@ -47,6 +47,114 @@ const TimelineNode = ({ progress, threshold, isHovered }: { progress: any, thres
   );
 };
 
+const ExperienceCard = ({ 
+  role, 
+  roleIdx, 
+  isEven, 
+  hasHydrated,
+  isFirst 
+}: { 
+  role: Role, 
+  roleIdx: number, 
+  isEven: boolean, 
+  hasHydrated: boolean,
+}) => {
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  return (
+    <motion.div 
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay: roleIdx * 0.1 }}
+      className={`flex flex-col ${isEven ? 'md:items-start' : 'md:items-end'} w-full pl-10 md:pl-0 relative`}
+    >
+      <div className="w-full md:w-[45%] group">
+        <div 
+          onClick={() => setIsExpanded(!isExpanded)}
+          className={`glass p-6 md:p-8 rounded-xl cursor-pointer hover:border-primary/40 transition-all duration-500 overflow-hidden relative ${isEven ? 'md:rounded-tl-none' : 'md:rounded-tr-none'} ${isExpanded ? 'border-primary/30 shadow-[0_0_30px_-10px_rgba(var(--primary-rgb),0.1)]' : 'border-border/40'}`}
+        >
+          {/* Header Section */}
+          <div className="flex flex-wrap justify-between items-start gap-4">
+            <div className="space-y-2">
+              <div className="flex items-center gap-3">
+                <h4 className="text-lg md:text-2xl font-medium tracking-tight text-foreground transition-colors group-hover:text-primary">
+                  {role.role}
+                </h4>
+                <motion.div
+                  animate={{ rotate: isExpanded ? 180 : 0 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                  className="p-1 rounded-full bg-primary/5 border border-primary/10 md:hidden"
+                >
+                  <ChevronDown className="h-4 w-4 text-primary/60" />
+                </motion.div>
+              </div>
+              
+              <div className={`flex flex-wrap items-center gap-x-4 gap-y-2 text-[10px] md:text-xs font-mono transition-opacity duration-500 ${hasHydrated ? "opacity-100" : "opacity-0"}`}>
+                <div className="flex items-center gap-2 text-primary/80 font-bold uppercase tracking-wider">
+                  <Calendar className="h-3.5 w-3.5" />
+                  {role.period}
+                </div>
+                <span className="text-muted-foreground border border-border/50 px-2 py-0.5 rounded-full text-[8px] md:text-[9px] font-bold uppercase tracking-widest bg-secondary/30">
+                  {role.type}
+                </span>
+              </div>
+            </div>
+
+            <motion.div
+              animate={{ rotate: isExpanded ? 180 : 0 }}
+              transition={{ type: "spring", stiffness: 300, damping: 20 }}
+              className="hidden md:flex p-2 rounded-xl bg-primary/5 border border-primary/10 group-hover:bg-primary/10 group-hover:border-primary/20 transition-colors"
+            >
+              <ChevronDown className="h-5 w-5 text-primary/60" />
+            </motion.div>
+          </div>
+
+          {/* Details Section */}
+          <AnimatePresence initial={false}>
+            {isExpanded && (
+              <motion.div
+                initial={{ height: 0, opacity: 0, marginTop: 0 }}
+                animate={{ height: "auto", opacity: 1, marginTop: 24 }}
+                exit={{ height: 0, opacity: 0, marginTop: 0 }}
+                transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
+                className="overflow-hidden"
+              >
+                <div className="w-full h-px bg-gradient-to-r from-transparent via-border/50 to-transparent mb-6" />
+                
+                <ul className="space-y-4">
+                  {role.description.map((item, i) => (
+                    <motion.li 
+                      key={i}
+                      initial={{ x: -10, opacity: 0 }}
+                      animate={{ x: 0, opacity: 1 }}
+                      transition={{ delay: 0.1 + (i * 0.05) }}
+                      className="text-muted-foreground text-xs md:text-[13px] font-light leading-relaxed flex items-start gap-3 group/item"
+                    >
+                      <div className="mt-1.5 shrink-0">
+                        <div className="h-1.5 w-1.5 rounded-full bg-primary/40 group-hover/item:bg-primary group-hover/item:scale-125 transition-all duration-300" />
+                      </div>
+                      <span 
+                        className="flex-1 transition-colors group-hover/item:text-foreground/90" 
+                        dangerouslySetInnerHTML={{ __html: item }}
+                      />
+                    </motion.li>
+                  ))}
+                </ul>
+              </motion.div>
+            )}
+          </AnimatePresence>
+
+          {/* Bottom indicator for collapsed state */}
+          {!isExpanded && (
+            <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+          )}
+        </div>
+      </div>
+    </motion.div>
+  );
+};
+
 export const Experience = () => {
   const [hoveredCompany, setHoveredCompany] = useState<string | null>(null);
   const [hasHydrated, setHasHydrated] = useState(false);
@@ -73,20 +181,22 @@ export const Experience = () => {
       <section id="experience" className="relative py-10 space-y-16">
         <div className="flex flex-col gap-2">
           <span className="section-title">02. Career Progression</span>
-          <h2 className="text-3xl md:text-5xl font-medium tracking-tight text-foreground">Professional Journey</h2>
+          <h2 className="text-3xl md:text-5xl font-medium tracking-tight text-foreground">
+            Professional <span className="text-primary italic">Journey</span>
+          </h2>
         </div>
         
         <div ref={containerRef} className="relative">
           {/* Central Vertical Line (Static Background) */}
-          <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-[2px] md:w-[3px] bg-primary/20 -translate-x-1/2 rounded-full" />
+          <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-[2px] md:w-[3px] bg-primary/5 -translate-x-1/2 rounded-full" />
           
           {/* Glowing Animated Path (Scroll Progress) - Centered */}
           <motion.div 
             style={{ scaleY: pathScaleY, willChange: "transform" }}
-            className="absolute left-4 md:left-1/2 top-0 bottom-0 w-[2px] md:w-[3px] bg-gradient-to-b from-primary via-blue-400 to-blue-500 -translate-x-1/2 rounded-full origin-top z-10"
+            className="absolute left-4 md:left-1/2 top-0 bottom-0 w-[2px] md:w-[3px] bg-gradient-to-b from-primary via-primary/50 to-primary/10 -translate-x-1/2 rounded-full origin-top z-10"
           />
 
-          <div className="space-y-24 md:space-y-32">
+          <div className="space-y-32 md:space-y-48">
             {EXPERIENCES.map((company, companyIdx) => {
               const isEven = companyIdx % 2 === 0;
               const isHovered = hoveredCompany === company.id;
@@ -102,81 +212,54 @@ export const Experience = () => {
                   />
 
                   {/* Company Header */}
-                  <div className={`flex flex-col ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'} items-center gap-6 md:gap-12 relative z-20`}>
+                  <div className={`flex flex-col ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'} items-center gap-8 md:gap-16 relative z-20`}>
                     <motion.div 
-                      initial={{ opacity: 0, x: isEven ? -20 : 20 }}
+                      initial={{ opacity: 0, x: isEven ? -40 : 40 }}
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true }}
                       onMouseEnter={() => setHoveredCompany(company.id)}
                       onMouseLeave={() => setHoveredCompany(null)}
-                      className={`flex items-center gap-6 w-full md:w-1/2 ${isEven ? 'md:justify-end' : 'md:justify-start'} pl-10 md:pl-0 relative`}
+                      className={`flex items-center gap-6 w-full md:w-1/2 ${isEven ? 'md:justify-end' : 'md:justify-start'} pl-12 md:pl-0 relative`}
                     >
-                      <div className={`flex items-center gap-4 md:gap-6 flex-row-reverse ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
-                        <div className={`flex flex-col ${isEven ? 'md:text-right' : 'md:text-left'} text-left`}>
-                          <h3 className="text-xl md:text-2xl font-medium tracking-tight text-foreground whitespace-nowrap">{company.company}</h3>
-                          <div className={`flex items-center gap-2 text-[10px] md:text-xs font-mono text-muted-foreground uppercase tracking-widest justify-start ${isEven ? 'md:justify-end' : 'md:justify-start'} transition-opacity duration-500 ${hasHydrated ? "opacity-100" : "opacity-0"}`}>
+                      <div className={`flex items-center gap-6 md:gap-8 ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
+                        <div className={`flex flex-col ${isEven ? 'md:text-right' : 'md:text-left'} text-left space-y-1 max-w-[200px] md:max-w-none`}>
+                          <h3 className="text-lg md:text-3xl font-medium tracking-tight text-foreground leading-tight">
+                            {company.company}
+                          </h3>
+                          <div className={`flex items-center gap-2 text-[11px] md:text-sm font-mono text-muted-foreground/80 uppercase tracking-widest justify-start ${isEven ? 'md:justify-end' : 'md:justify-start'} transition-opacity duration-500 ${hasHydrated ? "opacity-100" : "opacity-0"}`}>
                             {company.location.includes('(Remote)') ? (
-                              <Globe className="h-3 w-3 text-primary/60" />
+                              <Globe className="h-3.5 w-3.5 text-primary/40" />
                             ) : (
-                              <MapPin className="h-3 w-3 text-primary/60" />
+                              <MapPin className="h-3.5 w-3.5 text-primary/40" />
                             )}
                             {company.location}
                           </div>
                         </div>
-                        <div className={`h-12 w-12 md:h-16 md:w-16 rounded-xl md:rounded-2xl bg-secondary/50 border border-border flex items-center justify-center p-2 md:p-3 transition-all duration-300 ${isHovered ? 'border-primary/50 scale-110 shadow-lg' : ''}`}>
+                        <div className={`h-16 w-16 md:h-24 md:w-24 rounded-2xl md:rounded-3xl bg-secondary/40 border border-border/50 flex items-center justify-center p-3 md:p-5 transition-all duration-500 ${isHovered ? 'border-primary/40 scale-110 shadow-[0_0_40px_-10px_rgba(var(--primary-rgb),0.2)] bg-secondary/60' : ''}`}>
                           <Image 
                             src={company.logo} 
                             alt={company.company} 
-                            width={40} 
-                            height={40} 
-                            className={`object-contain ${company.invertLogo ? 'dark:invert' : ''}`} 
+                            width={64} 
+                            height={64} 
+                            className={`object-contain transition-transform duration-500 ${isHovered ? 'scale-110' : ''} ${company.invertLogo ? 'dark:invert' : ''}`} 
                             suppressHydrationWarning
                           />
                         </div>
                       </div>
                     </motion.div>
-                    <div className="hidden md:block w-1/2" />
+                    <div className="hidden md:block w-1/2 invisible" />
                   </div>
 
                   {/* Roles */}
-                  <div className="mt-8 md:mt-12 space-y-8 md:space-y-12">
+                  <div className="mt-12 md:mt-20 space-y-12 md:space-y-20">
                     {company.roles.map((role, roleIdx) => (
-                      <motion.div 
+                      <ExperienceCard 
                         key={roleIdx}
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: roleIdx * 0.1 }}
-                        className={`flex flex-col ${isEven ? 'md:items-start' : 'md:items-end'} w-full pl-10 md:pl-0 relative`}
-                      >
-                        <div className="w-full md:w-[45%]">
-                          <div className={`glass p-6 md:p-8 rounded-xl md:rounded-xl space-y-4 md:space-y-6 hover:border-primary/30 transition-all duration-500 ${isEven ? 'md:rounded-tl-none' : 'md:rounded-tr-none'}`}>
-                            <div className="flex flex-wrap justify-between items-start gap-4">
-                              <div className="space-y-1">
-                                <h4 className="text-lg md:text-2xl font-medium tracking-tight text-foreground">{role.role}</h4>
-                                <div className={`flex items-center gap-2 text-[10px] md:text-xs font-mono text-primary/80 font-bold transition-opacity duration-500 ${hasHydrated ? "opacity-100" : "opacity-0"}`}>
-                                  <Calendar className="h-3.5 w-3.5" />
-                                  {role.period}
-                                </div>
-                              </div>
-                              <span className="text-[8px] md:text-[9px] font-bold uppercase tracking-widest text-muted-foreground border border-border/50 px-2 py-0.5 rounded-full">
-                                {role.type}
-                              </span>
-                            </div>
-                            <ul className="space-y-2 md:space-y-3">
-                              {role.description.map((item, i) => (
-                                <li key={i} className="text-muted-foreground text-xs md:text-sm font-light leading-relaxed flex items-start gap-2 md:gap-3">
-                                  <ArrowRight className={`h-3.5 w-3.5 md:h-4 md:w-4 text-primary/30 mt-0.5 shrink-0 transition-opacity duration-500 ${hasHydrated ? "opacity-100" : "opacity-0"}`} />
-                                  <span 
-                                    className="flex-1" 
-                                    dangerouslySetInnerHTML={{ __html: item }}
-                                  />
-                                </li>
-                              ))}
-                            </ul>
-                          </div>
-                        </div>
-                      </motion.div>
+                        role={role}
+                        roleIdx={roleIdx}
+                        isEven={isEven}
+                        hasHydrated={hasHydrated}
+                      />
                     ))}
                   </div>
                 </div>

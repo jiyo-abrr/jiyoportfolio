@@ -51,7 +51,7 @@ export const EXPERIENCES: ExperienceItem[] = [
     company: "Lamina Studios, LLC",
     logo: "/lamina-logo.png",
     invertLogo: true,
-    location: "Spokane, WA, USA (Remote)",
+    location: "Spokane, WA, USA — Remote",
     roles: [
       {
         role: "Full Stack Web Developer Intern",

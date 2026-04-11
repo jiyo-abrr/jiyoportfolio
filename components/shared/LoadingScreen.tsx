@@ -50,12 +50,13 @@ export const LoadingScreen = () => {
 
   useEffect(() => {
     setHasHydrated(true);
-    const timer = setTimeout(() => setLoading(false), 3000);
+    // Increased overall time to 8 seconds for an even more cinematic/technical experience
+    const timer = setTimeout(() => setLoading(false), 8000);
     
-    // Cycle through roles as loading steps - faster for improved UX
+    // Cycle through roles at a slower pace (1.5 seconds per step)
     const stepTimer = setInterval(() => {
       setActiveStep(prev => (prev < roles.length - 1 ? prev + 1 : prev));
-    }, 550);
+    }, 1500);
 
     return () => {
       clearTimeout(timer);
@@ -63,7 +64,7 @@ export const LoadingScreen = () => {
     };
   }, []);
 
-  const progress = Math.round(((activeStep + 1) / roles.length) * 100);
+  const progress = Math.round((activeStep / (roles.length - 1)) * 100);
 
   return (
     <AnimatePresence>
