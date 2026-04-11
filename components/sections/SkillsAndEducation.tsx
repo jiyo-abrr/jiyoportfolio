@@ -4,7 +4,6 @@ import { SectionWrapper } from "@/components/layout/SectionWrapper";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { TECH_GROUPS } from "@/lib/data/tech-stacks";
-import dynamic from "next/dynamic";
 import { useState, useRef, useEffect } from "react";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import { AnimatePresence } from "framer-motion";
@@ -20,18 +19,13 @@ const CORE_TECH = [
   { name: "Ubuntu", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ubuntu/ubuntu-original.svg", brandColor: "#E95420", tag: "Server OS" },
 ];
 
-const Lanyard = dynamic(() => import("@/components/visuals/Lanyard").then(mod => mod.Lanyard), { 
-  ssr: false,
-  loading: () => <div className="w-full h-full bg-primary/5 rounded-xl animate-pulse" />
-});
-
 const StaticLanyardCard = () => (
-  <div className="flex flex-col gap-6 items-center w-full">
+  <div className="flex flex-col gap-3 items-center w-full h-full max-w-[320px] mx-auto">
     <motion.div 
       initial={{ opacity: 0, scale: 0.95 }}
       whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ once: true }}
-      className="relative w-[280px] h-[400px] rounded-2xl overflow-hidden shadow-2xl border border-primary/20 bg-card"
+      className="relative w-full aspect-[3/4] sm:flex-1 min-h-[280px] rounded-xl overflow-hidden shadow-2xl border border-primary/20 bg-card"
     >
       <Image 
         src="/Abarre.JPG" 
@@ -43,8 +37,8 @@ const StaticLanyardCard = () => (
       />
     </motion.div>
     
-    <div className="flex items-center justify-between w-[280px]">
-      <div className="relative w-12 h-12 opacity-40 -ml-1">
+    <div className="flex items-center justify-between w-full px-1 shrink-0">
+      <div className="relative w-9 h-9 opacity-30">
         <Image 
           src="/jiyo-logo.png" 
           alt="Jiyo Logo" 
@@ -53,7 +47,7 @@ const StaticLanyardCard = () => (
           suppressHydrationWarning
         />
       </div>
-      <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-muted-foreground/40 whitespace-nowrap -mr-1">
+      <span className="text-[8px] font-bold uppercase tracking-[0.4em] text-muted-foreground/30 whitespace-nowrap">
         BATCH 2025
       </span>
     </div>
@@ -303,15 +297,15 @@ export const TechStacks = () => {
                   className="flex items-center gap-3 px-8 py-2.5 rounded-full bg-secondary/10 border border-border/40 hover:bg-secondary/20 hover:border-primary/20 transition-all duration-300 group shadow-lg overflow-hidden relative"
                 >
                   <motion.div layout className="flex items-center gap-2 relative z-10">
-                    <span className="text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] text-muted-foreground/80 group-hover:text-primary transition-colors">
-                      {isExpanded ? "Show Less" : "See All Technologies"}
-                    </span>
                     <motion.div
                       animate={{ rotate: isExpanded ? 180 : 0 }}
                       transition={snappySmoothSpring}
                     >
                       <ChevronDown className={`w-3.5 h-3.5 text-primary/80 group-hover:text-primary transition-all duration-500 ${hasHydrated ? "opacity-100" : "opacity-0"}`} />
                     </motion.div>
+                    <span className="text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] text-muted-foreground/80 group-hover:text-primary transition-colors">
+                      {isExpanded ? "Show Less" : "See All Technologies"}
+                    </span>
                   </motion.div>
                 </button>
               </motion.div>
@@ -401,33 +395,12 @@ export const Education = () => {
             </div>
           </div>
 
-          {/* Right Column: Identity Port (Lanyard) */}
-          <div className="h-[450px] md:h-auto min-h-[450px] w-full relative flex-[0.8]">
-            {/* Desktop View: 3D Lanyard */}
-            <div className="hidden md:block w-full h-full">
-              <motion.div 
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true, amount: 0.2 }}
-                className="relative w-full h-full bg-white/40 dark:bg-white/[0.015] border border-border/30 dark:border-border/10 rounded-xl md:rounded-xl overflow-hidden flex items-center justify-center group transition-all duration-700 shadow-lg shadow-primary/5 dark:shadow-none"
-              >
-                <Lanyard />
-                <div className="absolute top-8 left-8 w-1.5 h-1.5 rounded-full bg-primary/20" />
-                <div className="absolute top-8 right-8 w-1.5 h-1.5 rounded-full bg-primary/20" />
-                <div className="absolute bottom-6 left-10 text-[10px] font-bold uppercase tracking-[0.4em] text-muted-foreground/30 pointer-events-none">
-                  BATCH 2025
-                </div>
-              </motion.div>
-            </div>
-
-            {/* Mobile View: Static Optimized Photo Only */}
-            <div className="block md:hidden w-full h-full">
-               <div className="w-full h-full bg-white/40 dark:bg-white/[0.015] border border-border/30 dark:border-border/10 rounded-xl overflow-hidden flex items-center justify-center p-8 shadow-lg shadow-primary/5 dark:shadow-none">
-                  <StaticLanyardCard />
-               </div>
-            </div>
-
-            <div className="absolute inset-x-12 inset-y-12 bg-primary/5 blur-[60px] md:blur-[80px] -z-10 rounded-full" />
+          {/* Right Column: Identity Photo (Uniform) */}
+          <div className="h-[520px] md:h-auto min-h-[520px] md:min-h-[450px] w-full relative flex-[0.8]">
+             <div className="w-full h-full bg-white/40 dark:bg-white/[0.015] border border-border/30 dark:border-border/10 rounded-xl overflow-hidden flex items-center justify-center p-3 md:p-4 shadow-lg shadow-primary/5 dark:shadow-none">
+                <StaticLanyardCard />
+             </div>
+             <div className="absolute inset-x-12 inset-y-12 bg-primary/5 blur-[60px] md:blur-[80px] -z-10 rounded-full" />
           </div>
         </div>
       </div>

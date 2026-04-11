@@ -75,20 +75,19 @@ const ExperienceCard = ({
           className={`glass p-6 md:p-8 rounded-xl cursor-pointer hover:border-primary/40 transition-all duration-500 overflow-hidden relative ${isEven ? 'md:rounded-tl-none' : 'md:rounded-tr-none'} ${isExpanded ? 'border-primary/30 shadow-[0_0_30px_-10px_rgba(var(--primary-rgb),0.1)]' : 'border-border/40'}`}
         >
           {/* Header Section */}
-          <div className="flex flex-wrap justify-between items-start gap-4">
-            <div className="space-y-2">
-              <div className="flex items-center gap-3">
-                <h4 className="text-lg md:text-2xl font-medium tracking-tight text-foreground transition-colors group-hover:text-primary">
-                  {role.role}
-                </h4>
-                <motion.div
-                  animate={{ rotate: isExpanded ? 180 : 0 }}
-                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                  className="p-1 rounded-full bg-primary/5 border border-primary/10 md:hidden"
-                >
-                  <ChevronDown className="h-4 w-4 text-primary/60" />
-                </motion.div>
-              </div>
+          <div className="flex items-start gap-4 md:gap-6">
+            <motion.div
+              animate={{ rotate: isExpanded ? 180 : 0 }}
+              transition={{ type: "spring", stiffness: 300, damping: 20 }}
+              className="p-1.5 md:p-2 rounded-xl bg-primary/5 border border-primary/10 group-hover:bg-primary/10 group-hover:border-primary/20 transition-colors shrink-0 mt-0.5 md:mt-1"
+            >
+              <ChevronDown className="h-4 w-4 md:h-5 md:w-5 text-primary/60" />
+            </motion.div>
+
+            <div className="space-y-2 flex-1">
+              <h4 className="text-lg md:text-2xl font-medium tracking-tight text-foreground transition-colors group-hover:text-primary">
+                {role.role}
+              </h4>
               
               <div className={`flex flex-wrap items-center gap-x-4 gap-y-2 text-[10px] md:text-xs font-mono transition-opacity duration-500 ${hasHydrated ? "opacity-100" : "opacity-0"}`}>
                 <div className="flex items-center gap-2 text-primary/80 font-bold uppercase tracking-wider">
@@ -100,14 +99,6 @@ const ExperienceCard = ({
                 </span>
               </div>
             </div>
-
-            <motion.div
-              animate={{ rotate: isExpanded ? 180 : 0 }}
-              transition={{ type: "spring", stiffness: 300, damping: 20 }}
-              className="hidden md:flex p-2 rounded-xl bg-primary/5 border border-primary/10 group-hover:bg-primary/10 group-hover:border-primary/20 transition-colors"
-            >
-              <ChevronDown className="h-5 w-5 text-primary/60" />
-            </motion.div>
           </div>
 
           {/* Details Section */}
@@ -221,7 +212,17 @@ export const Experience = () => {
                       onMouseLeave={() => setHoveredCompany(null)}
                       className={`flex items-center gap-6 w-full md:w-1/2 ${isEven ? 'md:justify-end' : 'md:justify-start'} pl-12 md:pl-0 relative`}
                     >
-                      <div className={`flex items-center gap-6 md:gap-8 ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
+                      <div className={`flex items-center gap-6 md:gap-8 ${isEven ? 'md:flex-row-reverse' : 'md:flex-row'}`}>
+                        <div className={`h-16 w-16 md:h-24 md:w-24 rounded-2xl md:rounded-3xl bg-secondary/40 border border-border/50 flex items-center justify-center p-3 md:p-5 transition-all duration-500 ${isHovered ? 'border-primary/40 scale-110 shadow-[0_0_40px_-10px_rgba(var(--primary-rgb),0.2)] bg-secondary/60' : ''} shrink-0`}>
+                          <Image 
+                            src={company.logo} 
+                            alt={company.company} 
+                            width={64} 
+                            height={64} 
+                            className={`object-contain transition-transform duration-500 ${isHovered ? 'scale-110' : ''} ${company.invertLogo ? 'dark:invert' : ''}`} 
+                            suppressHydrationWarning
+                          />
+                        </div>
                         <div className={`flex flex-col ${isEven ? 'md:text-right' : 'md:text-left'} text-left space-y-1 max-w-[200px] md:max-w-none`}>
                           <h3 className="text-lg md:text-3xl font-medium tracking-tight text-foreground leading-tight">
                             {company.company}
@@ -234,16 +235,6 @@ export const Experience = () => {
                             )}
                             {company.location}
                           </div>
-                        </div>
-                        <div className={`h-16 w-16 md:h-24 md:w-24 rounded-2xl md:rounded-3xl bg-secondary/40 border border-border/50 flex items-center justify-center p-3 md:p-5 transition-all duration-500 ${isHovered ? 'border-primary/40 scale-110 shadow-[0_0_40px_-10px_rgba(var(--primary-rgb),0.2)] bg-secondary/60' : ''}`}>
-                          <Image 
-                            src={company.logo} 
-                            alt={company.company} 
-                            width={64} 
-                            height={64} 
-                            className={`object-contain transition-transform duration-500 ${isHovered ? 'scale-110' : ''} ${company.invertLogo ? 'dark:invert' : ''}`} 
-                            suppressHydrationWarning
-                          />
                         </div>
                       </div>
                     </motion.div>

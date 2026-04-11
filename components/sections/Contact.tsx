@@ -164,13 +164,33 @@ export const Contact = () => {
               <CornerBracket position="bl" size="w-6 h-6" />
               <CornerBracket position="br" size="w-6 h-6" />
               
-              {/* HUD Metadata Labels */}
-              <div className="bg-secondary/10 backdrop-blur-2xl rounded-none p-5 md:p-8 border border-primary/10 relative overflow-hidden h-full flex flex-col">
+              {/* HUD Metadata Labels with Pulsing Glow */}
+              <div className="bg-secondary/5 dark:bg-secondary/10 backdrop-blur-2xl rounded-none p-5 md:p-8 border border-cyan-400/30 dark:border-cyan-400/20 relative overflow-hidden h-full flex flex-col shadow-[0_0_50px_-10px_rgba(34,211,238,0.1)] dark:shadow-[0_0_50px_-10px_rgba(34,211,238,0.15)] group-hover/form:border-cyan-400/50 transition-colors duration-700">
+
+                {/* Background Pulse Glow */}
+                <motion.div 
+                  animate={{ 
+                    opacity: [0.05, 0.15, 0.05],
+                    scale: [0.95, 1.05, 0.95],
+                  }}
+                  transition={{ 
+                    duration: 5, 
+                    repeat: Infinity, 
+                    ease: "easeInOut" 
+                  }}
+                  className="absolute -inset-10 bg-cyan-400/10 blur-[80px] -z-10 rounded-full pointer-events-none"
+                />
+
+                {/* Internal Glow Accents */}
+                <div className="absolute top-0 right-0 w-32 h-32 bg-cyan-400/5 blur-[40px] -z-10" />
+                <div className="absolute bottom-0 left-0 w-32 h-32 bg-cyan-400/5 blur-[40px] -z-10" />
+
+
                 <form onSubmit={handleSubmit} className="relative z-10 flex flex-col h-full space-y-5">
                   {/* Triple Row Inputs */}
                   <div className="flex flex-col h-full space-y-4">
                     <div className="space-y-2">
-                      <label className="text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] text-muted-foreground/60 flex items-center gap-2">
+                      <label className="text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] text-foreground/60 dark:text-muted-foreground/60 flex items-center gap-2">
                         Full Name
                       </label>
                       <input 
@@ -180,11 +200,11 @@ export const Contact = () => {
                         value={formState.name}
                         onChange={(e) => setFormState({...formState, name: e.target.value})}
                         suppressHydrationWarning
-                        className="w-full h-11 md:h-12 bg-background/20 border border-border/40 rounded-none px-5 md:px-6 text-xs md:text-sm focus:outline-none focus:border-primary/50 transition-all placeholder:text-muted-foreground/15"
+                        className="w-full h-11 md:h-12 bg-white/40 dark:bg-background/20 border border-border/70 dark:border-border/40 rounded-none px-5 md:px-6 text-xs md:text-sm focus:outline-none focus:border-cyan-400/50 focus:shadow-[0_0_20px_-5px_rgba(34,211,238,0.4)] transition-all placeholder:text-muted-foreground/30 dark:placeholder:text-muted-foreground/15"
                       />
                     </div>
                     <div className="space-y-2">
-                      <label className="text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] text-muted-foreground/60 flex items-center gap-2">
+                      <label className="text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] text-foreground/60 dark:text-muted-foreground/60 flex items-center gap-2">
                         Email Address
                       </label>
                       <input 
@@ -194,11 +214,11 @@ export const Contact = () => {
                         value={formState.email}
                         onChange={(e) => setFormState({...formState, email: e.target.value})}
                         suppressHydrationWarning
-                        className="w-full h-11 md:h-12 bg-background/20 border border-border/40 rounded-none px-5 md:px-6 text-xs md:text-sm focus:outline-none focus:border-primary/50 transition-all placeholder:text-muted-foreground/15"
+                        className="w-full h-11 md:h-12 bg-white/40 dark:bg-background/20 border border-border/70 dark:border-border/40 rounded-none px-5 md:px-6 text-xs md:text-sm focus:outline-none focus:border-cyan-400/50 focus:shadow-[0_0_20px_-5px_rgba(34,211,238,0.4)] transition-all placeholder:text-muted-foreground/30 dark:placeholder:text-muted-foreground/15"
                       />
                     </div>
                     <div className="space-y-2 flex-1 flex flex-col">
-                      <label className="text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] text-muted-foreground/60 flex items-center gap-2">
+                      <label className="text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] text-foreground/60 dark:text-muted-foreground/60 flex items-center gap-2">
                         Message
                       </label>
                       <textarea 
@@ -214,7 +234,7 @@ export const Contact = () => {
                           }
                         }}
                         suppressHydrationWarning
-                        className="w-full flex-1 bg-background/20 border border-border/40 rounded-none p-4 md:p-5 text-xs md:text-sm focus:outline-none focus:border-primary/50 transition-all placeholder:text-muted-foreground/15 resize-none min-h-[120px]"
+                        className="w-full flex-1 bg-white/40 dark:bg-background/20 border border-border/70 dark:border-border/40 rounded-none p-4 md:p-5 text-xs md:text-sm focus:outline-none focus:border-cyan-400/50 focus:shadow-[0_0_25px_-5px_rgba(34,211,238,0.3)] transition-all placeholder:text-muted-foreground/30 dark:placeholder:text-muted-foreground/15 resize-none min-h-[120px]"
                       />
                     </div>
                   </div>
