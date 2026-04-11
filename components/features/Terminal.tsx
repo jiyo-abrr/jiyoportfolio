@@ -20,9 +20,9 @@ export const Terminal = () => {
   ];
 
   return (
-    <div className="w-full font-mono text-xs md:text-sm bg-[#0d1117] rounded-lg overflow-hidden border border-border/50 shadow-2xl">
+    <div className="w-full font-mono text-xs md:text-sm bg-neutral-100/90 dark:bg-[#0d1117] backdrop-blur-xl rounded-lg overflow-hidden border border-border/50 shadow-2xl transition-colors duration-500">
       {/* Terminal Header */}
-      <div className="flex items-center justify-between px-4 py-2 bg-[#161b22] border-b border-border/30">
+      <div className="flex items-center justify-between px-4 py-2 bg-neutral-200/50 dark:bg-[#161b22] border-b border-border/30">
         <div className="flex items-center gap-2">
           <div className="flex gap-1.5">
             <div className="w-2.5 h-2.5 rounded-full bg-[#ff5f56]" />
@@ -44,7 +44,7 @@ export const Terminal = () => {
               initial={{ opacity: 0, x: -10 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ delay: idx * 0.2 }}
-              className="text-primary/90 font-bold"
+              className="text-primary dark:text-primary/90 font-bold"
             >
               {cmd.label}
             </motion.div>
@@ -52,7 +52,7 @@ export const Terminal = () => {
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ delay: (idx * 0.2) + 0.1 }}
-              className="text-muted-foreground pl-4 border-l border-primary/20"
+              className="text-foreground/70 dark:text-muted-foreground pl-4 border-l border-primary/20"
             >
               {cmd.result}
             </motion.div>

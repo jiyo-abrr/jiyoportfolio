@@ -79,14 +79,14 @@ export const Contact = () => {
 
   return (
     <SectionWrapper>
-      <section id="contact" className="py-20 lg:py-32 relative overflow-hidden">
+      <section id="contact" className="py-20 lg:py-32 relative overflow-visible">
         <div className="space-y-14 md:space-y-32">
           {/* Section Header (Consistent with others) */}
           <span className="section-title">
             {CONTACT_CONTENT.subtitle}
           </span>
 
-          <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 lg:gap-28 max-w-7xl mx-auto items-stretch">
+          <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 lg:gap-28 max-w-7xl mx-auto items-stretch px-4 md:px-8 lg:px-10">
             
             {/* Left Column: Info & Headers */}
             <div className="space-y-12 lg:space-y-16 pt-4 flex flex-col">
@@ -146,7 +146,7 @@ export const Contact = () => {
             </div>
 
             {/* Right Column: Large Terminal Form Card */}
-            <div className="w-full h-full bg-secondary/5 dark:bg-secondary/10 backdrop-blur-2xl rounded-xl p-5 md:p-8 relative overflow-hidden h-full flex flex-col transition-all duration-700 outline outline-[1px] outline-primary/30 dark:outline-primary/20 outline-offset-2 hover:outline-primary/50">
+            <div className="w-full h-full bg-secondary/5 dark:bg-secondary/10 backdrop-blur-2xl rounded-xl p-5 md:p-8 relative overflow-visible h-full flex flex-col transition-all duration-700 outline outline-[1px] outline-primary/30 dark:outline-primary/20 outline-offset-2 hover:outline-primary/50">
 
 
 
@@ -177,38 +177,54 @@ export const Contact = () => {
                   {/* Triple Row Inputs */}
                   <div className="flex flex-col h-full space-y-4">
                     <div className="space-y-2">
-                      <label className="text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] text-foreground/60 dark:text-muted-foreground/60 flex items-center gap-2">
+                      <label className="text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] text-foreground/80 dark:text-muted-foreground/60 flex items-center gap-2">
                         Full Name
                       </label>
-                      <input 
+                      <motion.input 
                         required
                         type="text"
                         placeholder="Your full name"
                         value={formState.name}
                         onChange={(e) => setFormState({...formState, name: e.target.value})}
                         suppressHydrationWarning
-                        className="w-full h-11 md:h-12 bg-white/40 dark:bg-background/20 border border-border/70 dark:border-border/40 rounded-none px-5 md:px-6 text-xs md:text-sm focus:outline-none focus:border-cyan-400/50 focus:shadow-[0_0_20px_-5px_rgba(34,211,238,0.4)] transition-all placeholder:text-muted-foreground/30 dark:placeholder:text-muted-foreground/15"
+                        animate={{ 
+                          boxShadow: [
+                            "0 0 0px rgba(var(--primary-rgb), 0)",
+                            "0 0 16px rgba(var(--primary-rgb), 0.25)",
+                            "0 0 0px rgba(var(--primary-rgb), 0)"
+                          ]
+                        }}
+                        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                        className="w-full h-11 md:h-12 bg-white/60 dark:bg-background/20 border border-border/80 dark:border-border/40 rounded-lg px-3 md:px-5 text-xs md:text-sm focus:outline-none focus:border-cyan-400/50 focus:shadow-[0_0_20px_-5px_rgba(34,211,238,0.4)] transition-all placeholder:text-muted-foreground/50 dark:placeholder:text-muted-foreground/15"
                       />
                     </div>
                     <div className="space-y-2">
-                      <label className="text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] text-foreground/60 dark:text-muted-foreground/60 flex items-center gap-2">
+                      <label className="text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] text-foreground/80 dark:text-muted-foreground/60 flex items-center gap-2">
                         Email Address
                       </label>
-                      <input 
+                      <motion.input 
                         required
                         type="email"
                         placeholder="Your email address"
                         value={formState.email}
                         onChange={(e) => setFormState({...formState, email: e.target.value})}
                         suppressHydrationWarning
-                        className="w-full h-11 md:h-12 bg-white/40 dark:bg-background/20 border border-border/70 dark:border-border/40 rounded-none px-5 md:px-6 text-xs md:text-sm focus:outline-none focus:border-cyan-400/50 focus:shadow-[0_0_20px_-5px_rgba(34,211,238,0.4)] transition-all placeholder:text-muted-foreground/30 dark:placeholder:text-muted-foreground/15"
+                        animate={{ 
+                          boxShadow: [
+                            "0 0 0px rgba(var(--primary-rgb), 0)",
+                            "0 0 16px rgba(var(--primary-rgb), 0.25)",
+                            "0 0 0px rgba(var(--primary-rgb), 0)"
+                          ]
+                        }}
+                        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+                        className="w-full h-11 md:h-12 bg-white/60 dark:bg-background/20 border border-border/80 dark:border-border/40 rounded-lg px-3 md:px-5 text-xs md:text-sm focus:outline-none focus:border-cyan-400/50 focus:shadow-[0_0_20px_-5px_rgba(34,211,238,0.4)] transition-all placeholder:text-muted-foreground/50 dark:placeholder:text-muted-foreground/15"
                       />
                     </div>
                     <div className="space-y-2 flex-1 flex flex-col">
-                      <label className="text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] text-foreground/60 dark:text-muted-foreground/60 flex items-center gap-2">
+                      <label className="text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] text-foreground/80 dark:text-muted-foreground/60 flex items-center gap-2">
                         Message
                       </label>
-                      <textarea 
+                      <motion.textarea 
                         required
                         placeholder="How can I help you?"
                         value={formState.message}
@@ -221,19 +237,35 @@ export const Contact = () => {
                           }
                         }}
                         suppressHydrationWarning
-                        className="w-full flex-1 bg-white/40 dark:bg-background/20 border border-border/70 dark:border-border/40 rounded-none p-4 md:p-5 text-xs md:text-sm focus:outline-none focus:border-cyan-400/50 focus:shadow-[0_0_25px_-5px_rgba(34,211,238,0.3)] transition-all placeholder:text-muted-foreground/30 dark:placeholder:text-muted-foreground/15 resize-none min-h-[120px]"
+                        animate={{ 
+                          boxShadow: [
+                            "0 0 0px rgba(var(--primary-rgb), 0)",
+                            "0 0 16px rgba(var(--primary-rgb), 0.25)",
+                            "0 0 0px rgba(var(--primary-rgb), 0)"
+                          ]
+                        }}
+                        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                        className="w-full flex-1 bg-white/60 dark:bg-background/20 border border-border/80 dark:border-border/40 rounded-lg p-3 md:p-5 text-xs md:text-sm focus:outline-none focus:border-cyan-400/50 focus:shadow-[0_0_25px_-5px_rgba(34,211,238,0.3)] transition-all placeholder:text-muted-foreground/50 dark:placeholder:text-muted-foreground/15 resize-none min-h-[120px]"
                       />
                     </div>
                   </div>
 
                   <div className="pt-4">
                     <motion.button
-                      whileHover={{ scale: 1.005, boxShadow: "0 0 20px rgba(34, 211, 238, 0.3)" }}
+                      animate={{ 
+                        boxShadow: [
+                          "0 0 10px rgba(34, 211, 238, 0.2)",
+                          "0 0 25px rgba(34, 211, 238, 0.6)",
+                          "0 0 10px rgba(34, 211, 238, 0.2)"
+                        ]
+                      }}
+                      transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+                      whileHover={{ scale: 1.005 }}
                       whileTap={{ scale: 0.995 }}
                       disabled={isSending}
                       type="submit"
                       suppressHydrationWarning
-                      className="w-full h-14 md:h-16 bg-cyan-400 text-[#0a0a0a] rounded-none font-bold flex items-center justify-center gap-4 hover:bg-cyan-300 transition-all duration-300 disabled:opacity-50 relative group/btn"
+                      className="w-full h-14 md:h-16 bg-cyan-400 text-[#0a0a0a] rounded-xl font-bold flex items-center justify-center gap-4 hover:bg-cyan-300 transition-all duration-300 disabled:opacity-50 relative group/btn"
                     >
                       {isSending ? (
                         <>

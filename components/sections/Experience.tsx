@@ -52,7 +52,6 @@ const ExperienceCard = ({
   roleIdx, 
   isEven, 
   hasHydrated,
-  isFirst 
 }: { 
   role: Role, 
   roleIdx: number, 
