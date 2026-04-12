@@ -33,7 +33,7 @@ const StaticLanyardCard = () => (
         src="/Abarre.JPG" 
         alt="Identity Photo" 
         fill 
-        className="object-cover"
+        className="object-cover object-top"
         priority
         suppressHydrationWarning
       />

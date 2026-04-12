@@ -311,11 +311,11 @@ export const Hero = () => {
               }}
               className="flex flex-wrap gap-2"
             >
-              <div className="flex items-center gap-1.5 md:gap-2 px-2 md:px-2.5 py-1 rounded-md border border-emerald-500/20 bg-emerald-500/5 text-[8px] md:text-[9px] font-mono font-bold uppercase tracking-widest text-emerald-400/80">
-                <span className="w-1 h-1 rounded-full bg-emerald-400 shadow-[0_0_6px_rgba(52,211,153,0.6)] shrink-0" />
+              <div className="flex items-center gap-1.5 md:gap-2 px-2 md:px-2.5 py-1 rounded-md border border-emerald-500/30 dark:border-emerald-500/20 bg-emerald-500/10 dark:bg-emerald-500/5 text-[8px] md:text-[9px] font-mono font-bold uppercase tracking-widest text-emerald-600 dark:text-emerald-400/80">
+                <span className="w-1 h-1 rounded-full bg-emerald-600 dark:bg-emerald-400 shadow-[0_0_6px_rgba(5,150,105,0.4)] dark:shadow-[0_0_6px_rgba(52,211,153,0.6)] shrink-0" />
                 {HERO_CONTENT.focus}
               </div>
-              <div className="flex items-center gap-1.5 md:gap-2 px-2 md:px-2.5 py-1 rounded-md border border-primary/12 bg-primary/4 text-[8px] md:text-[9px] font-mono font-bold uppercase tracking-widest text-primary/45">
+              <div className="flex items-center gap-1.5 md:gap-2 px-2 md:px-2.5 py-1 rounded-md border border-primary/25 dark:border-primary/12 bg-primary/8 dark:bg-primary/4 text-[8px] md:text-[9px] font-mono font-bold uppercase tracking-widest text-primary/70 dark:text-primary/45">
                 <TerminalIcon className="h-2 w-2 md:h-2.5 md:w-2.5 shrink-0" />
                 {HERO_CONTENT.learning}
               </div>
