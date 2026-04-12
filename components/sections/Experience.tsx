@@ -91,7 +91,7 @@ const ExperienceCard = ({
             </motion.div>
 
             <div className="space-y-2 flex-1">
-              <h4 className="text-lg md:text-2xl font-medium tracking-tight text-foreground transition-colors group-hover:text-primary">
+              <h4 className="text-base md:text-lg lg:text-xl font-medium tracking-tight text-foreground transition-colors group-hover:text-primary">
                 {role.role}
               </h4>
               
@@ -230,7 +230,7 @@ export const Experience = () => {
                           />
                         </div>
                         <div className={`flex flex-col ${isEven ? 'md:text-right' : 'md:text-left'} text-left space-y-1 max-w-[200px] md:max-w-none`}>
-                          <h3 className="text-lg md:text-3xl font-medium tracking-tight text-foreground leading-tight">
+                          <h3 className="text-lg md:text-2xl lg:text-3xl font-medium tracking-tight text-foreground leading-tight">
                             {company.company}
                           </h3>
                           <div className={`flex items-center gap-2 text-[11px] md:text-sm font-mono text-muted-foreground/80 uppercase tracking-widest justify-start ${isEven ? 'md:justify-end' : 'md:justify-start'} transition-opacity duration-500 ${hasHydrated ? "opacity-100" : "opacity-0"}`}>
