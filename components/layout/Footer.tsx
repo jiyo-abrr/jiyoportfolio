@@ -19,7 +19,7 @@ export const Footer = () => {
           {/* Main Row: Brand & Back to Top */}
           <div className="flex flex-row items-center justify-between">
             <div className="flex items-center gap-2">
-              <p className="text-3xl font-mono font-medium tracking-tighter text-foreground">
+              <p className="text-3xl font-mono font-medium tracking-tight text-foreground">
                 <span className="text-primary">{"< "}</span>
                 jiyo.dev
                 <span className="text-primary">{" />"}</span>
