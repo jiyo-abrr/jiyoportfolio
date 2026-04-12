@@ -146,7 +146,7 @@ export const Contact = () => {
             </div>
 
             {/* Right Column: Large Terminal Form Card */}
-            <div className="w-full h-full bg-secondary/5 dark:bg-secondary/10 backdrop-blur-2xl rounded-xl p-5 md:p-8 relative overflow-visible h-full flex flex-col transition-all duration-700 outline outline-[1px] outline-primary/30 dark:outline-primary/20 outline-offset-2 hover:outline-primary/50">
+            <div className="w-full h-full bg-secondary/5 dark:bg-secondary/10 backdrop-blur-2xl rounded-md p-5 md:p-8 relative overflow-visible h-full flex flex-col transition-all duration-700 outline outline-[1px] outline-primary/30 dark:outline-primary/20 outline-offset-2 hover:outline-primary/50">
 
 
 
@@ -195,7 +195,7 @@ export const Contact = () => {
                           ]
                         }}
                         transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                        className="w-full h-11 md:h-12 bg-white/60 dark:bg-background/20 border border-border/80 dark:border-border/40 rounded-lg px-3 md:px-5 text-xs md:text-sm focus:outline-none focus:border-cyan-400/50 focus:shadow-[0_0_20px_-5px_rgba(34,211,238,0.4)] transition-all placeholder:text-muted-foreground/50 dark:placeholder:text-muted-foreground/15"
+                        className="w-full h-11 md:h-12 bg-white/60 dark:bg-background/20 border border-border/80 dark:border-border/40 rounded-sm px-3 md:px-5 text-xs md:text-sm focus:outline-none focus:border-cyan-400/50 focus:shadow-[0_0_20px_-5px_rgba(34,211,238,0.4)] transition-all placeholder:text-muted-foreground/50 dark:placeholder:text-muted-foreground/15"
                       />
                     </div>
                     <div className="space-y-2">
@@ -217,7 +217,7 @@ export const Contact = () => {
                           ]
                         }}
                         transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-                        className="w-full h-11 md:h-12 bg-white/60 dark:bg-background/20 border border-border/80 dark:border-border/40 rounded-lg px-3 md:px-5 text-xs md:text-sm focus:outline-none focus:border-cyan-400/50 focus:shadow-[0_0_20px_-5px_rgba(34,211,238,0.4)] transition-all placeholder:text-muted-foreground/50 dark:placeholder:text-muted-foreground/15"
+                        className="w-full h-11 md:h-12 bg-white/60 dark:bg-background/20 border border-border/80 dark:border-border/40 rounded-sm px-3 md:px-5 text-xs md:text-sm focus:outline-none focus:border-cyan-400/50 focus:shadow-[0_0_20px_-5px_rgba(34,211,238,0.4)] transition-all placeholder:text-muted-foreground/50 dark:placeholder:text-muted-foreground/15"
                       />
                     </div>
                     <div className="space-y-2 flex-1 flex flex-col">
@@ -245,7 +245,7 @@ export const Contact = () => {
                           ]
                         }}
                         transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                        className="w-full flex-1 bg-white/60 dark:bg-background/20 border border-border/80 dark:border-border/40 rounded-lg p-3 md:p-5 text-xs md:text-sm focus:outline-none focus:border-cyan-400/50 focus:shadow-[0_0_25px_-5px_rgba(34,211,238,0.3)] transition-all placeholder:text-muted-foreground/50 dark:placeholder:text-muted-foreground/15 resize-none min-h-[120px]"
+                        className="w-full flex-1 bg-white/60 dark:bg-background/20 border border-border/80 dark:border-border/40 rounded-sm p-3 md:p-5 text-xs md:text-sm focus:outline-none focus:border-cyan-400/50 focus:shadow-[0_0_25px_-5px_rgba(34,211,238,0.3)] transition-all placeholder:text-muted-foreground/50 dark:placeholder:text-muted-foreground/15 resize-none min-h-[120px]"
                       />
                     </div>
                   </div>
@@ -265,7 +265,7 @@ export const Contact = () => {
                       disabled={isSending}
                       type="submit"
                       suppressHydrationWarning
-                      className="w-full h-14 md:h-16 bg-cyan-400 text-[#0a0a0a] rounded-xl font-bold flex items-center justify-center gap-4 hover:bg-cyan-300 transition-all duration-300 disabled:opacity-50 relative group/btn"
+                      className="w-full h-14 md:h-16 bg-cyan-400 text-[#0a0a0a] rounded-md font-bold flex items-center justify-center gap-4 hover:bg-cyan-300 transition-all duration-300 disabled:opacity-50 relative group/btn"
                     >
                       {isSending ? (
                         <>
