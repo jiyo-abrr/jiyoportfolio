@@ -235,9 +235,9 @@ export const Experience = () => {
                           </h3>
                           <div className={`flex items-center gap-2 text-[11px] md:text-sm font-mono text-muted-foreground/80 uppercase tracking-widest justify-start ${isEven ? 'md:justify-end' : 'md:justify-start'} transition-opacity duration-500 ${hasHydrated ? "opacity-100" : "opacity-0"}`}>
                             {company.location.includes('(Remote)') ? (
-                              <Globe className="h-3.5 w-3.5 text-primary/40" />
+                              <Globe className="h-3.5 w-3.5 text-red-500" />
                             ) : (
-                              <MapPin className="h-3.5 w-3.5 text-primary/40" />
+                              <MapPin className="h-3.5 w-3.5 text-red-500" />
                             )}
                             {company.location}
                           </div>
