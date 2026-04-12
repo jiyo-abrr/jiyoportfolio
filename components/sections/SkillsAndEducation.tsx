@@ -354,9 +354,9 @@ export const Education = () => {
                   />
                 </motion.div>
                 <div className="space-y-2">
-                  <h3 className="text-xl md:text-3xl font-medium tracking-tight text-foreground leading-tight px-4 sm:px-0">
-                    Polytechnic University of the Philippines
-                  </h3>
+                  <h3 className="text-xl md:text-2xl lg:text-3xl font-medium tracking-tight text-foreground leading-tight px-4 sm:px-0">
+                  Polytechnic University of the Philippines
+                </h3>
                   <p className="text-sm md:text-lg text-muted-foreground font-light italic">
                     Manila, Philippines
                   </p>
@@ -366,7 +366,7 @@ export const Education = () => {
               {/* Degree Info */}
               <div className="space-y-6 p-6 md:p-8 bg-white/20 dark:bg-secondary/[0.02] flex flex-col justify-center flex-1">
                 <div className="space-y-3 flex flex-col items-center">
-                  <p className="text-2xl md:text-2xl text-primary font-medium tracking-tight text-center leading-tight">
+                  <p className="text-lg md:text-xl lg:text-2xl text-primary font-medium tracking-tight text-center leading-tight">
                     Bachelor of Science in <br />
                     Computer Science
                   </p>
@@ -399,14 +399,14 @@ export const Education = () => {
                         </motion.p>
                       ) : (
                         <motion.p 
-                          key="visible"
-                          initial={{ opacity: 0, y: 5 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          exit={{ opacity: 0, y: -5 }}
-                          className="text-3xl md:text-4xl font-light text-primary group-hover:scale-110 transition-transform"
-                        >
-                          1.29
-                        </motion.p>
+                        key="visible"
+                        initial={{ opacity: 0, y: 5 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -5 }}
+                        className="text-2xl md:text-3xl lg:text-4xl font-light text-primary group-hover:scale-110 transition-transform"
+                      >
+                        1.29
+                      </motion.p>
                       )}
                     </AnimatePresence>
                     <p className="text-[9px] md:text-[10px] uppercase tracking-widest font-semibold text-muted-foreground mt-2">
