@@ -80,7 +80,7 @@ export const Contact = () => {
   return (
     <SectionWrapper>
       <section id="contact" className="py-20 lg:py-32 relative overflow-visible">
-        <div className="space-y-14 md:space-y-32">
+        <div className="space-y-10 md:space-y-24 lg:space-y-32">
           {/* Section Header (Consistent with others) */}
           <span className="section-title">
             {CONTACT_CONTENT.subtitle}
@@ -89,32 +89,32 @@ export const Contact = () => {
           <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 lg:gap-28 max-w-7xl mx-auto items-stretch px-4 md:px-8 lg:px-10">
             
             {/* Left Column: Info & Headers */}
-            <div className="space-y-12 lg:space-y-16 pt-4 flex flex-col">
-              <div className="space-y-6">
-                <h2 className="text-[clamp(2.5rem,8vw,4.2rem)] font-bold font-display tracking-tight text-foreground leading-[1] uppercase flex flex-col">
-                  <span>LET'S START A</span>
-                  <span className="text-primary italic">CONVERSATION.</span>
+            <div className="space-y-10 md:space-y-12 lg:space-y-16 pt-2 flex flex-col">
+              <div className="space-y-4 md:space-y-6">
+                <h2 className="text-[clamp(2.2rem,6vw,4.2rem)] font-bold font-display tracking-tighter text-foreground leading-[1.1] uppercase flex flex-wrap items-center gap-x-4">
+                  <span className="whitespace-normal sm:whitespace-nowrap">LET'S START A</span>
+                  <span className="text-primary italic whitespace-nowrap">CONVERSATION.</span>
                 </h2>
                 <p className="text-muted-foreground text-xs md:text-sm lg:text-base font-light leading-relaxed opacity-70">
                   {CONTACT_CONTENT.description}
                 </p>
               </div>
 
-              {/* Tactical Info Blocks - Pushed to bottom of its container if needed, but space-y manages it */}
-              <div className="space-y-10 mt-auto lg:pt-8">
+              {/* Tactical Info Blocks */}
+              <div className="space-y-10 md:space-y-12 mt-auto lg:pt-8">
                 {/* Email Block */}
                 <div className="flex items-center gap-6 group">
                   <div className="w-12 h-12 md:w-16 md:h-16 bg-secondary/10 border border-primary/20 flex items-center justify-center relative flex-shrink-0">
                     <Mail className="w-5 h-5 md:w-6 md:h-6 text-primary/60 group-hover:text-primary transition-colors" />
                   </div>
-                  <div className="space-y-2 overflow-hidden">
-                    <p className="text-[9px] md:text-[10px] font-bold uppercase tracking-[0.4em] text-muted-foreground/40">Direct_COM</p>
+                  <div className="space-y-0.5 w-full text-left">
+                    <p className="text-[7px] md:text-[8px] font-bold uppercase tracking-[0.4rem] text-muted-foreground/30">Direct_COM</p>
                     <button 
                       onClick={copyToClipboard}
-                      className="text-sm md:text-xl font-medium hover:text-primary transition-colors flex items-center gap-3 font-mono truncate"
+                      className="text-[clamp(0.6rem,2.2vw,0.9rem)] font-medium hover:text-primary transition-colors flex items-center gap-2 font-mono"
                     >
-                      <span className="truncate">{CONTACT_CONTENT.email}</span>
-                      {hasHydrated && (copied ? <Check className="w-4 h-4 text-emerald-500 flex-shrink-0" /> : <Copy className="w-4 h-4 opacity-20 flex-shrink-0" />)}
+                      <span className="whitespace-nowrap">{CONTACT_CONTENT.email}</span>
+                      {hasHydrated && (copied ? <Check className="w-3 h-3 text-emerald-500 flex-shrink-0" /> : <Copy className="w-3 h-3 opacity-20 flex-shrink-0" />)}
                     </button>
                   </div>
                 </div>
