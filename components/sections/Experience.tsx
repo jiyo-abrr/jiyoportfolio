@@ -96,11 +96,11 @@ const ExperienceCard = ({
               </h4>
               
               <div className={`flex flex-wrap items-center gap-x-4 gap-y-2 text-[10px] md:text-xs font-mono transition-opacity duration-500 ${hasHydrated ? "opacity-100" : "opacity-0"}`}>
-                <div className="flex items-center gap-2 text-primary/80 font-bold uppercase tracking-wider">
+                <div className="flex items-center gap-2 text-emerald-600 dark:text-emerald-400/90 font-bold uppercase tracking-wider">
                   <Calendar className="h-3.5 w-3.5" />
                   {role.period}
                 </div>
-                <span className="text-muted-foreground border border-border/50 px-2 py-0.5 rounded-full text-[8px] md:text-[9px] font-bold uppercase tracking-widest bg-secondary/30">
+                <span className="text-foreground/50 border border-primary/20 dark:border-primary/30 px-2 py-0.5 rounded-full text-[8px] md:text-[9px] font-bold uppercase tracking-widest bg-primary/5 dark:bg-primary/10 backdrop-blur-sm">
                   {role.type}
                 </span>
               </div>

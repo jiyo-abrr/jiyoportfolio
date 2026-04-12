@@ -345,13 +345,22 @@ export const Hero = () => {
               </motion.a>
 
               <div className={`flex items-center gap-4 md:gap-7 text-foreground/30 transition-opacity duration-1000 ${hasHydrated ? "opacity-100" : "opacity-0"}`}>
-                <a href={HERO_CONTENT.socials.github} target="_blank" className="group hover:text-primary transition-all" aria-label="GitHub">
+                <a href={HERO_CONTENT.socials.github} target="_blank" className="group relative hover:text-primary transition-all" aria-label="GitHub">
+                  <span className="absolute top-full mt-3 left-1/2 -translate-x-1/2 px-2 py-1 rounded bg-background/90 border border-primary/20 text-[7px] md:text-[8px] font-mono font-bold uppercase tracking-widest text-primary opacity-0 group-hover:opacity-100 group-hover:translate-y-1 transition-all pointer-events-none whitespace-nowrap z-30 shadow-[0_0_15px_rgba(59,130,246,0.1)] backdrop-blur-md">
+                    Explore Code
+                  </span>
                   <Github className="h-5 w-5 md:h-6 md:w-6 group-hover:scale-110 transition-transform" />
                 </a>
-                <a href={HERO_CONTENT.socials.linkedin} target="_blank" className="group hover:text-primary transition-all" aria-label="LinkedIn">
+                <a href={HERO_CONTENT.socials.linkedin} target="_blank" className="group relative hover:text-primary transition-all" aria-label="LinkedIn">
+                  <span className="absolute top-full mt-3 left-1/2 -translate-x-1/2 px-2 py-1 rounded bg-background/90 border border-primary/20 text-[7px] md:text-[8px] font-mono font-bold uppercase tracking-widest text-primary opacity-0 group-hover:opacity-100 group-hover:translate-y-1 transition-all pointer-events-none whitespace-nowrap z-30 shadow-[0_0_15px_rgba(59,130,246,0.1)] backdrop-blur-md">
+                    Connect Profile
+                  </span>
                   <Linkedin className="h-5 w-5 md:h-6 md:w-6 group-hover:scale-110 transition-transform" />
                 </a>
-                <a href={HERO_CONTENT.cvPath} target="_blank" className="group flex items-center gap-2 hover:text-primary transition-all text-[9px] md:text-[10px] font-mono font-bold uppercase tracking-[0.3em]" aria-label="Resume">
+                <a href={HERO_CONTENT.cvPath} target="_blank" className="group relative flex items-center gap-2 hover:text-primary transition-all text-[9px] md:text-[10px] font-mono font-bold uppercase tracking-[0.3em]" aria-label="Resume">
+                  <span className="absolute top-full mt-3 left-1/2 -translate-x-1/2 px-2 py-1 rounded bg-background/90 border border-primary/20 text-[7px] md:text-[8px] font-mono font-bold uppercase tracking-widest text-primary opacity-0 group-hover:opacity-100 group-hover:translate-y-1 transition-all pointer-events-none whitespace-nowrap z-30 shadow-[0_0_15px_rgba(59,130,246,0.1)] backdrop-blur-md">
+                    Examine Resume
+                  </span>
                   <FileText className="h-5 w-5 md:h-6 md:w-6 group-hover:scale-110 transition-transform" />
                   <span className="inline font-bold">CV</span>
                 </a>
