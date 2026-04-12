@@ -317,6 +317,8 @@ export const TechStacks = () => {
 
 
 export const Education = () => {
+  const [showGWA, setShowGWA] = useState(false);
+  const [showHonors, setShowHonors] = useState(false);
   const [hasHydrated, setHasHydrated] = useState(false);
 
   useEffect(() => {
@@ -324,99 +326,151 @@ export const Education = () => {
   }, []);
 
   return (
-  <SectionWrapper>
-    <section id="education" className="py-10">
-      <div className="space-y-12">
-        <div className="flex flex-col gap-2">
-          <span className="section-title">03. Academic Foundation</span>
-          <h2 className="text-3xl md:text-5xl font-medium tracking-tight text-foreground">
-            Academic <span className="text-primary italic">Foundation</span>
-          </h2>
-        </div>
+    <SectionWrapper>
+      <section id="education" className="py-10">
+        <div className="space-y-12">
+          <div className="flex flex-col gap-2">
+            <span className="section-title">03. Academic Foundation</span>
+            <h2 className="text-3xl md:text-5xl font-medium tracking-tight text-foreground">
+              Academic <span className="text-primary italic">Foundation</span>
+            </h2>
+          </div>
 
-        <div className="flex flex-col md:flex-row gap-6 md:gap-8 items-stretch">
-          {/* Left Column: Education Info */}
-          <div className="flex-[1.2] flex flex-col h-full min-w-0 bg-white/40 dark:bg-white/[0.015] backdrop-blur-md relative overflow-hidden transition-all duration-700 outline outline-[1px] outline-primary/30 dark:outline-primary/20 outline-offset-2 hover:outline-primary/50 rounded-xl">
+          <div className="flex flex-col md:flex-row gap-6 md:gap-8 items-stretch">
+            {/* Left Column: Education Info */}
+            <div className="flex-[1.2] flex flex-col h-full min-w-0 bg-white/40 dark:bg-white/[0.015] backdrop-blur-md relative overflow-hidden transition-all duration-700 outline outline-[1px] outline-primary/30 dark:outline-primary/20 outline-offset-2 hover:outline-primary/50 rounded-xl">
+              {/* University Info */}
+              <div className="flex flex-col sm:flex-row items-center sm:items-center gap-6 md:gap-8 p-6 md:p-8 justify-center text-center sm:text-left">
+                <motion.div
+                  whileHover={{ scale: 1.1 }}
+                  className="relative h-20 w-20 md:h-24 md:w-24 shrink-0"
+                >
+                  <Image
+                    src="/pup-logo.png"
+                    alt="PUP Logo"
+                    fill
+                    className="object-contain drop-shadow-[0_0_10px_rgba(59,130,246,0.3)]"
+                    suppressHydrationWarning
+                  />
+                </motion.div>
+                <div className="space-y-2">
+                  <h3 className="text-xl md:text-3xl font-medium tracking-tight text-foreground leading-tight px-4 sm:px-0">
+                    Polytechnic University of the Philippines
+                  </h3>
+                  <p className="text-sm md:text-lg text-muted-foreground font-light italic">
+                    Manila, Philippines
+                  </p>
+                </div>
+              </div>
 
+              {/* Degree Info */}
+              <div className="space-y-6 p-6 md:p-8 bg-white/20 dark:bg-secondary/[0.02] flex flex-col justify-center flex-1">
+                <div className="space-y-3 flex flex-col items-center">
+                  <p className="text-2xl md:text-2xl text-primary font-medium tracking-tight text-center leading-tight">
+                    Bachelor of Science in <br />
+                    Computer Science
+                  </p>
+                  <div className="flex flex-wrap items-center justify-center gap-2 font-mono text-[8px] md:text-[10px] text-muted-foreground/80">
+                    <span className="px-2 py-0.5 rounded bg-secondary/30 border border-border/50 shadow-sm whitespace-nowrap">
+                      Oct 2021 – Sep 2025
+                    </span>
+                    <span className="px-2 py-0.5 rounded bg-primary/10 border border-primary/20 shadow-sm text-primary font-bold whitespace-nowrap text-center">
+                      DOST-SEI Undergraduate Scholar
+                    </span>
+                  </div>
+                </div>
 
-            {/* University Info */}
-            <div className="flex flex-col sm:flex-row items-center sm:items-center gap-6 md:gap-8 p-8 md:p-10 justify-center text-center sm:text-left">
-              <motion.div
-                whileHover={{ scale: 1.1 }}
-                className="relative h-20 w-20 md:h-24 md:w-24 shrink-0"
-              >
-                <Image
-                  src="/pup-logo.png"
-                  alt="PUP Logo"
-                  fill
-                  className="object-contain drop-shadow-[0_0_10px_rgba(59,130,246,0.3)]"
-                  suppressHydrationWarning
-                />
-              </motion.div>
-              <div className="space-y-2">
-                <h3 className="text-xl md:text-3xl font-medium tracking-tight text-foreground leading-tight px-4 sm:px-0">
-                  Polytechnic University of the Philippines
-                </h3>
-                <p className="text-sm md:text-lg text-muted-foreground font-light italic">
-                  Manila, Philippines
-                </p>
+                {/* GWA and Honors Cards */}
+                <div className="grid grid-cols-2 gap-2 sm:gap-4">
+                  <div 
+                    onClick={() => setShowGWA(!showGWA)}
+                    className="bg-secondary/[0.03] p-5 md:p-8 rounded-xl flex flex-col justify-center items-center text-center group cursor-pointer hover:bg-secondary/[0.06] transition-all border border-border/5 relative overflow-hidden"
+                  >
+                    <AnimatePresence mode="wait">
+                      {!showGWA ? (
+                      <motion.p 
+                        key="hidden"
+                        initial={{ opacity: 0, y: 5 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -5 }}
+                        className="text-[9px] md:text-xs font-mono font-bold text-primary/40 uppercase tracking-widest whitespace-nowrap"
+                      >
+                          [ REDACTED ]
+                        </motion.p>
+                      ) : (
+                        <motion.p 
+                          key="visible"
+                          initial={{ opacity: 0, y: 5 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: -5 }}
+                          className="text-3xl md:text-4xl font-light text-primary group-hover:scale-110 transition-transform"
+                        >
+                          1.29
+                        </motion.p>
+                      )}
+                    </AnimatePresence>
+                    <p className="text-[9px] md:text-[10px] uppercase tracking-widest font-semibold text-muted-foreground mt-2">
+                      Cumulative GWA
+                    </p>
+                    
+                    {!showGWA && (
+                      <div className="absolute inset-0 bg-gradient-to-t from-primary/5 to-transparent flex items-end justify-center pb-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <span className="text-[7px] uppercase tracking-widest font-bold text-primary animate-pulse">Click to Reveal</span>
+                      </div>
+                    )}
+                  </div>
+
+                  <div 
+                    onClick={() => setShowHonors(!showHonors)}
+                    className="bg-secondary/[0.03] p-5 md:p-8 rounded-xl flex flex-col justify-center items-center text-center group cursor-pointer hover:bg-secondary/[0.06] transition-all border border-border/5 relative overflow-hidden"
+                  >
+                    <AnimatePresence mode="wait">
+                      {!showHonors ? (
+                      <motion.p 
+                        key="hidden"
+                        initial={{ opacity: 0, y: 5 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -5 }}
+                        className="text-[9px] md:text-xs font-mono font-bold text-primary/40 uppercase tracking-widest whitespace-nowrap"
+                      >
+                          [ REDACTED ]
+                        </motion.p>
+                      ) : (
+                        <motion.p 
+                          key="visible"
+                          initial={{ opacity: 0, y: 5 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: -5 }}
+                          className="text-lg md:text-xl font-medium text-foreground group-hover:text-primary transition-colors"
+                        >
+                          Magna Cum Laude
+                        </motion.p>
+                      )}
+                    </AnimatePresence>
+                    <p className="text-[9px] md:text-[10px] uppercase tracking-widest font-semibold text-muted-foreground mt-2 text-center">
+                      Latin Honors
+                    </p>
+
+                    {!showHonors && (
+                      <div className="absolute inset-0 bg-gradient-to-t from-primary/5 to-transparent flex items-end justify-center pb-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <span className="text-[7px] uppercase tracking-widest font-bold text-primary animate-pulse">Click to Reveal</span>
+                      </div>
+                    )}
+                  </div>
+                </div>
               </div>
             </div>
 
-            {/* Degree Info */}
-            <div className="space-y-8 p-8 md:p-10 bg-white/20 dark:bg-secondary/[0.02]">
-              <div className="space-y-4">
-                <p className="text-xl md:text-2xl text-primary font-medium tracking-tight text-center sm:text-left">
-                  Bachelor of Science in Computer Science
-                </p>
-                <div className="flex flex-wrap items-center justify-center sm:justify-start gap-3 font-mono text-[10px] md:text-sm text-muted-foreground">
-                  <span className="px-3 py-1.5 rounded bg-secondary/30 border border-border shadow-sm whitespace-nowrap">
-                    Oct 2021 – Sep 2025
-                  </span>
-                  <span className="px-3 py-1.5 rounded bg-primary/10 border border-primary/20 shadow-sm text-primary font-bold whitespace-nowrap text-center">
-                    DOST-SEI Undergraduate Scholar
-                  </span>
-                </div>
-              </div>
-
-              {/* GWA and Honors Cards */}
-              <div className="grid grid-cols-2 gap-4">
-                <div className="bg-secondary/[0.03] p-5 md:p-8 rounded-xl flex flex-col justify-center items-center text-center group hover:bg-secondary/[0.06] transition-all border border-border/5">
-                  <p className="text-3xl md:text-4xl font-light text-primary group-hover:scale-110 transition-transform">
-                    1.29
-                  </p>
-                  <p className="text-[9px] md:text-[10px] uppercase tracking-widest font-semibold text-muted-foreground mt-2">
-                    Cumulative GWA
-                  </p>
-                </div>
-                <div className="bg-secondary/[0.03] p-5 md:p-8 rounded-xl flex flex-col justify-center items-center text-center group hover:bg-secondary/[0.06] transition-all border border-border/5">
-                  <p className="text-lg md:text-xl font-medium text-foreground group-hover:text-primary transition-colors">
-                    Magna Cum Laude
-                  </p>
-                  <p className="text-[9px] md:text-[10px] uppercase tracking-widest font-semibold text-muted-foreground mt-2 text-center">
-                    Latin Honors
-                  </p>
-                </div>
-              </div>
-              </div>
-            </div>
-
-
-
-          {/* Right Column: Identity Photo (Uniform) */}
-          <div className="h-auto md:h-auto w-full relative flex-[0.8]">
-             <div className="w-full h-auto md:h-full bg-white/40 dark:bg-white/[0.015] backdrop-blur-md relative overflow-hidden flex md:items-center md:justify-center p-1.5 outline outline-[1px] outline-primary/30 dark:outline-primary/20 outline-offset-2 hover:outline-primary/50 transition-all duration-500 rounded-xl">
+            {/* Right Column: Identity Photo (Uniform) */}
+            <div className="h-auto md:h-auto w-full relative flex-[0.8]">
+              <div className="w-full h-auto md:h-full bg-white/40 dark:bg-white/[0.015] backdrop-blur-md relative overflow-hidden flex md:items-center md:justify-center p-1.5 outline outline-[1px] outline-primary/30 dark:outline-primary/20 outline-offset-2 hover:outline-primary/50 transition-all duration-500 rounded-xl">
                 <StaticLanyardCard />
-             </div>
-
-
-
-
-             <div className="absolute inset-x-12 inset-y-12 bg-primary/5 blur-[60px] md:blur-[80px] -z-10 rounded-full" />
+              </div>
+              <div className="absolute inset-x-12 inset-y-12 bg-primary/5 blur-[60px] md:blur-[80px] -z-10 rounded-full" />
+            </div>
           </div>
         </div>
-      </div>
-    </section>
-  </SectionWrapper>
+      </section>
+    </SectionWrapper>
   );
 };
