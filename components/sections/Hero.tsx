@@ -221,20 +221,21 @@ export const Hero = () => {
             <div className="flex flex-row lg:flex-col items-center lg:items-start gap-3 md:gap-5 lg:gap-2">
               {/* Mobile logo */}
                 <motion.div
-                  variants={{
-                    hidden: { opacity: 0, scale: 0.8 },
-                    visible: { opacity: 1, scale: 1, transition: { type: "spring", damping: 12 } }
-                  }}
                   className={`md:hidden relative w-22 h-22 sm:w-30 sm:h-30 shrink-0 transition-opacity duration-1000 ${hasHydrated ? "opacity-100" : "opacity-0"}`}
                 >
                   {/* Mobile Aura removed per user request */}
-                  <Image
-                    src="/jiyo-logo.png"
-                    alt="Jiyo Logo"
-                    fill
-                    className="relative z-10 object-contain drop-shadow-[0_0_30px_rgba(59,130,246,0.4)]"
-                    suppressHydrationWarning
-                  />
+                  <motion.div 
+                    layoutId="hero-logo-3d"
+                    className="relative z-10 w-full h-full"
+                  >
+                    <Image
+                      src="/jiyo-logo.png"
+                      alt="Jiyo Logo"
+                      fill
+                      className="object-contain drop-shadow-[0_0_30px_rgba(59,130,246,0.4)]"
+                      suppressHydrationWarning
+                    />
+                  </motion.div>
                 </motion.div>
 
               <div className="min-w-0">
@@ -371,68 +372,82 @@ export const Hero = () => {
           {/* RIGHT: LOGO (desktop only) */}
           {hasHydrated && !isMobile && (
             <motion.div
-              initial={{ opacity: 0, scale: 0.85, x: 30 }}
+              initial={false}
               animate={{ opacity: 1, scale: 1, x: 0 }}
-              transition={{ duration: 1.2, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] as const }}
               className="hidden md:flex flex-1 justify-center items-center relative min-h-[400px] lg:min-h-[500px]"
             >
-              {/* Rotating orbit rings */}
+              {/* Logo float container */}
+              <motion.div
+                animate={{ y: [0, -12, 0] }}
+                transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
+                className="relative w-56 h-56 md:w-64 md:h-64 lg:w-72 lg:h-72 xl:w-[360px] xl:h-[360px] 2xl:w-[420px] 2xl:h-[420px] z-10"
+              >
+                <motion.div
+                  layoutId="hero-logo-3d"
+                  className="relative w-full h-full"
+                >
+                  <Image
+                    src="/jiyo-logo.png"
+                    alt="Jiyo Logo"
+                    fill
+                    className="object-contain drop-shadow-[0_0_50px_rgba(59,130,246,0.28)] p-4"
+                    priority
+                    suppressHydrationWarning
+                  />
+                </motion.div>
+              </motion.div>
+
+              {/* Gate accessories to arrive after morph */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.8, duration: 1 }}
+                className="absolute inset-0 pointer-events-none z-0"
+              >
+                {/* Rotating orbit rings */}
                 <motion.div
                   animate={{ rotate: 360 }}
                   transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
-                  className="absolute w-[300px] h-[300px] md:w-[340px] md:h-[340px] lg:w-[380px] lg:h-[380px] xl:w-[460px] xl:h-[460px] rounded-full border border-primary/8 border-dashed"
+                  className="absolute w-[300px] h-[300px] md:w-[340px] md:h-[340px] lg:w-[380px] lg:h-[380px] xl:w-[460px] xl:h-[460px] rounded-full border border-primary/8 border-dashed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
                 />
                 <motion.div
                   animate={{ rotate: -360 }}
                   transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
-                  className="absolute w-[240px] h-[240px] md:w-[280px] md:h-[280px] lg:w-[300px] lg:h-[300px] xl:w-[360px] xl:h-[360px] rounded-full border border-primary/5"
+                  className="absolute w-[240px] h-[240px] md:w-[280px] md:h-[280px] lg:w-[300px] lg:h-[300px] xl:w-[360px] xl:h-[360px] rounded-full border border-primary/5 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
                 />
 
-              {/* Glow halo */}
-                <div className="absolute w-48 h-48 md:w-60 md:h-60 xl:w-72 xl:h-72 bg-primary/7 blur-[60px] md:blur-[80px] rounded-full" />
+                {/* Glow halo */}
+                <div className="absolute w-48 h-48 md:w-60 md:h-60 xl:w-72 xl:h-72 bg-primary/7 blur-[60px] md:blur-[80px] rounded-full left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 opacity-50" />
 
-              {/* Logo float */}
+                {/* Floating status chips */}
                 <motion.div
-                  animate={{ y: [0, -12, 0] }}
-                  transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-                  className="relative w-56 h-56 md:w-64 md:h-64 lg:w-72 lg:h-72 xl:w-[360px] xl:h-[360px] 2xl:w-[420px] 2xl:h-[420px]"
+                  animate={{ y: [0, -6, 0] }}
+                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                  className="absolute top-4 right-0 xl:right-4 flex items-center gap-1.5 px-2.5 py-1.5 rounded-md bg-background/70 border border-primary/12 backdrop-blur-sm"
                 >
-                <Image
-                  src="/jiyo-logo.png"
-                  alt="Jiyo Logo"
-                  fill
-                  className="object-contain drop-shadow-[0_0_50px_rgba(59,130,246,0.28)] p-4"
-                  suppressHydrationWarning
-                />
-              </motion.div>
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 shadow-[0_0_6px_rgba(52,211,153,0.7)] animate-pulse" />
+                  <span className="font-mono text-[8px] uppercase tracking-widest text-foreground/45">online</span>
+                </motion.div>
 
-              {/* Floating status chips */}
-              <motion.div
-                animate={{ y: [0, -6, 0] }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute top-4 right-0 xl:right-4 flex items-center gap-1.5 px-2.5 py-1.5 rounded-md bg-background/70 border border-primary/12 backdrop-blur-sm"
-              >
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 shadow-[0_0_6px_rgba(52,211,153,0.7)] animate-pulse" />
-                <span className="font-mono text-[8px] uppercase tracking-widest text-foreground/45">online</span>
-              </motion.div>
+                <motion.div
+                  animate={{ y: [0, 6, 0] }}
+                  transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                  className="absolute bottom-8 left-0 xl:left-2 flex items-center gap-1.5 px-2.5 py-1.5 rounded-md bg-background/70 border border-primary/12 backdrop-blur-sm"
+                >
+                  <span className="font-mono text-[8px] uppercase tracking-widest text-foreground/45">v2.0 · prod</span>
+                </motion.div>
 
-              <motion.div
-                animate={{ y: [0, 6, 0] }}
-                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                className="absolute bottom-8 left-0 xl:left-2 flex items-center gap-1.5 px-2.5 py-1.5 rounded-md bg-background/70 border border-primary/12 backdrop-blur-sm"
-              >
-                <span className="font-mono text-[8px] uppercase tracking-widest text-foreground/45">v2.0 · prod</span>
-              </motion.div>
-
-              {/* Extra code chip on the ring */}
+                {/* Extra code chip on the ring */}
                 <motion.div
                   animate={{ rotate: 360 }}
                   transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
-                  className="absolute w-[300px] h-[300px] md:w-[340px] md:h-[340px] lg:w-[380px] lg:h-[380px] xl:w-[460px] xl:h-[460px]"
+                  className="absolute w-full h-full"
                 >
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 px-2 py-0.5 rounded bg-background/70 border border-primary/12 backdrop-blur-sm">
-                  <span className="font-mono text-[7px] text-primary/40 whitespace-nowrap">{ "jiyo.tsx" }</span>
-                </div>
+                  <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 px-2 py-0.5 rounded bg-background/70 border border-primary/12 backdrop-blur-sm">
+                    <span className="font-mono text-[7px] text-primary/40 whitespace-nowrap">{ "jiyo.tsx" }</span>
+                  </div>
+                </motion.div>
               </motion.div>
             </motion.div>
           )}

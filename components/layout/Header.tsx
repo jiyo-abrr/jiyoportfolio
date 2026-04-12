@@ -49,6 +49,7 @@ export const Header = () => {
       <div className="max-w-5xl mx-auto flex items-center justify-between glass px-4 md:px-5 py-3 rounded-2xl border-border/40 shadow-xl shadow-black/5 bg-background/60 backdrop-blur-xl">
         {/* Brand with Pop-up Effect */}
         <motion.div 
+          layoutId="jiyo-logo-main"
           whileHover={{ scale: 1.05 }}
           className="flex items-center gap-2 cursor-pointer"
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
