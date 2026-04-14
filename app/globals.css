@@ -183,3 +183,11 @@
     animation-play-state: paused;
   }
 }
+
+.loading-lock {
+  overflow: hidden !important;
+  height: 100vh !important;
+  height: 100svh !important;
+  width: 100vw !important;
+  position: fixed !important;
+}

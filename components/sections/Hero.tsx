@@ -136,36 +136,60 @@ export const Hero = () => {
       </div>
 
       {/* ── TOP HUD BAR (md+ only) ── */}
-      <div className="hidden md:block absolute top-[84px] inset-x-0 z-20 px-8 pointer-events-none">
+      <div className="hidden md:block absolute top-[84px] inset-x-0 z-20 px-8">
         <div className={`flex items-center justify-between font-mono text-[9px] uppercase tracking-[0.3em] text-foreground/20 transition-opacity duration-700 ${hasHydrated ? "opacity-100" : "opacity-0"}`}>
-          <div className="flex items-center gap-3">
-            <GitBranch className="h-3 w-3 text-primary/35" />
-            <span>branch:<span className="text-primary/50 font-bold ml-1">main*</span></span>
-          </div>
-          <div className="flex items-center gap-2">
+          <motion.div 
+            whileHover={{ scale: 1.05 }}
+            className="flex items-center gap-3 group transition-all duration-300 hover:drop-shadow-[0_0_8px_rgba(var(--primary-rgb),0.5)]"
+          >
+            <GitBranch className="h-3 w-3 text-primary/35 group-hover:text-primary transition-colors duration-300" />
+            <span className="group-hover:text-primary/80 transition-colors duration-300">branch:<span className="text-primary/50 group-hover:text-primary font-bold ml-1 transition-colors duration-300">main*</span></span>
+          </motion.div>
+          
+          <motion.div 
+            whileHover={{ scale: 1.05 }}
+            className="flex items-center gap-2 group transition-all duration-300 hover:drop-shadow-[0_0_8px_rgba(var(--primary-rgb),0.3)]"
+          >
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse shadow-[0_0_5px_rgba(16,185,129,0.5)]" />
-            <span>sys.online // jeo_dev_v2</span>
-          </div>
-          <div className="flex items-center gap-3">
-            <span>env:<span className="text-primary/50 font-bold ml-1">production</span></span>
-            <Cpu className="h-3 w-3 text-primary/35" />
-          </div>
+            <span className="group-hover:text-foreground transition-colors duration-300">sys.online // jeo_dev_v2</span>
+          </motion.div>
+
+          <motion.div 
+            whileHover={{ scale: 1.05 }}
+            className="flex items-center gap-3 group transition-all duration-300 hover:drop-shadow-[0_0_8px_rgba(var(--primary-rgb),0.5)]"
+          >
+            <span className="group-hover:text-primary/80 transition-colors duration-300">env:<span className="text-primary/50 group-hover:text-primary font-bold ml-1 transition-colors duration-300">production</span></span>
+            <Cpu className="h-3 w-3 text-primary/35 group-hover:text-primary transition-colors duration-300" />
+          </motion.div>
         </div>
       </div>
 
       {/* ── BOTTOM HUD BAR ── */}
-      <div className="absolute bottom-[calc(1rem+env(safe-area-inset-bottom,0px))] md:bottom-5 inset-x-0 z-20 px-4 md:px-8 pointer-events-none">
+      <div className="absolute bottom-[calc(1rem+env(safe-area-inset-bottom,0px))] md:bottom-5 inset-x-0 z-20 px-4 md:px-8">
         <div className={`flex items-center justify-between font-mono text-[9px] md:text-[10px] lg:text-[9px] uppercase tracking-[0.2em] md:tracking-[0.25em] lg:tracking-[0.3em] text-foreground/20 transition-opacity duration-700 ${hasHydrated ? "opacity-100" : "opacity-0"}`}>
-          <div className="flex items-center gap-1.5 md:gap-2">
-            <MapPin className="h-3 w-3 text-primary/35 shrink-0" />
-            <span>120.97E</span>
-            <span className="hidden lg:inline text-foreground/12">// caloocan, rp</span>
-          </div>
-          <div className="hidden lg:block text-foreground/12">node_01 // rp_grid</div>
-          <div className="flex items-center gap-1.5 md:gap-2">
-            <span>{hasHydrated ? phtTime : "--:--:--"} PHT</span>
-            <Clock className="h-3 w-3 text-primary/35 shrink-0" />
-          </div>
+          <motion.div 
+            whileHover={{ scale: 1.05 }}
+            className="flex items-center gap-1.5 md:gap-2 group transition-all duration-300 hover:drop-shadow-[0_0_8px_rgba(var(--primary-rgb),0.5)]"
+          >
+            <MapPin className="h-3 w-3 text-primary/35 group-hover:text-primary transition-colors duration-300 shrink-0" />
+            <span className="group-hover:text-primary/80 transition-colors duration-300">120.97E</span>
+            <span className="hidden lg:inline text-foreground/12 group-hover:text-primary/40 transition-colors duration-300">// caloocan, rp</span>
+          </motion.div>
+
+          <motion.div 
+            whileHover={{ scale: 1.05 }}
+            className="hidden lg:block group transition-all duration-300 hover:drop-shadow-[0_0_8px_rgba(var(--primary-rgb),0.5)]"
+          >
+            <div className="text-foreground/12 group-hover:text-primary transition-colors duration-300">node_01 // rp_grid</div>
+          </motion.div>
+
+          <motion.div 
+            whileHover={{ scale: 1.05 }}
+            className="flex items-center gap-1.5 md:gap-2 group transition-all duration-300 hover:drop-shadow-[0_0_8px_rgba(var(--primary-rgb),0.5)]"
+          >
+            <span className="group-hover:text-primary transition-colors duration-300">{hasHydrated ? phtTime : "--:--:--"} PHT</span>
+            <Clock className="h-3 w-3 text-primary/35 group-hover:text-primary transition-colors duration-300 shrink-0" />
+          </motion.div>
         </div>
       </div>
 

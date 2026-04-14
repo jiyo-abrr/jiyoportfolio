@@ -52,18 +52,12 @@ export const LoadingScreen = () => {
 
   useEffect(() => {
     if (loading) {
-      document.body.style.overflow = 'hidden';
-      document.documentElement.style.overflow = 'hidden'; // Targeted html element
-      document.body.style.touchAction = 'none';
+      document.documentElement.classList.add('loading-lock');
     } else {
-      document.body.style.overflow = '';
-      document.documentElement.style.overflow = '';
-      document.body.style.touchAction = '';
+      document.documentElement.classList.remove('loading-lock');
     }
     return () => {
-      document.body.style.overflow = '';
-      document.documentElement.style.overflow = '';
-      document.body.style.touchAction = '';
+      document.documentElement.classList.remove('loading-lock');
     };
   }, [loading]);
 
