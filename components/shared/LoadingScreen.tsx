@@ -51,6 +51,23 @@ export const LoadingScreen = () => {
   const [hasHydrated, setHasHydrated] = useState(false);
 
   useEffect(() => {
+    if (loading) {
+      document.body.style.overflow = 'hidden';
+      document.documentElement.style.overflow = 'hidden'; // Targeted html element
+      document.body.style.touchAction = 'none';
+    } else {
+      document.body.style.overflow = '';
+      document.documentElement.style.overflow = '';
+      document.body.style.touchAction = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+      document.documentElement.style.overflow = '';
+      document.body.style.touchAction = '';
+    };
+  }, [loading]);
+
+  useEffect(() => {
     setHasHydrated(true);
     
     const stepTimer = setInterval(() => {
