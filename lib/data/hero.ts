@@ -4,7 +4,7 @@ export const HERO_CONTENT = {
   roles: [
     "Software Engineer",
     "Full Stack Web Developer",
-    "Data Science",
+    "Regulatory Tech",
     "AI / ML",
     "Computer Science",
   ],

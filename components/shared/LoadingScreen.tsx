@@ -2,13 +2,13 @@
  
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
-import { Code, Globe, Database, Cpu, Terminal } from "lucide-react";
+import { Code, Globe, ShieldCheck, Cpu, Terminal } from "lucide-react";
 import Image from "next/image";
 
 const roles = [
   { label: "Software Engineer", icon: Code },
   { label: "Full Stack Developer", icon: Globe },
-  { label: "Data Science", icon: Database },
+  { label: "Regulatory Tech", icon: ShieldCheck },
   { label: "AI / ML", icon: Cpu },
   { label: "Computer Science", icon: Terminal }
 ];
