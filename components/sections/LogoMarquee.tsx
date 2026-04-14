@@ -24,12 +24,12 @@ export const LogoMarquee = () => {
   const items = [...MARQUEE_LOGOS, ...MARQUEE_LOGOS, ...MARQUEE_LOGOS, ...MARQUEE_LOGOS];
 
   return (
-    <section className="relative py-3 md:py-6 overflow-hidden glass border-x-0 border-y shadow-2xl shadow-primary/5">
+    <section className="relative py-3 md:py-6 overflow-hidden glass border-x-0 border-y shadow-2xl shadow-primary/5 pause-on-hover">
       {/* Side Fades for depth */}
       <div className="absolute inset-y-0 left-0 w-16 md:w-32 bg-linear-to-r from-background to-transparent z-10 pointer-events-none" />
       <div className="absolute inset-y-0 right-0 w-16 md:w-32 bg-linear-to-l from-background to-transparent z-10 pointer-events-none" />
       
-      <div className="flex select-none md:pause-on-hover">
+      <div className="flex select-none">
         {/* We use two identical divs side-by-side */}
         {[1, 2].map((i) => (
           <div

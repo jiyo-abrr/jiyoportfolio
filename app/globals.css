@@ -178,6 +178,8 @@
   animation: marquee-reverse 50s linear infinite;
 }
 
-.pause-on-hover:hover .animate-marquee {
-  animation-play-state: paused;
+@media (min-width: 768px) {
+  .pause-on-hover:hover .animate-marquee {
+    animation-play-state: paused;
+  }
 }
