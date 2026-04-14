@@ -61,8 +61,6 @@ export const Hero = () => {
   const smoothMouseX = useSpring(mouseX, springConfig);
   const smoothMouseY = useSpring(mouseY, springConfig);
 
-  const buttonRef = useRef<HTMLAnchorElement>(null);
-  const [buttonPos, setButtonPos] = useState({ x: 0, y: 0 });
 
   // Glitch effect trigger
   useEffect(() => {
@@ -95,13 +93,6 @@ export const Hero = () => {
       if (!isMobile) {
         mouseX.set(e.clientX - window.innerWidth / 2);
         mouseY.set(e.clientY - window.innerHeight / 2);
-      }
-      if (buttonRef.current) {
-        const rect = buttonRef.current.getBoundingClientRect();
-        const cx = rect.left + rect.width / 2;
-        const cy = rect.top + rect.height / 2;
-        const dist = Math.hypot(e.clientX - cx, e.clientY - cy);
-        setButtonPos(dist < 100 ? { x: (e.clientX - cx) * 0.25, y: (e.clientY - cy) * 0.25 } : { x: 0, y: 0 });
       }
     };
     window.addEventListener("mousemove", handleMouseMove);
@@ -331,18 +322,13 @@ export const Hero = () => {
               className="flex flex-row items-center gap-4 md:gap-8 pt-4 md:pt-6 flex-wrap"
             >
               <motion.a
-                ref={buttonRef}
-                animate={{ x: buttonPos.x, y: buttonPos.y }}
-                whileHover={{ scale: 1.04 }}
-                whileTap={{ scale: 0.96 }}
-                transition={{ type: "spring", stiffness: 180, damping: 14 }}
                 href="#contact"
                 className="group relative w-fit h-9 md:h-12 px-5 md:px-9 flex items-center justify-center gap-2 rounded-md overflow-hidden font-bold text-[11px] md:text-sm uppercase tracking-widest text-background bg-primary hover:bg-primary/90 transition-colors shadow-[0_0_28px_rgba(59,130,246,0.3)] hover:shadow-[0_0_42px_rgba(59,130,246,0.5)] whitespace-nowrap"
               >
-                <div className="absolute inset-0 bg-white/10 blur-xl animate-breathe pointer-events-none" />
-                <span className="relative z-10 absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-500 ease-in-out" />
+                {/* Static internal glow */}
+                <div className="absolute inset-0 bg-white/10 blur-xl opacity-50 pointer-events-none" />
                 <span className="relative z-10">Get in touch</span>
-                {hasHydrated && <ArrowUpRight className="relative z-10 h-3.5 w-3.5 md:h-4 md:w-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />}
+                {hasHydrated && <ArrowUpRight className="relative z-10 h-3.5 w-3.5 md:h-4 md:w-4 transition-transform" />}
               </motion.a>
 
               <div className={`flex items-center gap-4 md:gap-7 text-foreground/30 transition-opacity duration-1000 ${hasHydrated ? "opacity-100" : "opacity-0"}`}>

@@ -170,7 +170,7 @@ export const LoadingScreen = () => {
                     : { opacity: 0 }
                 }
                 transition={{ duration: 0.8, ease: [0.7, 0, 0.3, 1] as const }}
-                className="w-32 h-32 md:w-48 md:h-48 relative z-50"
+                className="w-32 h-32 md:w-48 md:h-48 absolute z-50"
               >
                 {hasHydrated && (
                   <Image
@@ -199,9 +199,9 @@ export const LoadingScreen = () => {
             <motion.div
               variants={vortexVariants}
               animate={exitPhase === 'loading' ? 'loading' : 'vortex'}
-              className="flex flex-col items-center gap-12 max-w-xs w-full mt-24"
+              className="flex flex-col items-center gap-12 max-w-xs w-full mt-8 md:mt-12"
             >
-              <div className="w-full flex flex-col items-center gap-4">
+              <div className="w-full flex flex-col items-center gap-2">
                 <div className="flex justify-between w-full">
                   {roles.map((role, i) => (
                     <div key={i} className="p-2">
@@ -239,7 +239,7 @@ export const LoadingScreen = () => {
                       transition={{ duration: 0.4 }}
                     />
                   </div>
-                   <div className="absolute bottom-full right-0 mb-2">
+                   <div className="absolute bottom-full right-0 mb-1">
                      <span className="text-[10px] font-mono text-primary/40 tabular-nums">{progress}%</span>
                    </div>
                  </div>

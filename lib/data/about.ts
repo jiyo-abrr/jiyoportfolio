@@ -15,10 +15,10 @@ export const ABOUT_CONTENT = {
       icon: "Code"
     },
     {
-      id: "automation",
-      label: "Automation Efficiency",
-      value: "80%",
-      icon: "Server"
+      id: "engineer",
+      label: "Engineer",
+      value: "Software",
+      icon: "Cpu"
     }
   ]
 };

@@ -29,20 +29,13 @@ export const LogoMarquee = () => {
       <div className="absolute inset-y-0 left-0 w-16 md:w-32 bg-linear-to-r from-background to-transparent z-10 pointer-events-none" />
       <div className="absolute inset-y-0 right-0 w-16 md:w-32 bg-linear-to-l from-background to-transparent z-10 pointer-events-none" />
       
-      <div className="flex select-none">
-        {/* We use two identical motion divs side-by-side */}
+      <div className="flex select-none md:pause-on-hover">
+        {/* We use two identical divs side-by-side */}
         {[1, 2].map((i) => (
-          <motion.div
+          <div
             key={i}
-            initial={{ x: "-100%" }}
-            animate={{ x: "0%" }}
-            transition={{ 
-              duration: 35, 
-              repeat: Infinity, 
-              ease: "linear" 
-            }}
             // Single gap value for perfect consistency
-            className="flex shrink-0 items-center gap-12 md:gap-20 pr-12 md:pr-20"
+            className="flex shrink-0 items-center gap-12 md:gap-20 pr-12 md:pr-20 animate-marquee"
           >
             {items.map((logo, idx) => {
               const { Icon, color } = separatorIcons[idx % separatorIcons.length];
@@ -52,7 +45,7 @@ export const LogoMarquee = () => {
                     <img 
                       src={logo.src} 
                       alt={logo.alt} 
-                      className={`h-full w-auto object-contain opacity-80 md:opacity-40 hover:opacity-100 transition-all duration-500 grayscale-0 md:grayscale md:hover:grayscale-0 ${logo.invert ? 'dark:invert' : ''}`}
+                      className={`h-full w-auto object-contain opacity-80 md:opacity-40 hover:opacity-100 transition-all duration-300 grayscale-0 md:grayscale md:hover:grayscale-0 scale-100 md:hover:scale-110 drop-shadow-none md:hover:drop-shadow-[0_0_8px_rgba(var(--primary-rgb),0.3)] ${logo.invert ? 'dark:invert' : ''}`}
                       suppressHydrationWarning
                     />
                   </div>
@@ -60,7 +53,7 @@ export const LogoMarquee = () => {
                 </div>
               );
             })}
-          </motion.div>
+          </div>
         ))}
       </div>
     </section>

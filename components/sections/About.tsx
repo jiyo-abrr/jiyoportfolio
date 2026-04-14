@@ -1,7 +1,7 @@
 "use client";
 
 import { SectionWrapper } from "@/components/layout/SectionWrapper";
-import { Code, Server } from "lucide-react";
+import { Code, Server, Cpu } from "lucide-react";
 import { Terminal } from "@/components/features/Terminal";
 import { ABOUT_CONTENT } from "@/lib/data/about";
 import { useState, useEffect } from "react";
@@ -16,6 +16,7 @@ export const About = () => {
   const icons = {
     Code: <Code className="h-6 w-6" />,
     Server: <Server className="h-6 w-6" />,
+    Cpu: <Cpu className="h-6 w-6" />,
   };
 
   return (
@@ -47,7 +48,7 @@ export const About = () => {
                 </div>
               </div>
               <div>
-                <p className="text-4xl md:text-5xl font-medium tracking-tighter">
+                <p className={`${stat.value.length > 4 ? 'text-2xl md:text-3xl' : 'text-4xl md:text-5xl'} font-medium tracking-tighter transition-all duration-300`}>
                   {stat.value}
                 </p>
                 <p className="text-xs md:text-sm font-medium text-muted-foreground mt-2 uppercase tracking-widest">{stat.label}</p>
