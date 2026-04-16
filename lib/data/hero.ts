@@ -11,7 +11,7 @@ export const HERO_CONTENT = {
   description:
     "A Software Developer who builds scalable web systems, automation tools, and intelligent applications.",
   focus: "Current Focus: Microservices & Distributed Systems",
-  learning: "Learning: LLM Fine-tuning & MLOps",
+  learning: "Learning: Cloud Infrastructure",
   cvPath: "/portfolio/Abarre - Resume.pdf",
   socials: {
     github: "https://github.com/jiyo-abrr",
