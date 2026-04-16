@@ -224,8 +224,8 @@ export const Hero = () => {
             >
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
               <span className="relative flex h-1 w-1">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-                <span className="relative inline-flex rounded-full h-1 w-1 bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.7)]" />
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 dark:bg-emerald-400 opacity-75" />
+                <span className="relative inline-flex rounded-full h-1 w-1 bg-emerald-500 dark:bg-emerald-400 shadow-[0_0_8px_rgba(16,185,129,0.7)] dark:shadow-[0_0_8px_rgba(52,211,153,0.7)]" />
               </span>
               <span className="font-mono text-[9px] md:text-[10px] uppercase tracking-[0.35em] text-primary font-bold">
                 {HERO_CONTENT.greeting}
@@ -252,9 +252,14 @@ export const Hero = () => {
                     />
                   </motion.div>
                   {/* Availability dot */}
-                  <span className="absolute bottom-1 right-1 z-20 flex h-3 w-3">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-50" />
-                    <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.8)] border-2 border-background" />
+                  <span className="absolute bottom-1 right-1 z-20 group/avail cursor-default">
+                    <span className="flex h-3 w-3">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 dark:bg-emerald-400 opacity-50" />
+                      <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500 dark:bg-emerald-400 shadow-[0_0_8px_rgba(16,185,129,0.8)] dark:shadow-[0_0_8px_rgba(52,211,153,0.8)] border-2 border-background" />
+                    </span>
+                    <span className="absolute bottom-full right-0 mb-2 px-2 py-1 rounded bg-background/90 border border-emerald-500/30 text-[7px] font-mono font-bold uppercase tracking-widest text-emerald-600 dark:text-emerald-400 opacity-0 group-hover/avail:opacity-100 group-hover/avail:-translate-y-1 transition-all pointer-events-none whitespace-nowrap shadow-[0_0_15px_rgba(16,185,129,0.15)] dark:shadow-[0_0_15px_rgba(52,211,153,0.15)] backdrop-blur-md">
+                      Available for opportunities
+                    </span>
                   </span>
                 </motion.div>
 
@@ -411,11 +416,7 @@ export const Hero = () => {
                     suppressHydrationWarning
                   />
                 </motion.div>
-                {/* Availability dot */}
-                <span className="absolute bottom-3 right-3 z-20 flex h-3.5 w-3.5">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-50" />
-                  <span className="relative inline-flex rounded-full h-3.5 w-3.5 bg-emerald-400 shadow-[0_0_10px_rgba(52,211,153,0.9)] border-2 border-background" />
-                </span>
+                {/* Availability dot removed from here to be moved to the rings */}
               </motion.div>
 
               {/* Gate accessories to arrive after morph */}
@@ -423,7 +424,7 @@ export const Hero = () => {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.8, duration: 1 }}
-                className="absolute inset-0 pointer-events-none z-0"
+                className="absolute inset-0 pointer-events-none z-20"
               >
                 {/* Rotating orbit rings */}
                 <motion.div
@@ -437,6 +438,21 @@ export const Hero = () => {
                   className="absolute w-[240px] h-[240px] md:w-[280px] md:h-[280px] lg:w-[300px] lg:h-[300px] xl:w-[360px] xl:h-[360px] rounded-full border border-primary/5 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
                 />
 
+                {/* Stationary Availability Dot (fixed on the first/inner ring) */}
+                <div
+                  className="absolute w-[240px] h-[240px] md:w-[280px] md:h-[280px] lg:w-[300px] lg:h-[300px] xl:w-[360px] xl:h-[360px] left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rotate-[225deg]"
+                >
+                  <span className="absolute top-1/2 -left-1.5 -translate-y-1/2 z-20 group/avail cursor-default pointer-events-auto -rotate-[225deg]">
+                    <span className="flex h-3 w-3">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 dark:bg-emerald-400 opacity-50" />
+                      <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500 dark:bg-emerald-400 shadow-[0_0_10px_rgba(16,185,129,0.9)] dark:shadow-[0_0_10px_rgba(52,211,153,0.9)] border-2 border-background" />
+                    </span>
+                    <span className="absolute bottom-full left-0 mb-2 px-2 py-1 rounded bg-background/90 border border-emerald-500/30 text-[8px] font-mono font-bold uppercase tracking-widest text-emerald-600 dark:text-emerald-400 opacity-0 group-hover/avail:opacity-100 group-hover/avail:-translate-y-1 transition-all pointer-events-none whitespace-nowrap shadow-[0_0_15px_rgba(16,185,129,0.15)] dark:shadow-[0_0_15px_rgba(52,211,153,0.15)] backdrop-blur-md">
+                      Available for opportunities
+                    </span>
+                  </span>
+                </div>
+
                 {/* Glow halo */}
                 <div className="absolute w-48 h-48 md:w-60 md:h-60 xl:w-72 xl:h-72 bg-primary/7 blur-[60px] md:blur-[80px] rounded-full left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 opacity-50" />
 
@@ -446,13 +462,11 @@ export const Hero = () => {
                   transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
                   className="absolute top-4 right-0 xl:right-4 flex items-center gap-1.5 px-2.5 py-1.5 rounded-md bg-background/70 border border-primary/12 backdrop-blur-sm"
                 >
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 shadow-[0_0_6px_rgba(52,211,153,0.7)] animate-pulse" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 dark:bg-emerald-400 shadow-[0_0_6px_rgba(16,185,129,0.7)] dark:shadow-[0_0_6px_rgba(52,211,153,0.7)] animate-pulse" />
                   <span className="font-mono text-[8px] uppercase tracking-widest text-foreground/45">online</span>
                 </motion.div>
 
                 <motion.div
-                  animate={{ y: [0, 6, 0] }}
-                  transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
                   className="absolute bottom-8 left-0 xl:left-2 flex items-center gap-1.5 px-2.5 py-1.5 rounded-md bg-background/70 border border-primary/12 backdrop-blur-sm"
                 >
                   <span className="font-mono text-[8px] uppercase tracking-widest text-foreground/45">v2.0 · prod</span>
