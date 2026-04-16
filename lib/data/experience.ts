@@ -26,11 +26,12 @@ export const EXPERIENCES: ExperienceItem[] = [
         period: "Dec 2025 – Present",
         type: "Full Time",
         description: [
-          "<strong>Led development</strong> of internal <strong>HRIS</strong> and <strong>Inventory / Asset Management</strong> systems, implementing features from requirements through deployment and maintenance, <strong>reducing operational effort by ~80%</strong> through workflow automation and system integration.",
-          "<strong>Contributed</strong> to the development of a compliance-driven <strong>SaaS platform</strong> for regulated asset distribution by building <strong>backend services</strong> using <strong>FastAPI</strong> within a <strong>distributed system architecture</strong> following defined system design requirements.",
-          "<strong>Implemented backend services</strong> and integrations using <strong>PostgreSQL</strong> and <strong>MongoDB</strong> for data persistence, and integrated <strong>Redis (caching)</strong>, <strong>RabbitMQ (asynchronous processing)</strong>, and <strong>Elasticsearch (search indexing)</strong> to support scalable background processing, low-latency operations, and full-text search functionality.",
+          "<strong>Led development</strong> of <strong>HRIS</strong> and <strong>inventory/asset management</strong> systems, implementing features from requirements through deployment and maintenance, <strong>reducing operational effort by ~80%</strong> through workflow automation and system integration.",
+          "<strong>Developed client-facing</strong> web-based <strong>demonstration platforms</strong> to support stakeholder engagements, enabling <strong>clear visualization</strong> of system capabilities and workflows.",
+          "<strong>Engineered ASP.NET integration</strong> with <strong>high-security printing SDKs</strong>, implementing <strong>ID data mapping</strong> and <strong>API orchestration</strong> to support secure card personalization workflows.",
+          "<strong>Contributed</strong> to the development of a compliance-driven <strong>SaaS platform</strong> for regulated asset distribution by building <strong>backend services</strong> using <strong>FastAPI</strong> within a <strong>distributed system architecture</strong>.",
           "<strong>Managed Podman-based deployments</strong> and maintained <strong>Ubuntu production servers</strong> via <strong>Webmin</strong> for system administration, supporting application hosting and operational workflows.",
-          "<strong>Coordinated</strong> and provided <strong>technical guidance</strong> to a team of <strong>dev interns</strong> through code reviews, task decomposition, and hands-on development support within an <strong>Agile environment</strong>."
+          "<strong>Led technical guidance</strong> for <strong>interns</strong> through code reviews, task decomposition, and hands-on support within an <strong>Agile development environment</strong>."
         ]
       },
       {

@@ -3,7 +3,7 @@ export const HERO_CONTENT = {
   name: "Jeo Abarre",
   roles: [
     "Software Engineer",
-    "Full Stack Web Developer",
+    "Full Stack Software Developer",
     "Regulatory Tech",
     "AI / ML",
     "Computer Science",

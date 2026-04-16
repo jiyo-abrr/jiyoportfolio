@@ -313,7 +313,7 @@ export const Hero = () => {
               }}
               className="text-base sm:text-lg lg:text-lg text-foreground/60 font-medium max-w-xl leading-relaxed mt-1"
             >
-              A <span className="text-foreground font-bold">Software Developer</span> who builds 
+              A <span className="text-foreground font-bold">Full Stack Software Developer</span> who builds 
               <span className="text-primary/80 font-semibold px-1">scalable web systems</span>, 
               <span className="text-primary/80 font-semibold px-1">automation tools</span>, and 
               <span className="text-primary/80 font-semibold px-1">intelligent applications</span>.

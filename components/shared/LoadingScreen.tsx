@@ -7,7 +7,7 @@ import Image from "next/image";
 
 const roles = [
   { label: "Software Engineer", icon: Code },
-  { label: "Full Stack Developer", icon: Globe },
+  { label: "Full Stack Software Developer", icon: Globe },
   { label: "Regulatory Tech", icon: ShieldCheck },
   { label: "AI / ML", icon: Cpu },
   { label: "Computer Science", icon: Terminal }
