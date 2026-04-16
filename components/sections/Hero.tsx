@@ -239,7 +239,7 @@ export const Hero = () => {
                   className={`md:hidden relative w-22 h-22 sm:w-30 sm:h-30 shrink-0 transition-opacity duration-1000 ${hasHydrated ? "opacity-100" : "opacity-0"}`}
                 >
                   {/* Mobile Aura removed per user request */}
-                  <motion.div 
+                  <motion.div
                     layoutId="hero-logo-3d"
                     className="relative z-10 w-full h-full"
                   >
@@ -251,6 +251,11 @@ export const Hero = () => {
                       suppressHydrationWarning
                     />
                   </motion.div>
+                  {/* Availability dot */}
+                  <span className="absolute bottom-1 right-1 z-20 flex h-3 w-3">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-50" />
+                    <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.8)] border-2 border-background" />
+                  </span>
                 </motion.div>
 
               <div className="min-w-0">
@@ -406,6 +411,11 @@ export const Hero = () => {
                     suppressHydrationWarning
                   />
                 </motion.div>
+                {/* Availability dot */}
+                <span className="absolute bottom-3 right-3 z-20 flex h-3.5 w-3.5">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-50" />
+                  <span className="relative inline-flex rounded-full h-3.5 w-3.5 bg-emerald-400 shadow-[0_0_10px_rgba(52,211,153,0.9)] border-2 border-background" />
+                </span>
               </motion.div>
 
               {/* Gate accessories to arrive after morph */}
